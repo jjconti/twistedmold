@@ -8,7 +8,7 @@ class MoldsManager():
 
     def __init__(self):
         self.molds = []
-        self.tops = [20, 120, 230, 340, 450] 
+        self.tops = [25, 125, 250, 375] 
 
     def move(self):
         for m in self.molds:
@@ -25,7 +25,7 @@ class MoldsManager():
 
         print "Mold generado"
         #Create mold blocks
-        top = random.choice(self.tops) + random.randrange(-5,5)
+        top = random.choice(self.tops)
 
         rhand = Part(lit='k', numb=1, top=top, left=width)
         head = Part(lit='k', numb=1, top=top, left=width + 2 * side)
