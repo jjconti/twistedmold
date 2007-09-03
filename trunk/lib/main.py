@@ -89,7 +89,8 @@ class Level(object):
                 self.hero.twist()
                        
 
-
+def main():
+    Level().loop()
 
 if __name__ == "__main__":
-    Level().loop()
+    main()

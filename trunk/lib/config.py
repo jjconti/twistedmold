@@ -8,4 +8,4 @@ center = height / 2
 
 side = 25
 half = side / 2
-parts = os.path.join("..", "data")
+parts = os.path.join("data")
