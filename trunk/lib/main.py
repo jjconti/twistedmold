@@ -74,7 +74,7 @@ class Level(object):
 
         #Set blood effect
         self.blood = pygame.sprite.RenderUpdates()
-        explotion = 0	
+        explotion = False	
         blood_flag = 0 
         for x in xrange(333):	
             blood_drop = BloodDrop()
