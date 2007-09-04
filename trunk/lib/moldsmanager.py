@@ -50,13 +50,13 @@ class MoldsManager():
 
         mold = pygame.sprite.RenderUpdates()
         mold.add(blocks.values())
-	
-	for m in self.molds:
+        
+        #Avoid molds overlaping
+        for m in self.molds:
             d = pygame.sprite.groupcollide(mold, m, False, False)
             if len(d):
                 del mold
-                return
-            
+                return         
 	
         for i in xrange(0,random.randrange(0, 6)):
             twist(blocks, i)
