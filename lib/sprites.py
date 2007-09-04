@@ -9,15 +9,20 @@ class Points(pygame.sprite.Sprite):
     
     def __init__(self, points):
         pygame.sprite.Sprite.__init__(self)
-        self.points = points
+        self.positive_points = points
+        self.negative_points = points
         self.font = pygame.font.Font(FONT1, 35)
         self.image = self._image()
         self.rect = self.image.get_rect(top=0, right=width - 1)
 
-    def update(self, points):
-        self.points = points
+    def add_positive(self):
+        self.positive_points += 1
         self.image = self._image()
-        
+
+    def add_negative(self):
+        self.negative_points += 1
+        #self.image = self._image()        
+     
     def _image(self):
         return self.font.render("Points: " + str(self.points), True, COLOR1)
 
@@ -82,7 +87,7 @@ class Part(pygame.sprite.Sprite):
         self.image = pygame.transform.flip(self.image, flipx, flipy)
 
 
-class Blood(pygame.sprite.Sprite):
+class BloodDrop(pygame.sprite.Sprite):
     def __init__ (self):
 	pygame.sprite.Sprite.__init__(self)
         self.image = utils.load_image('data//imgs//gota.gif')
