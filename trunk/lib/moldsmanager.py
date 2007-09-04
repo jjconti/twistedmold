@@ -4,16 +4,20 @@ from config import *
 from sprites import Part
 from twist import twist
 
+MOVE_TICK = 20
+
 class MoldsManager():
 
     def __init__(self):
         self.molds = []
         self.tops = [25, 125, 250, 375] 
 
-    def move(self):
+    def move(self, times):
+	if times % MOVE_TICK != 0: return
+	
         for m in self.molds:
-            for p in m:
-                p.move()
+            for part in m:
+                part.move()
 
     def draw(self, screen):
         for m in self.molds:
@@ -21,7 +25,7 @@ class MoldsManager():
 
     def gen(self, times):
 
-        if times % random.randrange(100,300) != 0: return
+        if times % random.randrange(10,300) != 0: return
 
         print "Mold generado"
         #Create mold blocks
@@ -43,6 +47,14 @@ class MoldsManager():
 
         mold = pygame.sprite.RenderUpdates()
         mold.add(blocks.values())
+	
+	for m in self.molds:
+            d = pygame.sprite.groupcollide(mold, m, False, False)
+            if len(d):
+                del mold
+                return
+            
+	
         for i in xrange(0,random.randrange(0, 6)):
             twist(blocks, i)
         self._add(mold)
@@ -53,9 +65,14 @@ class MoldsManager():
     def _remove(self, m):
         self.molds.remove(m)
 
-    def fit(self, hero):
+    def fit(self, hero, times):
         '''Ask if the hero fit any mold and remove the fitted mold'''
+	if times % MOVE_TICK != 0: return
         for m in self.molds:        
             d = pygame.sprite.groupcollide(hero, m, False, False)
-            if len(d) == 10: print len(d), d
+            if len(d) == 10: 
+	        print 'yes'
+                m.empty()
+                return
+		
         

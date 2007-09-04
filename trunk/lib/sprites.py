@@ -17,7 +17,7 @@ class Part(pygame.sprite.Sprite):
 
     def move(self):
         '''From right to left'''
-        self.rect.move_ip(-1, 0)
+        self.rect.move_ip(-side, 0)
         
     def right(self):
         self.rect.move_ip(side, 0)
