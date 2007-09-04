@@ -72,6 +72,8 @@ class MoldsManager(object):
             if len(d) == 10:
                 m.empty()
                 self.SOUND['eat'].play()
+
                 return True
-		
-        
+            
+        return False
+
