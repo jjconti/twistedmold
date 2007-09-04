@@ -3,9 +3,10 @@ from pygame.locals import *
 import sys
 import random
 from sprites import *
+from sprites import Blood
+import utils
 from hero import Hero
 from moldsmanager import MoldsManager
-import utils
 from config import  *
 
 if not pygame.font: print 'Warning, fonts disabled'
@@ -22,7 +23,18 @@ class Level(object):
 
         self.background = utils.create_surface((width, height), (0,0,0))
         self.screen.blit(self.background, (0, 0))
-                
+
+
+        
+        #self.screen.blit(self.background, (0,0))
+        #tit_color = (40,40,40)
+        #title_img = font_title.render('PRUEBA', True, tit_color)
+        #topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
+        #bg = self.background.copy()
+        #bg.blit(title_img, topleft)
+        #self.background = bg        
+
+        
         #Create the game clock
         self.clock = pygame.time.Clock()
 
@@ -57,21 +69,65 @@ class Level(object):
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
 
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
-    
-        while self.time > 0:
-            self.tics += 1
-            self.time = (self.max_time - self.tics) / self.max_time
-            print self.time
-            self.timeBar.update(self.time)
 
-            self.mm.gen(self.tics)
 
-            self.clock.tick(50)
+
+
+
+        sangre = pygame.sprite.RenderUpdates()
+        explotion = 0	
+        for x in xrange(333):	
+            gota = Blood()
+            sangre.add(gota)
+
+
+
+
+        times = 0
+
+        sangrado = 0      
+
+        while True:
+            times += 1
+                 
+            if sangrado == 50:
+                explotion = 0
+
+
+
+
+            self.mm.gen(times)
+
+        #while self.time > 0:
+        #    self.tics += 1
+        #    self.time = (self.max_time - self.tics) / self.max_time
+
+        #    self.timeBar.update(self.time)
+
+        #    self.mm.gen(self.tics)
+
+       #     self.clock.tick(50)
             self.screen.blit(self.background, (0,0)) 
-            self.mm.move(self.tics)
+            
+	    if explotion == 1:
+	        sangre.update(times)
+                sangre.draw(self.screen)
+                sangrado += 1             
+            
+            
+            self.mm.move(times)
+
+            #self.mm.move(self.tics)
+
             self.mm.draw(self.screen)
 
             self.hero.group.draw(self.screen)
+
+            if self.mm.fit(self.hero.group, times):
+                sangrado = 0
+                explotion = 1
+                for gota in sangre:
+                    gota.set_position(self.hero.parts['cheat'].rect.top, self.hero.parts['cheat'].rect.left)
 
             self.gadgets.draw(self.screen)
 

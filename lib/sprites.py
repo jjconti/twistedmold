@@ -2,6 +2,8 @@ import pygame
 import os
 import utils
 from config import *
+import random
+import math
 
 class Points(pygame.sprite.Sprite):
     
@@ -79,3 +81,23 @@ class Part(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(self.image, rot)
         self.image = pygame.transform.flip(self.image, flipx, flipy)
 
+
+class Blood(pygame.sprite.Sprite):
+    def __init__ (self):
+	pygame.sprite.Sprite.__init__(self)
+        self.image = utils.load_image('data//imgs//gota.gif')
+        self.rect = self.image.get_rect()
+	self.rect.top = 200
+	self.rect.left = 200
+	ang = random.randrange(0,90)
+	vel = random.randrange(10,25)
+	self.x = math.cos(ang) * vel
+	self.y = math.sin(ang) * vel + 0.01*math.pow(vel,2)
+	
+    def update(self, times):
+	if times % 2 != 0: return
+        self.rect.move_ip(math.ceil(self.x),math.ceil(self.y))
+        
+    def set_position(self, top, left):
+	self.rect.top = top
+	self.rect.left = left
