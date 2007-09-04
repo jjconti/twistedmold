@@ -44,7 +44,6 @@ class Level(object):
         self.tics = 0
         self.max_time = 1000.0
         self.time = (self.max_time - self.tics) / self.max_time
-        print "TIME",self.time
         self.timeBar = TimeBar(self.time)
 
         self.gadgets = pygame.sprite.RenderUpdates()
@@ -94,26 +93,25 @@ class Level(object):
 
 
             #Blood Explotion
-	    if explotion == 1:
-	        self.blood.update(self.tics)
+            if explotion:
+                self.blood.update(self.tics)
                 self.blood.draw(self.screen)
                 blood_flag += 1             
             
             if blood_flag == 50:
-                explotion = 0
+                explotion = False
  
             #Verify collision
             if self.mm.fit(self.hero.group, self.tics):
+
+                self.points += 1
+                self.pointsCounter.update(self.points)
+
                 blood_flag = 0
-                explotion = 1
+                explotion = True
                 self.pointsCounter.add_positive()
                 for blood_drop in self.blood:
                     blood_drop.set_position(self.hero.parts['cheat'].rect.top, self.hero.parts['cheat'].rect.left)
-
-            if self.mm.fit(self.hero.group, self.tics):
-                self.points += 1
-                self.pointsCounter.update(self.points)
-                print self.points
 
             #Draw
             self.gadgets.draw(self.screen)
