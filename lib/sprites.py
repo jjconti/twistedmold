@@ -32,8 +32,7 @@ class Part(pygame.sprite.Sprite):
         self.rect.move_ip(0, side)
 
     def twist(self, x, y, rot=0, flipx=False, flipy=False):
-        '''x,y: offsets
-        rot: deegrees rotation'''
+        '''x,y: offsets, rot: deegrees rotation'''
         self.rect.top += x
         self.rect.left += y 
         self.image = pygame.transform.rotate(self.image, rot)
