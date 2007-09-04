@@ -57,12 +57,12 @@ class Level(object):
 
             self.clock.tick(50)
             self.screen.blit(self.background, (0,0)) 
-            self.mm.move()
+            self.mm.move(times)
             self.mm.draw(self.screen)
 
             self.hero.group.draw(self.screen)
 
-            self.mm.fit(self.hero.group)
+            self.mm.fit(self.hero.group, times)
 
             for event in pygame.event.get():
                 self.control(event)
