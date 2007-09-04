@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import sys
 import random
-from sprites import Part
+from sprites import *
 from hero import Hero
 from moldsmanager import MoldsManager
 import utils
@@ -22,17 +22,18 @@ class Level(object):
 
         self.background = utils.create_surface((width, height), (0,0,0))
         self.screen.blit(self.background, (0, 0))
-
-
-        
-        
+                
         #Create the game clock
         self.clock = pygame.time.Clock()
 
         self.mm = MoldsManager()
-
         self.gameover = False
+        self.points = 0
+        self.pointsCounter = Points(0)
         
+        self.gadgets = pygame.sprite.RenderUpdates()
+        self.gadgets.add(self.pointsCounter)
+
     def loop(self):  
 
         #Create the hero parts
@@ -65,7 +66,12 @@ class Level(object):
 
             self.hero.group.draw(self.screen)
 
-            self.mm.fit(self.hero.group, times)
+            self.gadgets.draw(self.screen)
+
+            if self.mm.fit(self.hero.group, times):
+                self.points += 1
+                self.pointsCounter.update(self.points)
+                print self.points
 
             for event in pygame.event.get():
                 self.control(event)

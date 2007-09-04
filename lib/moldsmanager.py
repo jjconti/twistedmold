@@ -5,8 +5,6 @@ from twist import twist
 import utils
 from config import *
 
-MOVE_TICK = 20
-
 class MoldsManager():
 
     def __init__(self):
@@ -30,7 +28,6 @@ class MoldsManager():
 
         if times % random.randrange(10,300) != 0: return
 
-        print "Mold generado"
         #Create mold blocks
         top = random.choice(self.tops)
 
@@ -69,14 +66,12 @@ class MoldsManager():
         self.molds.remove(m)
 
     def fit(self, hero, times):
-        '''Ask if the hero fit any mold and remove the fitted mold'''
-	# times % MOVE_TICK != 0: return
+        '''Ask if the hero fit any mold and remove the fitted mold.'''
         for m in self.molds:        
             d = pygame.sprite.groupcollide(hero, m, False, False)
             if len(d) == 10:
-                print 'yes'
                 m.empty()
                 self.SOUND['eat'].play()
-                return
+                return True
 		
         

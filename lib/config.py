@@ -31,7 +31,9 @@ TYPEW2 = os.path.join(SOUNDS, "9098_ddohler_Typewriter.wav")
 
                       
 #FONT1 = os.path.join(FONTS,"FreeMonoBold.ttf")
-FONT1 = os.path.join(FONTS,"ds_moster.ttf")
-FONT2 = os.path.join(FONTS, "FreeSerifBold.ttf")
+#FONT1 = os.path.join(FONTS,"ds_moster.ttf")
+FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 
 MOVE_TICK = 20
+
+COLOR1 = (10, 50, 200)
