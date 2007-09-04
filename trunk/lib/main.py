@@ -81,7 +81,7 @@ class Level(object):
             blood_drop = BloodDrop()
             self.blood.add(blood_drop)
 
-        while True:
+        while self.time > 0:
             self.tics += 1            
             self.time = (self.max_time - self.tics) / self.max_time
 
