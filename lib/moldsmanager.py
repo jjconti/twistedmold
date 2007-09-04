@@ -1,9 +1,9 @@
 import pygame
 import random
-from config import *
 from sprites import Part
 from twist import twist
 import utils
+from config import *
 
 MOVE_TICK = 20
 
@@ -73,8 +73,8 @@ class MoldsManager():
 	# times % MOVE_TICK != 0: return
         for m in self.molds:        
             d = pygame.sprite.groupcollide(hero, m, False, False)
-            if len(d) == 10: 
-	        print 'yes'
+            if len(d) == 10:
+                print 'yes'
                 m.empty()
                 self.SOUND['eat'].play()
                 return
