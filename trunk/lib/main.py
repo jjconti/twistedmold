@@ -3,9 +3,9 @@ from pygame.locals import *
 import sys
 import random
 from sprites import Part
-import utils
 from hero import Hero
 from moldsmanager import MoldsManager
+import utils
 from config import  *
 
 if not pygame.font: print 'Warning, fonts disabled'
