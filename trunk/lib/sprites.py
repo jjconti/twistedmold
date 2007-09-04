@@ -3,6 +3,30 @@ import os
 from utils import *
 from config import *
 
+class Points(pygame.sprite.Sprite):
+    
+    def __init__(self, points):
+        pygame.sprite.Sprite.__init__(self)
+        self.points = points
+        self.font = pygame.font.Font(FONT1, 35)
+        self.image = self._image()
+        self.rect = self.image.get_rect(top=0, right=width - 1)
+
+    def update(self, points):
+        self.points = points
+        self.image = self._image()
+        
+    def _image(self):
+        i = self.font.render("Points: " + str(self.points), True, COLOR1)
+        #i.set_alpha(0)
+        return i
+
+class Time(pygame.sprite.Sprite):
+
+    def __init__(self, time):
+        pygame.sprite.Sprite.__init__(self)
+        self.time = time   
+    
 class Part(pygame.sprite.Sprite):
 
     def __init__(self, **kwargs):
