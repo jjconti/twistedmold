@@ -3,6 +3,7 @@ import random
 from config import *
 from sprites import Part
 from twist import twist
+import utils
 
 MOVE_TICK = 20
 
@@ -10,7 +11,9 @@ class MoldsManager():
 
     def __init__(self):
         self.molds = []
-        self.tops = [25, 125, 250, 375] 
+        self.tops = [25, 125, 250, 375]
+        self.SOUND = {}
+        self.SOUND['eat'] = utils.load_sound(BLOOP)
 
     def move(self, times):
 	if times % MOVE_TICK != 0: return
@@ -73,6 +76,7 @@ class MoldsManager():
             if len(d) == 10: 
 	        print 'yes'
                 m.empty()
+                self.SOUND['eat'].play()
                 return
 		
         

@@ -23,6 +23,9 @@ class Level(object):
         self.background = utils.create_surface((width, height), (0,0,0))
         self.screen.blit(self.background, (0, 0))
 
+
+        
+        
         #Create the game clock
         self.clock = pygame.time.Clock()
 
