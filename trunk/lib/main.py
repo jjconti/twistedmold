@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import random
 from sprites import *
-from sprites import Blood
+from sprites import BloodDrop
 import utils
 from hero import Hero
 from moldsmanager import MoldsManager
@@ -73,72 +73,58 @@ class Level(object):
 
 
 
-
-        sangre = pygame.sprite.RenderUpdates()
+        #Set blood effect
+        self.blood = pygame.sprite.RenderUpdates()
         explotion = 0	
+        blood_flag = 0 
         for x in xrange(333):	
-            gota = Blood()
-            sangre.add(gota)
-
-
-
-
-        times = 0
-
-        sangrado = 0      
+            blood_drop = BloodDrop()
+            self.blood.add(blood_drop)
 
         while True:
-            times += 1
-                 
-            if sangrado == 50:
-                explotion = 0
+            self.tics += 1            
+            self.time = (self.max_time - self.tics) / self.max_time
 
-
-
-
-            self.mm.gen(times)
-
-        #while self.time > 0:
-        #    self.tics += 1
-        #    self.time = (self.max_time - self.tics) / self.max_time
-
-        #    self.timeBar.update(self.time)
-
-        #    self.mm.gen(self.tics)
-
-       #     self.clock.tick(50)
+            
+            self.timeBar.update(self.time)
+            self.mm.gen(self.tics)
+            self.mm.move(self.tics)
+            
             self.screen.blit(self.background, (0,0)) 
-            
+
+
+            #Blood Explotion
 	    if explotion == 1:
-	        sangre.update(times)
-                sangre.draw(self.screen)
-                sangrado += 1             
+	        self.blood.update(self.tics)
+                self.blood.draw(self.screen)
+                blood_flag += 1             
             
-            
-            self.mm.move(times)
-
-            #self.mm.move(self.tics)
-
-            self.mm.draw(self.screen)
-
-            self.hero.group.draw(self.screen)
-
-            if self.mm.fit(self.hero.group, times):
-                sangrado = 0
+            if blood_flag == 50:
+                explotion = 0
+ 
+            #Verify collision
+            if self.mm.fit(self.hero.group, self.tics):
+                blood_flag = 0
                 explotion = 1
-                for gota in sangre:
-                    gota.set_position(self.hero.parts['cheat'].rect.top, self.hero.parts['cheat'].rect.left)
-
-            self.gadgets.draw(self.screen)
+                self.pointsCounter.add_positive()
+                for blood_drop in self.blood:
+                    blood_drop.set_position(self.hero.parts['cheat'].rect.top, self.hero.parts['cheat'].rect.left)
 
             if self.mm.fit(self.hero.group, self.tics):
                 self.points += 1
                 self.pointsCounter.update(self.points)
                 print self.points
 
+            #Draw
+            self.gadgets.draw(self.screen)
+            self.mm.draw(self.screen)
+            self.hero.group.draw(self.screen)
+
+            #Control
             for event in pygame.event.get():
                 self.control(event)
-            
+
+            self.clock.tick(50)
             pygame.display.flip()
 
 
