@@ -16,7 +16,7 @@ class MoldsManager():
         self.SOUND['eat'] = utils.load_sound(BLOOP)
 
     def move(self, times):
-	if times % MOVE_TICK != 0: return
+        if times % MOVE_TICK != 0: return
 	
         for m in self.molds:
             for part in m:
