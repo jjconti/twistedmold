@@ -27,12 +27,17 @@ class Level(object):
         self.clock = pygame.time.Clock()
 
         self.mm = MoldsManager()
-        self.gameover = False
         self.points = 0
         self.pointsCounter = Points(0)
-        
+        self.tics = 0
+        self.max_time = 1000.0
+        self.time = (self.max_time - self.tics) / self.max_time
+        print "TIME",self.time
+        self.timeBar = TimeBar(self.time)
+
         self.gadgets = pygame.sprite.RenderUpdates()
         self.gadgets.add(self.pointsCounter)
+        self.gadgets.add(self.timeBar)
 
     def loop(self):  
 
@@ -52,23 +57,25 @@ class Level(object):
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
 
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
-
-        times = 0
     
-        while not self.gameover:
-            times += 1
-            self.mm.gen(times)
+        while self.time > 0:
+            self.tics += 1
+            self.time = (self.max_time - self.tics) / self.max_time
+            print self.time
+            self.timeBar.update(self.time)
+
+            self.mm.gen(self.tics)
 
             self.clock.tick(50)
             self.screen.blit(self.background, (0,0)) 
-            self.mm.move(times)
+            self.mm.move(self.tics)
             self.mm.draw(self.screen)
 
             self.hero.group.draw(self.screen)
 
             self.gadgets.draw(self.screen)
 
-            if self.mm.fit(self.hero.group, times):
+            if self.mm.fit(self.hero.group, self.tics):
                 self.points += 1
                 self.pointsCounter.update(self.points)
                 print self.points

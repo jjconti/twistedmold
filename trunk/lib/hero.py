@@ -1,7 +1,7 @@
 from config import *
 from twist import twist
 
-class Hero():
+class Hero(object):
 
     def __init__(self, group, parts):
         self.group = group

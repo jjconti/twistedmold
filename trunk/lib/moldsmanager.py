@@ -5,7 +5,7 @@ from twist import twist
 import utils
 from config import *
 
-class MoldsManager():
+class MoldsManager(object):
 
     def __init__(self):
         self.molds = []
