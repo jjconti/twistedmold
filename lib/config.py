@@ -37,3 +37,6 @@ FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 MOVE_TICK = 20
 
 COLOR1 = (10, 50, 200)
+GREEN = (0,250,0)
+ORANGE = (255, 180, 0)
+RED = (250, 0, 0)

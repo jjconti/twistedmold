@@ -1,6 +1,6 @@
 import pygame
 import os
-from utils import *
+import utils
 from config import *
 
 class Points(pygame.sprite.Sprite):
@@ -17,15 +17,32 @@ class Points(pygame.sprite.Sprite):
         self.image = self._image()
         
     def _image(self):
-        i = self.font.render("Points: " + str(self.points), True, COLOR1)
-        #i.set_alpha(0)
-        return i
+        return self.font.render("Points: " + str(self.points), True, COLOR1)
 
-class Time(pygame.sprite.Sprite):
 
+class TimeBar(pygame.sprite.Sprite):
+    '''A tiem bar'''
     def __init__(self, time):
         pygame.sprite.Sprite.__init__(self)
-        self.time = time   
+        self.time = time #percent remanding of time
+        self.image = self._image()
+        self.rect = self.image.get_rect(bottom=height - 1, left=0)
+
+    def update(self, time):
+        self.time = time
+        self.image = self._image()
+        
+    def _image(self):
+        h = 15
+        w = int(width * self.time)
+        if self.time > 0.6: 
+            color = GREEN
+        elif self.time > 0.3:
+            color = ORANGE
+        else:
+            color = RED
+        return utils.create_surface((w,h), color)
+
     
 class Part(pygame.sprite.Sprite):
 
@@ -33,7 +50,7 @@ class Part(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.lit = kwargs['lit']
         self.numb = kwargs['numb']
-        self.image = load_image(os.path.join(parts, self.lit + str(self.numb) + ".png"))
+        self.image = utils.load_image(os.path.join(parts, self.lit + str(self.numb) + ".png"))
         self.rect = self.image.get_rect(top=kwargs['top'], left=kwargs['left'])
 
     def __str__(self):

@@ -40,23 +40,6 @@ def load_sound(fullname):
         raise SystemExit, message
     return sound
 
-
-class Circular(list):
-    
-    def __init__(self, *a, **kw):
-        super(Circular, self).__init__(*a, **kw)
-        self.position = 0
-
-    def current(self):
-        return self[self.position]
-            
-    def next(self, n=1):
-        self.position = (self.position + n) % len(self)
-        return self[self.position]
-        
-    def prev(self, n=1):
-        return self.next(-n)
-
 def create_surface(size, color, alpha=None):
     s = pygame.Surface(size)
     s.fill(color)
