@@ -24,7 +24,7 @@ class Points(pygame.sprite.Sprite):
         #self.image = self._image()        
      
     def _image(self):
-        return self.font.render("Points: " + str(self.points), True, COLOR1)
+        return self.font.render("Points: " + str(self.positive_points), True, COLOR1)
 
 
 class TimeBar(pygame.sprite.Sprite):
