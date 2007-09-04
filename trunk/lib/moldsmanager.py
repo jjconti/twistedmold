@@ -52,3 +52,10 @@ class MoldsManager():
 
     def _remove(self, m):
         self.molds.remove(m)
+
+    def fit(self, hero):
+        '''Ask if the hero fit any mold and remove the fitted mold'''
+        for m in self.molds:        
+            d = pygame.sprite.groupcollide(hero, m, False, False)
+            if len(d) == 10: print len(d), d
+        

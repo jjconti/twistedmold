@@ -50,25 +50,24 @@ class Level(object):
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
 
         times = 0
-
-        while not self.gameover:
-
     
-            while True:
-                times += 1
-                self.mm.gen(times)
+        while not self.gameover:
+            times += 1
+            self.mm.gen(times)
 
-                self.clock.tick(50)
-                self.screen.blit(self.background, (0,0)) 
-                self.mm.move()
-                self.mm.draw(self.screen)
+            self.clock.tick(50)
+            self.screen.blit(self.background, (0,0)) 
+            self.mm.move()
+            self.mm.draw(self.screen)
 
-                self.hero.group.draw(self.screen)
+            self.hero.group.draw(self.screen)
 
-                for event in pygame.event.get():
-                    self.control(event)
-                
-                pygame.display.flip()
+            self.mm.fit(self.hero.group)
+
+            for event in pygame.event.get():
+                self.control(event)
+            
+            pygame.display.flip()
 
 
     def control(self, event):
