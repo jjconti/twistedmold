@@ -8,13 +8,13 @@ center = height / 2
 
 side = 25
 half = side / 2
-parts = os.path.join("data")
 
 
 DATA = os.path.join("data")
 HISCORES = os.path.join(DATA, "scores.high")
 IMGS = os.path.join(DATA, "imgs")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
+parts = os.path.join(IMGS, "body")
 SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
