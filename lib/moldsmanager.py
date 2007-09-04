@@ -70,7 +70,7 @@ class MoldsManager():
 
     def fit(self, hero, times):
         '''Ask if the hero fit any mold and remove the fitted mold'''
-	if times % MOVE_TICK != 0: return
+	# times % MOVE_TICK != 0: return
         for m in self.molds:        
             d = pygame.sprite.groupcollide(hero, m, False, False)
             if len(d) == 10: 
