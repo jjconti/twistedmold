@@ -18,7 +18,9 @@ if not pygame.mixer: print 'Warning, sound disabled'
 class Level(object):
     '''TwistedMold level'''
     
-    def __init__(self, screen, father, energy_leap=0.07, energy_add=5, mold_density_tl=300, mold_density_bl=10, mold_velocity=30):
+    '''mold_density_tl y mold_density_bl. Mientras mas bajos mas mold aparecen, mientras mas separados mas disperso'''
+
+    def __init__(self, screen, father, energy_leap=0.07, energy_add=5, mold_density=30, mold_velocity=30):
         self.screen = screen
         self.father = father
 
@@ -28,8 +30,7 @@ class Level(object):
     	#parameters
     	self.energy_leap = energy_leap
     	self.energy_add = energy_add
-    	self.mold_density_tl = mold_density_tl
-    	self.mold_density_bl = mold_density_bl
+    	self.mold_density = mold_density
     	self.mold_velocity = mold_velocity
 
         #menu control
@@ -39,7 +40,7 @@ class Level(object):
         #Create the game clock
         self.clock = pygame.time.Clock()
 
-        self.mm = MoldsManager(self.mold_density_tl, self.mold_density_bl,self.mold_velocity)
+        self.mm = MoldsManager(self.mold_density, self.mold_velocity)
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
@@ -88,7 +89,6 @@ class Level(object):
         self.control_tiempo = 5
 
     def loop(self):  
-        print "level"
         while not self.finnish():
             self.tics += 1     
             self.screen.blit(self.background, (-(self.tics % 700),0)) 
@@ -157,11 +157,12 @@ class Level(object):
 	
     def draw(self):
         self.snow_slim.draw(self.screen)
-        self.gadgets.draw(self.screen)
+        
         self.mm.draw(self.screen)
         
         self.hero.group.draw(self.screen)
         self.snow_fat.draw(self.screen)	
+        self.gadgets.draw(self.screen)
 
     def control(self, event):
         

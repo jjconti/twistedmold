@@ -8,10 +8,9 @@ import music
 
 class MoldsManager(object):
 
-    def __init__(self, mold_density_tl, mold_density_bl, mold_velocity):
+    def __init__(self, mold_density, mold_velocity):
         self.molds = []
-    	self.mold_density_tl = mold_density_tl
-    	self.mold_density_bl = mold_density_bl
+    	self.mold_density = mold_density
     	self.mold_velocity = mold_velocity
         self.tops = [25, 125, 250, 375]
 
@@ -34,7 +33,7 @@ class MoldsManager(object):
 
     def gen(self, times):
 
-        if times % random.randrange(self.mold_density_bl,self.mold_density_tl) != 0: return
+        if random.randrange(self.mold_density) != 0: return
 
         #Create mold blocks
         top = random.choice(self.tops)

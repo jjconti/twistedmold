@@ -6,7 +6,7 @@ import random
 
 class Wheather(pygame.sprite.Sprite):
     rang = range(5,21)
-    gray_scale = range(255)
+    gray_scale = range(170,255)
 
     func = [lambda x: 20*math.sin(x),
             lambda x: 20*math.cos(x)]
