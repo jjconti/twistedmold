@@ -79,9 +79,9 @@ class MoldsManager(object):
         for m in self.molds:        
             d = pygame.sprite.groupcollide(hero, m, False, False)
             if len(d) == 10:
-		self.molds.remove(m)
+                self.molds.remove(m)
                 m.empty()
-		del m
+                del m
                 music.play_bloop()
                 return True
             
