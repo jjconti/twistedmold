@@ -21,8 +21,8 @@ class Level(object):
         self.screen = screen
         self.father = father
 
-        self.background = utils.create_surface((width, height), (0,0,0))
-        self.screen.blit(self.background, (0, 0))
+        self.background = utils.load_image(BGIMAGE2)
+        #self.screen.blit(self.background, (0, 0))
   	
     	#parameters
     	self.energy_leap = energy_leap
@@ -79,7 +79,7 @@ class Level(object):
         print "level"
         while not self.finnish():
             self.tics += 1     
-            self.screen.blit(self.background, (0,0)) 
+            self.screen.blit(self.background, (-(self.tics % 700),0)) 
             self.update()
             self.draw()
 

@@ -21,6 +21,7 @@ MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
 
 BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
+BGIMAGE2 = os.path.join(BACKGROUNDS, "bg2.png")
 
 BLOOP = os.path.join(SOUNDS, "bloop.wav")
 SCREAM1 = os.path.join(SOUNDS, "31818__malexmedia__malexmedia_man_scream.wav")
