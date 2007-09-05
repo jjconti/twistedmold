@@ -29,16 +29,14 @@ class Level(object):
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
-        self.max_time = 1000.0
+        self.max_time = 10000.0
         self.time = (self.max_time - self.tics) / self.max_time
         self.timeBar = TimeBar(self.time)
 
         self.gadgets = pygame.sprite.RenderUpdates()
         self.gadgets.add(self.pointsCounter)
         self.gadgets.add(self.timeBar)
-
-    def loop(self):  
-
+	
         #Create the hero parts
         rhand = Part(lit='a', numb=1, top=center, left=0)
         head = Part(lit='b', numb=1, top=center, left=2 * side)
@@ -55,27 +53,19 @@ class Level(object):
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
 
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
+        self.explotion = Explotion()	
+
+    def loop(self):  
 
 
-
-        self.explotion = Explotion()
 	
         while self.time > 0:
             self.tics += 1            
             self.time = (self.max_time - self.tics) / self.max_time
-            self.update()
+            
             self.screen.blit(self.background, (0,0)) 
-
-            #Blood Explotion
-            self.explotion.update(self.tics, self.screen)
- 
-            #Verify collision
-            if self.mm.fit(self.hero.group, self.tics):
-                self.points += 1
-                self.pointsCounter.update(self.points)
-                self.explotion.boom(self.hero.parts['cheat'].rect)
-                self.pointsCounter.add_positive()
-
+	    
+            self.update()
 
             self.draw()
 
@@ -90,6 +80,15 @@ class Level(object):
         self.timeBar.update(self.time)
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
+        #Blood Explotion
+        self.explotion.update(self.tics, self.screen)
+ 
+        #Verify collision
+        if self.mm.fit(self.hero.group, self.tics):
+            self.points += 1
+            self.pointsCounter.update(self.points)
+            self.explotion.boom(self.hero.parts['cheat'].rect)
+            self.pointsCounter.add_positive()	
 	
     def draw(self):
         self.gadgets.draw(self.screen)
