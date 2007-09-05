@@ -59,7 +59,13 @@ class Level(object):
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
 
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
-        self.explotion = Explotion()	
+        self.explotion = Explotion()
+
+        self.control_down = -1
+        self.control_up = -1
+        self.control_left = -1
+        self.control_right = -1
+        self.control_tiempo = 5
 
     def loop(self):  
 
@@ -72,6 +78,31 @@ class Level(object):
             #Control
             for event in pygame.event.get():
                 self.control(event)
+
+            if self.control_down == 0: self.hero.down()
+            if self.control_up == 0: self.hero.up()
+            if self.control_right == 0: self.hero.right()
+            if self.control_left == 0: self.hero.left()
+
+            if self.control_down >= 0:
+                self.control_down += 1
+                if self.control_down >= self.control_tiempo:
+                    self.control_down = 0
+                    
+            if self.control_up >= 0:
+                self.control_up += 1
+                if self.control_up >= self.control_tiempo:
+                    self.control_up = 0
+
+            if self.control_right >= 0:
+                self.control_right += 1
+                if self.control_right >= self.control_tiempo:
+                    self.control_right = 0
+
+            if self.control_left >= 0:
+                self.control_left += 1
+                if self.control_left >= self.control_tiempo:
+                    self.control_left = 0
 
             self.clock.tick(50)
             pygame.display.flip()
@@ -101,17 +132,27 @@ class Level(object):
 
         if event.type == KEYDOWN:
             if event.key == K_DOWN:
-                self.hero.down()
+                self.control_down = 0
             if event.key == K_UP:
-                self.hero.up()
+                self.control_up = 0
             if event.key == K_RIGHT:
-                self.hero.right()
+                self.control_right = 0
             if event.key == K_LEFT:
-                self.hero.left()
+                self.control_left = 0
             if event.key == K_SPACE:
                 self.hero.twist()
                 music.play_scream()
-                       
+
+        if event.type == KEYUP:
+            if event.key == K_DOWN:
+                self.control_down = -1
+            if event.key == K_UP:
+                self.control_up = -1
+            if event.key == K_RIGHT:
+                self.control_right = -1
+            if event.key == K_LEFT:
+                self.control_left = -1
+
 
 def main():
     Level().loop()
