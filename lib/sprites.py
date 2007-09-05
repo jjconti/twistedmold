@@ -5,6 +5,8 @@ from config import *
 import random
 import math
 
+
+
 class Points(pygame.sprite.Sprite):
     
     def __init__(self, points):

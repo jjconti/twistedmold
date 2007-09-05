@@ -9,6 +9,7 @@ from hero import Hero
 from moldsmanager import MoldsManager
 from config import  *
 from explotion import Explotion
+from wheather import Wheather
 from menu import Menu
 
 if not pygame.font: print 'Warning, fonts disabled'
@@ -42,6 +43,17 @@ class Level(object):
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
+
+        self.snow_slim = pygame.sprite.Group()
+        self.snow_fat = pygame.sprite.Group()        
+
+        for x in range(75):
+            sprite = Wheather(1,2)
+            self.snow_slim.add(sprite)
+
+        for x in range(75):
+            sprite = Wheather(3,5)
+            self.snow_fat.add(sprite)
 	 
         self.energy_bar = EnergyBar(self.energy_leap)
         self.level_time = LevelTime()
@@ -126,10 +138,11 @@ class Level(object):
             return self.father #gameover
 
     def update(self):
+        self.snow_slim.update()
+        self.snow_fat.update()        
+
         self.energy_bar.update(self.tics)
         self.level_time.update(self.tics)
-
-        #self.gadgets.update()
 
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
@@ -143,9 +156,12 @@ class Level(object):
             self.energy_bar.add_energy(self.energy_add)
 	
     def draw(self):
+        self.snow_slim.draw(self.screen)
         self.gadgets.draw(self.screen)
         self.mm.draw(self.screen)
-        self.hero.group.draw(self.screen)	
+        
+        self.hero.group.draw(self.screen)
+        self.snow_fat.draw(self.screen)	
 
     def control(self, event):
         
