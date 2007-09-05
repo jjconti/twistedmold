@@ -29,22 +29,26 @@ class Points(pygame.sprite.Sprite):
 
 class TimeBar(pygame.sprite.Sprite):
     '''A tiem bar'''
-    def __init__(self, time):
+    def __init__(self, time_leap):
         pygame.sprite.Sprite.__init__(self)
-        self.time = time #percent remanding of time
+	self.time_leap = time_leap
+        self.time_percent = 100 #percent remanding of time
         self.image = self._image()
         self.rect = self.image.get_rect(bottom=height - 1, left=0)
 
-    def update(self, time):
-        self.time = time
+    def update(self, tics):
+        self.time_percent -= self.time_leap
         self.image = self._image()
+
+    def add_time(self, add_percent):
+	self.time_percent += add_percent
         
     def _image(self):
         h = 15
-        w = int(width * self.time)
-        if self.time > 0.6: 
+        w = int(width * self.time_percent / 100)
+        if self.time_percent > 60: 
             color = GREEN
-        elif self.time > 0.3:
+        elif self.time_percent > 30:
             color = ORANGE
         else:
             color = RED
