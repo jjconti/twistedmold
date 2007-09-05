@@ -21,20 +21,18 @@ class Level(object):
 
         self.background = utils.create_surface((width, height), (0,0,0))
         self.screen.blit(self.background, (0, 0))
-        
-	
-	#parameters
-	self.time_leap = 0.05
-	self.time_add = 5
-	self.mold_density_top_limit = 300
-	self.mold_density_bottom_limit = 10
-	self.mold_velocity = 30
+  	
+    	#parameters
+    	self.time_leap = 0.05
+    	self.time_add = 5
+    	self.mold_density_top_limit = 300
+    	self.mold_density_bottom_limit = 10
+    	self.mold_velocity = 30
 	
         #Create the game clock
         self.clock = pygame.time.Clock()
 
-        self.mm = MoldsManager(self.mold_density_top_limit, self.mold_density_bottom_limit,self.mold_velocity
-	)
+        self.mm = MoldsManager(self.mold_density_top_limit, self.mold_density_bottom_limit,self.mold_velocity)
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
@@ -88,13 +86,14 @@ class Level(object):
         #Verify collision
         if self.mm.fit(self.hero.group, self.tics):
             self.explotion.boom(self.hero.parts['cheat'].rect)
-            self.pointsCounter.add_positive()	
-	    self.timeBar.add_time(self.time_add)
+            self.pointsCounter.add_positive()
+            self.timeBar.add_time(self.time_add)
 	
     def draw(self):
         self.gadgets.draw(self.screen)
         self.mm.draw(self.screen)
         self.hero.group.draw(self.screen)	
+
     def control(self, event):
         
         if event.type == QUIT:

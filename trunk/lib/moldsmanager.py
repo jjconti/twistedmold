@@ -4,17 +4,17 @@ from sprites import Part
 from twist import twist
 import utils
 from config import *
+import music
 
 class MoldsManager(object):
 
     def __init__(self, mold_density_tl, mold_density_bl, mold_velocity):
         self.molds = []
-	self.mold_density_tl = mold_density_tl
-	self.mold_density_bl = mold_density_bl
-	self.mold_velocity = mold_velocity
+    	self.mold_density_tl = mold_density_tl
+    	self.mold_density_bl = mold_density_bl
+    	self.mold_velocity = mold_velocity
         self.tops = [25, 125, 250, 375]
-        self.SOUND = {}
-        self.SOUND['eat'] = utils.load_sound(BLOOP)
+
 
     def move(self, times):
         if times % self.mold_velocity != 0: return
@@ -82,8 +82,7 @@ class MoldsManager(object):
 		self.molds.remove(m)
                 m.empty()
 		del m
-                self.SOUND['eat'].play()
-
+                music.play_bloop()
                 return True
             
         return False
