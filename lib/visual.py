@@ -3,18 +3,18 @@ import time
 from pygame.locals import *
 
 class Visual(object):
-    def __init__(self, screen, images, time, func):
+    def __init__(self, screen, images, times, func):
         
         self.screen = screen
         self.images = images
-        self.time = time
+        self.times = times
         self.func = func
 
     def loop(self):
-        for image in images:
+        for image, time_sleep in zip(self.images, self.times):
             self.screen.blit(image, (0,0))
             pygame.display.flip()
-            time.sleep(self.time)
+            time.sleep(time_sleep)
         return self.func
 
 if __name__ == '__main__':
@@ -32,6 +32,7 @@ if __name__ == '__main__':
         image = image.convert()
         image.fill(fill[x])
         images.append(image)
-    visual = Visual(screen, images, 1, prueba)
+    times = [0.2,1.2,6.3,3]
+    visual = Visual(screen, images, times, prueba)
     func = visual.loop()
     func()
