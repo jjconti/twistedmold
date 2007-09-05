@@ -19,6 +19,11 @@ class MoldsManager(object):
         for m in self.molds:
             for part in m:
                 part.move()
+	    #delete old mold
+	    if max(r.rect.right for r in m) < 0:
+	        print "delete"
+	        del m	
+	
 
     def draw(self, screen):
         for m in self.molds:
@@ -57,6 +62,7 @@ class MoldsManager(object):
 	
         for i in xrange(0,random.randrange(0, 6)):
             twist(blocks, i)
+	    
         self._add(mold)
 
     def _add(self, m):
