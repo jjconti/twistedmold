@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 import random
 from sprites import *
-from sprites import BloodDrop
+import music
 import utils
 from hero import Hero
 from moldsmanager import MoldsManager
@@ -110,6 +110,7 @@ class Level(object):
                 self.hero.left()
             if event.key == K_SPACE:
                 self.hero.twist()
+                music.play_scream()
                        
 
 def main():

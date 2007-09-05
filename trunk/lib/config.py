@@ -23,10 +23,11 @@ FONTS = os.path.join(DATA, "fonts")
 BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
 
 BLOOP = os.path.join(SOUNDS, "bloop.wav")
-TYPEW1 = os.path.join(SOUNDS, "9744_Horn_typewriter-shorter.wav")
-TYPEW2 = os.path.join(SOUNDS, "9098_ddohler_Typewriter.wav")
+SCREAM1 = os.path.join(SOUNDS, "31818__malexmedia__malexmedia_man_scream.wav")
+SCREAM2 = os.path.join(SOUNDS, "34283__hello_flowers__Flowers_Like_to_Scream_03.wav")
+SCREAM3 = os.path.join(SOUNDS, "34292__hello_flowers__Flowers_Like_to_Scream_12.wav")
 
-                      
+                     
 #FONT1 = os.path.join(FONTS,"FreeMonoBold.ttf")
 #FONT1 = os.path.join(FONTS,"ds_moster.ttf")
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
