@@ -7,14 +7,17 @@ from config import *
 
 class MoldsManager(object):
 
-    def __init__(self):
+    def __init__(self, mold_density_tl, mold_density_bl, mold_velocity):
         self.molds = []
+	self.mold_density_tl = mold_density_tl
+	self.mold_density_bl = mold_density_bl
+	self.mold_velocity = mold_velocity
         self.tops = [25, 125, 250, 375]
         self.SOUND = {}
         self.SOUND['eat'] = utils.load_sound(BLOOP)
 
     def move(self, times):
-        if times % MOVE_TICK != 0: return
+        if times % self.mold_velocity != 0: return
 	
         for m in self.molds:
             for part in m:
@@ -31,7 +34,7 @@ class MoldsManager(object):
 
     def gen(self, times):
 
-        if times % random.randrange(10,300) != 0: return
+        if times % random.randrange(self.mold_density_bl,self.mold_density_tl) != 0: return
 
         #Create mold blocks
         top = random.choice(self.tops)

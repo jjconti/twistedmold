@@ -22,16 +22,24 @@ class Level(object):
         self.background = utils.create_surface((width, height), (0,0,0))
         self.screen.blit(self.background, (0, 0))
         
+	
+	#parameters
+	self.time_leap = 0.05
+	self.time_add = 5
+	self.mold_density_top_limit = 300
+	self.mold_density_bottom_limit = 10
+	self.mold_velocity = 30
+	
         #Create the game clock
         self.clock = pygame.time.Clock()
 
-        self.mm = MoldsManager()
+        self.mm = MoldsManager(self.mold_density_top_limit, self.mold_density_bottom_limit,self.mold_velocity
+	)
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
-        self.max_time = 10000.0
-        self.time = (self.max_time - self.tics) / self.max_time
-        self.timeBar = TimeBar(self.time)
+	 
+        self.timeBar = TimeBar(self.time_leap)
 
         self.gadgets = pygame.sprite.RenderUpdates()
         self.gadgets.add(self.pointsCounter)
@@ -57,16 +65,10 @@ class Level(object):
 
     def loop(self):  
 
-
-	
-        while self.time > 0:
-            self.tics += 1            
-            self.time = (self.max_time - self.tics) / self.max_time
-            
+        while True:
+            self.tics += 1     
             self.screen.blit(self.background, (0,0)) 
-	    
             self.update()
-
             self.draw()
 
             #Control
@@ -77,7 +79,7 @@ class Level(object):
             pygame.display.flip()
 
     def update(self):
-        self.timeBar.update(self.time)
+        self.timeBar.update(self.tics)
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
         #Blood Explotion
@@ -85,10 +87,9 @@ class Level(object):
  
         #Verify collision
         if self.mm.fit(self.hero.group, self.tics):
-            self.points += 1
-            self.pointsCounter.update(self.points)
             self.explotion.boom(self.hero.parts['cheat'].rect)
             self.pointsCounter.add_positive()	
+	    self.timeBar.add_time(self.time_add)
 	
     def draw(self):
         self.gadgets.draw(self.screen)
