@@ -18,6 +18,7 @@ class Points(pygame.sprite.Sprite):
     def add_positive(self):
         self.positive_points += 1
         self.image = self._image()
+        self.rect = self.image.get_rect(top=0, right=width - 1)
 
     def add_negative(self):
         self.negative_points += 1
