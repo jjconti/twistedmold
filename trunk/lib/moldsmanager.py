@@ -19,11 +19,10 @@ class MoldsManager(object):
         for m in self.molds:
             for part in m:
                 part.move()
-	    #delete old mold
-	    if max(r.rect.right for r in m) < 0:
-	        print "delete"
-	        del m	
-	
+	        #delete old mold
+            if max(r.rect.right for r in m) < 0:
+                print "delete"
+                del m
 
     def draw(self, screen):
         for m in self.molds:
