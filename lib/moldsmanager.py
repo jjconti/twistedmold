@@ -22,6 +22,7 @@ class MoldsManager(object):
 	        #delete old mold
             if max(r.rect.right for r in m) < 0:
                 print "delete"
+		self.molds.remove(m)
                 del m
 
     def draw(self, screen):
@@ -75,7 +76,9 @@ class MoldsManager(object):
         for m in self.molds:        
             d = pygame.sprite.groupcollide(hero, m, False, False)
             if len(d) == 10:
+		self.molds.remove(m)
                 m.empty()
+		del m
                 self.SOUND['eat'].play()
 
                 return True
