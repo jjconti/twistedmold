@@ -1,16 +1,15 @@
-import sys
-
 import pygame
 from pygame.locals import *
 from math import exp
+import sys
+import utils
+from config import *
 
 class Menu(object):
     '''A generic menu user interface. Allow both keyboard and mouse selection'''
 
-    def __init__(self, screen, background, font1, font2, font_title, color1, color2, \
-                 tit_color, snd1, snd2, title, options, index=0):
-        '''font1 will be used for the selected item and font2 for unselected ones,
-           sound1 will be used while switching items and sound2 when one is selected '''
+    def __init__(self, screen, options, title, index=0):
+        
         self.screen = screen
         self.items = [x[0] for x in options]
         self.returns = [x[1] for x in options]
@@ -18,24 +17,21 @@ class Menu(object):
         self.last_index = len(self.items) - 1
         self.index = index
         self.done = False
-        self.hor_step = max(font1.get_height(), font2.get_height())
+        font1 = pygame.font.Font(FONT1, 50)
+        font2 = pygame.font.Font(FONT1, 45)
+        self.hor_step = font2.get_height()
         self.clock = pygame.time.Clock()
-        self.selected_imgs = [font1.render(text, True, color1) for text in self.items]
-        self.unselected_imgs = [font2.render(text, True, color2) for text in self.items]
+        self.selected_imgs = [font2.render(text, True, GREEN) for text in self.items]
+        self.unselected_imgs = [font2.render(text, True, BLACK) for text in self.items]
         self.unselected_rects = None
-        self.sounds = {}
-        self.sounds["snd1"] = snd1
-        self.sounds["snd2"] = snd2
-	self.timeloop = 0
+        self.timeloop = 0
         self.state = 0 
         
-	#self.screen.blit(self.background, (0,0))
-        title_img = font_title.render(title, True, tit_color)
-        topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
-        bg = background.copy()
-        bg.blit(title_img, topleft)
-        self.background = bg
-
+	    #self.screen.blit(self.background, (0,0))
+        self.background = utils.load_image(BGIMAGE1)
+        title_img = font1.render(title, True, BLACK)
+        topleft = (self.background.get_rect().width - title_img.get_rect().width) / 2, 30
+        self.background.blit(title_img, topleft)
 
         self._draw_items()
 
@@ -43,23 +39,23 @@ class Menu(object):
         
         #pygame.display.flip()
 
-    def main_loop(self):
+    def loop(self):
         '''Returns the asosiated object for the selected item'''
 	
         while not self.done:
 
             self.clock.tick(50)
 
-            self.screen.blit(self.background, (0,0))    
-	    for event in pygame.event.get():
-        	        self.control(event)
+            self.screen.blit(self.background, (0,0))
+            for event in pygame.event.get():
+        	    self.control(event)
 
             self._draw_items()
 	
             pygame.display.flip()
             self.timeloop += 1
-	    if self.timeloop == 50:
-		self.state=1
+            if self.timeloop == 50:
+		        self.state=1
 
         return self.returns[self.index]
 

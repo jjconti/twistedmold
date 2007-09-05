@@ -31,7 +31,7 @@ class TimeBar(pygame.sprite.Sprite):
     '''A tiem bar'''
     def __init__(self, time_leap):
         pygame.sprite.Sprite.__init__(self)
-	self.time_leap = time_leap
+        self.time_leap = time_leap
         self.time_percent = 100 #percent remanding of time
         self.image = self._image()
         self.rect = self.image.get_rect(bottom=height - 1, left=0)

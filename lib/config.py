@@ -20,11 +20,7 @@ SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
 
-BGIMAGE1 = os.path.join(BACKGROUNDS, "paper3.png")
-PLAY = os.path.join(IMGS, "play.png")
-STOP = os.path.join(IMGS, "stop.png")
-NEXT = os.path.join(IMGS, "next.png")
-PREV = os.path.join(IMGS, "prev.png")
+BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
 
 BLOOP = os.path.join(SOUNDS, "bloop.wav")
 TYPEW1 = os.path.join(SOUNDS, "9744_Horn_typewriter-shorter.wav")
@@ -37,6 +33,7 @@ FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 
 
 COLOR1 = (10, 50, 200)
+BLACK = (0, 0, 0)
 GREEN = (0,250,0)
 ORANGE = (255, 180, 0)
 RED = (250, 0, 0)

@@ -14,7 +14,6 @@ class Explotion(object):
             blood_drop = BloodDrop()
             self.blood.add(blood_drop)
 
-
     def update(self, tics, screen):
         if self.explotion:
             self.blood.update(tics)
