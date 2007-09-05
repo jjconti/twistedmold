@@ -16,8 +16,8 @@ class Menu(object):
         self.last_index = len(self.items) - 1
         self.index = index
         self.done = False
-        font1 = pygame.font.Font(FONT1, 50)
-        font2 = pygame.font.Font(FONT1, 45)
+        font1 = pygame.font.Font(FONT2, 50)
+        font2 = pygame.font.Font(FONT2, 45)
         self.hor_step = font2.get_height() + 20
         self.clock = pygame.time.Clock()
         self.selected_imgs = [font2.render(text, True, GREY) for text in self.items]
@@ -38,7 +38,7 @@ class Menu(object):
 	
         while not self.done:
 
-            self.clock.tick(50)
+            self.clock.tick(CLOCK_TICS)
 
             self.screen.blit(self.background, (0,0))
             for event in pygame.event.get():
@@ -99,7 +99,7 @@ class Menu(object):
 
     def _draw_items(self):
         rects = []
-        y = self.hor_step + 80 # Tune this value as you need
+        y = self.hor_step + 50 # Tune this value as you need
         for i in range(len(self.items)):
             if i == self.index:
                 img = self.selected_imgs[i]
