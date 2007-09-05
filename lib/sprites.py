@@ -113,7 +113,18 @@ class Part(pygame.sprite.Sprite):
 class BloodDrop(pygame.sprite.Sprite):
     def __init__ (self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = utils.load_image(DROP)
+        
+        self.image = pygame.Surface((8,8))
+        self.image.set_colorkey((0,0,0))
+        
+        
+        radius = random.choice(range(1,3))
+        color = (random.choice(range(100,255)) , 0, 0)
+        pos = (4,4)
+#        radius = random.choice(self.radius)
+        pygame.draw.circle(self.image, color, pos, radius)
+
+        #self.image = utils.load_image(DROP)
         self.rect = self.image.get_rect()
 	
     def update(self, times):
