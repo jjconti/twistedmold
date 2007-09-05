@@ -31,8 +31,9 @@ CRACK1 = os.path.join(SOUNDS, "21914__Halleck__neck_crack.wav")
                      
 #FONT1 = os.path.join(FONTS,"FreeMonoBold.ttf")
 #FONT1 = os.path.join(FONTS,"ds_moster.ttf")
-FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 
+FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
+FONT2 = os.path.join(FONTS, "tasapainoaisti.ttf")
 
 COLOR1 = (10, 50, 200) 
 BLACK = (0, 0, 0)
@@ -40,4 +41,6 @@ GREEN = (0,250,0)
 ORANGE = (255, 180, 0)
 RED = (250, 0, 0)
 WHITE = (250, 250, 250)
-GREY = (200, 200, 200)
+GREY = (100, 100, 100)
+
+CLOCK_TICS = 50

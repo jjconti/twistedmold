@@ -32,7 +32,7 @@ def menu(screen):
     return Menu(screen, options, WINDOW_TITLE)
 
 def play(screen):
-    return Level(screen)
+    return Level(screen, menu, energy_leap=.05)
 
 def exit():
     sys.exit(0)

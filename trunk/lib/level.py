@@ -9,6 +9,7 @@ from hero import Hero
 from moldsmanager import MoldsManager
 from config import  *
 from explotion import Explotion
+from menu import Menu
 
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
@@ -16,32 +17,39 @@ if not pygame.mixer: print 'Warning, sound disabled'
 class Level(object):
     '''TwistedMold level'''
     
-    def __init__(self, screen):
+    def __init__(self, screen, father, energy_leap=0.07, energy_add=5, mold_density_tl=300, mold_density_bl=10, mold_velocity=30):
         self.screen = screen
+        self.father = father
 
         self.background = utils.create_surface((width, height), (0,0,0))
         self.screen.blit(self.background, (0, 0))
   	
     	#parameters
-    	self.time_leap = 0.05
-    	self.time_add = 5
-    	self.mold_density_top_limit = 300
-    	self.mold_density_bottom_limit = 10
-    	self.mold_velocity = 30
+    	self.energy_leap = energy_leap
+    	self.energy_add = energy_add
+    	self.mold_density_tl = mold_density_tl
+    	self.mold_density_bl = mold_density_bl
+    	self.mold_velocity = mold_velocity
+
+        #menu control
+        self.options = [("Yes", self.father),("No", None)]
+        self.game_over = False
 	
         #Create the game clock
         self.clock = pygame.time.Clock()
 
-        self.mm = MoldsManager(self.mold_density_top_limit, self.mold_density_bottom_limit,self.mold_velocity)
+        self.mm = MoldsManager(self.mold_density_tl, self.mold_density_bl,self.mold_velocity)
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
 	 
-        self.timeBar = TimeBar(self.time_leap)
+        self.energy_bar = EnergyBar(self.energy_leap)
+        self.level_time = LevelTime()
 
         self.gadgets = pygame.sprite.RenderUpdates()
         self.gadgets.add(self.pointsCounter)
-        self.gadgets.add(self.timeBar)
+        self.gadgets.add(self.energy_bar)
+        self.gadgets.add(self.level_time)
 	
         #Create the hero parts
         rhand = Part(lit='a', numb=1, top=center, left=0)
@@ -68,8 +76,8 @@ class Level(object):
         self.control_tiempo = 5
 
     def loop(self):  
-
-        while True:
+        print "level"
+        while not self.finnish():
             self.tics += 1     
             self.screen.blit(self.background, (0,0)) 
             self.update()
@@ -78,6 +86,8 @@ class Level(object):
             #Control
             for event in pygame.event.get():
                 self.control(event)
+
+            self.clock.tick(CLOCK_TICS)
 
             if self.control_down == 0: self.hero.down()
             if self.control_up == 0: self.hero.up()
@@ -105,10 +115,22 @@ class Level(object):
                     self.control_left = 0
 
             self.clock.tick(50)
+
             pygame.display.flip()
+    
+        if self.game_over:
+            return self.father
+        elif not self.level_time:
+            return self.father #hay que preguntar si paso de nivel y mandarlo al proxino sino gameover
+        elif not self.energy_bar:
+            return self.father #gameover
 
     def update(self):
-        self.timeBar.update(self.tics)
+        self.energy_bar.update(self.tics)
+        self.level_time.update(self.tics)
+
+        #self.gadgets.update()
+
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
         #Blood Explotion
@@ -118,7 +140,7 @@ class Level(object):
         if self.mm.fit(self.hero.group, self.tics):
             self.explotion.boom(self.hero.parts['cheat'].rect)
             self.pointsCounter.add_positive()
-            self.timeBar.add_time(self.time_add)
+            self.energy_bar.add_energy(self.energy_add)
 	
     def draw(self):
         self.gadgets.draw(self.screen)
@@ -143,6 +165,11 @@ class Level(object):
                 self.hero.twist()
                 music.play_scream()
 
+            if event.key == K_ESCAPE:
+                mem = Menu(self.screen, self.options, "Do you want to exit?").loop()
+                if mem == self.father:
+                    self.game_over = True
+
         if event.type == KEYUP:
             if event.key == K_DOWN:
                 self.control_down = -1
@@ -152,6 +179,12 @@ class Level(object):
                 self.control_right = -1
             if event.key == K_LEFT:
                 self.control_left = -1
+
+    def finnish(self):
+        if self.level_time.seconds == 0 or self.energy_bar.energy_percent == 0 or self.game_over:
+            return True
+    
+        return False
 
 
 def main():
