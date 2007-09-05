@@ -13,31 +13,25 @@ class Menu(object):
         self.screen = screen
         self.items = [x[0] for x in options]
         self.returns = [x[1] for x in options]
-        #self.n_items = len(items)
         self.last_index = len(self.items) - 1
         self.index = index
         self.done = False
         font1 = pygame.font.Font(FONT1, 50)
         font2 = pygame.font.Font(FONT1, 45)
-        self.hor_step = font2.get_height()
+        self.hor_step = font2.get_height() + 20
         self.clock = pygame.time.Clock()
-        self.selected_imgs = [font2.render(text, True, GREEN) for text in self.items]
-        self.unselected_imgs = [font2.render(text, True, BLACK) for text in self.items]
+        self.selected_imgs = [font2.render(text, True, GREY) for text in self.items]
+        self.unselected_imgs = [font2.render(text, True, WHITE) for text in self.items]
         self.unselected_rects = None
         self.timeloop = 0
         self.state = 0 
         
-	    #self.screen.blit(self.background, (0,0))
         self.background = utils.load_image(BGIMAGE1)
-        title_img = font1.render(title, True, BLACK)
+        title_img = font1.render(title, True, GREY)
         topleft = (self.background.get_rect().width - title_img.get_rect().width) / 2, 30
         self.background.blit(title_img, topleft)
 
         self._draw_items()
-
-        #pygame.mouse.set_pos(self.unselected_rects[index].center)
-        
-        #pygame.display.flip()
 
     def loop(self):
         '''Returns the asosiated object for the selected item'''
@@ -105,24 +99,25 @@ class Menu(object):
 
     def _draw_items(self):
         rects = []
-        y = self.hor_step + 100 # Tune this value as you need
+        y = self.hor_step + 80 # Tune this value as you need
         for i in range(len(self.items)):
             if i == self.index:
                 img = self.selected_imgs[i]
             else:
                 img = self.unselected_imgs[i]
+            
             x2 = self.screen.get_width()/2
             
-	    if (self.state == 0) and (i%2 == 0) :
-		x1 = x2 - (600 * (50 - self.timeloop) / 50)
-	    elif (self.state == 0) and (i%2 == 1): 
-		x1 = x2 + (600 * (50 - self.timeloop) / 50)
-	    else:  
-		x1=x2
-	    x= (x1+(x2-x1)*(1-exp(-self.timeloop/20.0)))
-	    x -= img.get_width() / 2
-	    self.screen.blit(img, (x,y))
-            
+            if (self.state == 0) and (i%2 == 0):
+                x1 = x2 - (600 * (50 - self.timeloop) / 50)
+            elif (self.state == 0) and (i%2 == 1): 
+                x1 = x2 + (600 * (50 - self.timeloop) / 50)
+            else:  
+                x1 = x2
+            x = (x1+(x2-x1)*(1-exp(-self.timeloop/20.0)))
+            x -= img.get_width() / 2
+            self.screen.blit(img, (x,y))
+                
             if self.unselected_rects is None:
                 rects += [img.get_rect().move(x,y)]
 

@@ -33,8 +33,10 @@ SCREAM3 = os.path.join(SOUNDS, "34292__hello_flowers__Flowers_Like_to_Scream_12.
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 
 
-COLOR1 = (10, 50, 200)
+COLOR1 = (10, 50, 200) 
 BLACK = (0, 0, 0)
 GREEN = (0,250,0)
 ORANGE = (255, 180, 0)
 RED = (250, 0, 0)
+WHITE = (250, 250, 250)
+GREY = (200, 200, 200)
