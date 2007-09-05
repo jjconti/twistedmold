@@ -13,6 +13,7 @@ half = side / 2
 DATA = os.path.join("data")
 HISCORES = os.path.join(DATA, "scores.high")
 IMGS = os.path.join(DATA, "imgs")
+DROP = os.path.join(IMGS, "gota.gif")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
 parts = os.path.join(IMGS, "body")
 SOUNDS = os.path.join(DATA, "sounds")
