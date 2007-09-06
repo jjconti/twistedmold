@@ -41,7 +41,7 @@ level 2:
     de facil. Para pasarlo hay que comer un par de bolas de energia al menos
 
 level 3:
-    - permanecer más tiempo vivo (se pone mas jodido)
+    - permanecer mas tiempo vivo (se pone mas jodido)
     - los moldes se aceleran un poco
     - la energia se pierde mas rapido
     - es el mas divertido de los cuatro niveles
