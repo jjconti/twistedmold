@@ -9,20 +9,22 @@ import math
 
 class Points(pygame.sprite.Sprite):
     
-    def __init__(self, points):
+    def __init__(self, points, neg_points):
         pygame.sprite.Sprite.__init__(self)
         self.points = points
+        self.neg_points = neg_points
         self.font = pygame.font.Font(FONT1, 35)
         self.image = self._image()
         self.rect = self.image.get_rect(top=0, right=width - 1)
 
-    def update(self, points):
+    def update(self, points, neg_points):
         self.points = points
+        self.neg_points = neg_points
         self.image = self._image()
         self.rect = self.image.get_rect(top=0, right=width - 1)
 
     def _image(self):
-        return self.font.render("Points: " + str(self.points), True, COLOR1)
+        return self.font.render("Points: " + str(self.points) + "Lost: " + str(self.neg_points), True, COLOR1)
 
 
 class EnergyBar(pygame.sprite.Sprite):
