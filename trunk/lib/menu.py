@@ -3,6 +3,7 @@ from pygame.locals import *
 from math import exp
 import sys
 import utils
+import music
 from config import *
 
 class Menu(object):
@@ -35,7 +36,7 @@ class Menu(object):
 
     def loop(self):
         '''Returns the asosiated object for the selected item'''
-	
+        music.loop_menu()
         while not self.done:
 
             self.clock.tick(CLOCK_TICS)
