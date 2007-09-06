@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 import sys
 import random
+
 from sprites import *
 import music
 import utils
@@ -13,6 +14,7 @@ from explotion import Explotion
 from wheather import Wheather
 from visual import Visual
 from menu import Menu
+from scores import HighScores
 
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
@@ -153,7 +155,8 @@ class Level(object):
             pygame.display.flip()
     
         if self.exit:
-            return self.father
+            return HighScores(self.screen, self.father).loop()
+            #return self.father
         elif not self.level_time.seconds:
             if self.level < LEVELS:
                 def f(screen):
@@ -162,9 +165,11 @@ class Level(object):
                 return f
             else:
                 print "definir una funcion que retorne una animacion de victoria"
+                return HighScores(self.screen, self.father, self.points).loop()
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
-                return Visual(screen, [utils.load_image(GAMEOVER)], [2], self.father)
+                father=Visual(screen, [utils.load_image(GAMEOVER)], [2], self.father)
+                return HighScores(self.screen, father, self.points).loop()
             return f
 
     def update(self):
