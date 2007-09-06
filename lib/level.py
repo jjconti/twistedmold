@@ -19,14 +19,49 @@ from scores import HighScores
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
 
-levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10,
-                  max_time=15, img=LEVEL1),
-          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15,
-                  max_time=15, img=LEVEL2),
-          3: dict(energy_leap=0.2, mold_density=45, mold_velocity=15,
-                  max_time=20, img=LEVEL3),
-          4: dict(energy_leap=0.3, mold_density=55, mold_velocity=25,
-                  max_time=25, img=LEVEL4)}
+# bottle_density (azul, verde, naranja, roja_destroy)
+
+'''
+level 1:
+    - la energia baja lento, de tal manera que siempre pasemos de nivel a menos
+    que juguemos mal (comer bolas verdes)
+    - 1 en 7000 posibilidades de que aparezca una naranja que te
+    da mucha energia
+    - los moldes vienen relativamente lento como para que no puedas hacer muchos
+    puntos en este nivel que es mas facil
+    - no hay bolas rojas que borran la pantalla
+    - facil, para ser el primero tiene una buena complejidad (FACIL)
+
+level 2:
+    - no hay bolas rojas que borran la pantalla
+    - mas posibilidades que aparezcan bolas naranjas con energia 1 en 400
+    - aparecen mas moldes en el juego
+    - el tiempo que hay que sobrevivir es el mismo al anterior
+    - es un poco mas dificil que el anterior pero sigue entrando en la categoria
+    de facil. Para pasarlo hay que comer un par de bolas de energia al menos
+
+level 3:
+    - permanecer más tiempo vivo (se pone mas jodido)
+    - los moldes se aceleran un poco
+    - la energia se pierde mas rapido
+    - es el mas divertido de los cuatro niveles
+    - dificil, pero no tanto, como para pasarlo poniendole ganas
+
+level 4:
+    - la energia casi que la perdemos enseguida, necesitamos comer muchas
+    naranjas y azules
+    - es dificil, bastante
+    - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
+    ganar este nivel)
+'''
+levels = {1: dict(energy_leap=0.075, mold_density=55, mold_velocity=12,
+                  max_time=15, img=LEVEL1, bottle_density=(400,550,7000,0)),
+          2: dict(energy_leap=0.105, mold_density=40, mold_velocity=15,
+                  max_time=15, img=LEVEL2, bottle_density=(500,300,400,0)),
+          3: dict(energy_leap=0.13, mold_density=35, mold_velocity=15,
+                  max_time=20, img=LEVEL3, bottle_density=(200,200,200,1)),
+          4: dict(energy_leap=0.2, mold_density=27, mold_velocity=25,
+                  max_time=25, img=LEVEL4, bottle_density=(250,100,100,1))}
 LEVELS = 4
 
 class Level(object):
@@ -55,7 +90,7 @@ class Level(object):
         self.clock = pygame.time.Clock()
 
         self.mm = MoldsManager(self.mold_density, self.mold_velocity)
-        self.bm = BottleManager(400,400,400,1)
+        self.bm = BottleManager(*levels[self.level]['bottle_density'])
         self.bm.mm = self.mm
 
         self.total_pos_points = total_pos_points
@@ -121,7 +156,7 @@ class Level(object):
         Visual(self.screen, [utils.load_image(levels[self.level]['img'])], [2], None).loop()
 
     def loop(self):  
-        music.loop_play()   
+        #music.loop_play()   
         while not self.finish():
             self.tics += 1     
             self.screen.blit(self.background, (-(self.tics % 700),0)) 

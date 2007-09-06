@@ -14,10 +14,10 @@ class BottleManager(object):
     image4 = "data//imgs//ball4.png"
 
 
-    bottle1 = dict(energy=10, image=image1, velocity=5)
-    bottle2 = dict(energy=-10, image=image2, velocity=3)
-    bottle3 = dict(energy=25, image=image3, velocity=10)
-    bottle4 = dict(energy=0, image=image4, velocity=10, destroy_all=True)
+    bottle1 = dict(energy=10, image=image1, velocity=10) # azul
+    bottle2 = dict(energy=-10, image=image2, velocity=3) # verde
+    bottle3 = dict(energy=25, image=image3, velocity=20) # naranja
+    bottle4 = dict(energy=0, image=image4, velocity=10, destroy_all=True) # roja
 
     def __init__(self, bottle1_density, bottle2_density, bottle3_density, bottle4_mount):
         self.bottles = pygame.sprite.Group()
