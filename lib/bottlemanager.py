@@ -19,17 +19,17 @@ class BottleManager(object):
     bottle3 = dict(energy=25, image=image3, velocity=10)
     bottle4 = dict(energy=0, image=image4, velocity=10, destroy_all=True)
 
-    def __init__(self):
+    def __init__(self, bottle1_density, bottle2_density, bottle3_density, bottle4_mount):
         self.bottles = pygame.sprite.Group()
 
         self.bottle_density = 50
         #self.bottles.add(Bottle(random.choice(range(10))))
 
-        self.bottle1_density = 500
-        self.bottle2_density = 600
-        self.bottle3_density = 1000
-        self.bottle4_density = 200
-
+        self.bottle1_density = bottle1_density
+        self.bottle2_density = bottle2_density
+        self.bottle3_density = bottle3_density
+        self.bottle4_mount = bottle4_mount
+        self.bottle4_current_mount = 0
 
         self.bottles.add(Bottle(self.bottle1))
 
@@ -53,10 +53,11 @@ class BottleManager(object):
             bot = Bottle(self.bottle3)
             self.bottles.add(bot)
 
-        if random.randrange(self.bottle4_density) == 0: 
+        if random.randrange(400) == 0 and self.bottle4_current_mount < self.bottle4_mount: 
             bot = Bottle(self.bottle4)
             self.bottles.add(bot)
-
+            self.bottle4_current_mount += 1
+            
     def impact(self):
         d = pygame.sprite.groupcollide(self.bottles,self.hero.group, True, False)
         if d:
