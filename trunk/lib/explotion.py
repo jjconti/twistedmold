@@ -8,9 +8,9 @@ class Explotion(object):
 
     def __init__(self):
         self.blood = pygame.sprite.RenderUpdates()
-        self.explotion = False	
+        self.explotion = False    
         self.blood_flag = 0 
-        for x in xrange(333):	
+        for x in xrange(333):    
             blood_drop = BloodDrop()
             self.blood.add(blood_drop)
 
@@ -25,7 +25,7 @@ class Explotion(object):
 
     def boom(self, rect):
         self.blood_flag = 0
-        self.explotion = True	
-	     
+        self.explotion = True    
+    
         for blood_drop in self.blood:
             blood_drop.set_position(rect.top,rect.left)

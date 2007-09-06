@@ -43,14 +43,14 @@ class Menu(object):
 
             self.screen.blit(self.background, (0,0))
             for event in pygame.event.get():
-        	    self.control(event)
+                self.control(event)
 
             self._draw_items()
-	
+    
             pygame.display.flip()
             self.timeloop += 1
             if self.timeloop == 50:
-		        self.state=1
+                self.state=1
 
         return self.returns[self.index]
 

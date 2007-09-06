@@ -16,7 +16,7 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption(WINDOW_TITLE)
 
-  	#Shooter opcion
+    #Shooter opcion
     opcion = menu
     while opcion is not exit:
         change = opcion(screen).loop()
