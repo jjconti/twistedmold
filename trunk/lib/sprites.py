@@ -24,7 +24,7 @@ class Points(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(top=0, right=width - 1)
 
     def _image(self):
-        return self.font.render("Points: " + str(self.points) + "Lost: " + str(self.neg_points), True, COLOR1)
+        return self.font.render("Points: " + str(self.points) + " Lost: " + str(self.neg_points) + " ", True, COLOR1)
 
 
 class EnergyBar(pygame.sprite.Sprite):
