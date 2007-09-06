@@ -36,6 +36,9 @@ SCREAM2 = os.path.join(SOUNDS, "34283__hello_flowers__Flowers_Like_to_Scream_03.
 SCREAM3 = os.path.join(SOUNDS, "34292__hello_flowers__Flowers_Like_to_Scream_12.wav")
 CRACK1 = os.path.join(SOUNDS, "21914__Halleck__neck_crack.wav")
 GAMEOVERMUSIC = os.path.join(SOUNDS, "gameover.ogg")
+CREDITSMUSIC = os.path.join(SOUNDS, "credits.ogg")
+MENUMUSIC = os.path.join(SOUNDS, "credits.ogg")
+PLAYMUSIC = os.path.join(SOUNDS, "credits.ogg")
                      
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 FONT2 = os.path.join(FONTS, "tasapainoaisti.ttf")

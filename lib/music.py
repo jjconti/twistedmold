@@ -20,3 +20,15 @@ def play_scream():
 
 def play_gameover():
     SOUNDS['gameover'].play()
+
+def loop_menu():
+    pygame.mixer.music.load(MENUMUSIC)
+    pygame.mixer.music.play(-1)
+
+def loop_credits():
+    pygame.mixer.music.load(CREDITSMUSIC)
+    pygame.mixer.music.play(-1)
+
+def loop_play():
+    pygame.mixer.music.load(PLAYMUSIC)
+    pygame.mixer.music.play(-1)
