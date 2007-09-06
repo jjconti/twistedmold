@@ -6,6 +6,7 @@ from config import  *
 from level import Level
 from menu import Menu
 from scores import HighScores
+from visual import Visual
 
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
@@ -16,6 +17,10 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption(WINDOW_TITLE)
 
+    images = [utils.load_image(image) for image in INTRO_IMAGES]
+    visual = Visual(screen, images, INTRO_TIMES)
+    visual.loop()
+    
     #Shooter opcion
     opcion = menu
     while opcion is not exit:
