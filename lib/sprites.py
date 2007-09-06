@@ -111,11 +111,12 @@ class Part(pygame.sprite.Sprite):
 
 class Bottle(pygame.sprite.Sprite):
 
-    def __init__(self, **kwargs):
+    def __init__(self, energy):
         pygame.sprite.Sprite.__init__(self) 
         self.velocity = 4
         self.image = utils.load_image("data//imgs//ball.png")
         self.rect = self.image.get_rect(top=random.randrange(0, 550), right=width)
+        self.energy = energy
 
     def update(self):
         if not random.randrange(2): 
@@ -133,17 +134,15 @@ class BloodDrop(pygame.sprite.Sprite):
         radius = random.choice(range(1,3))
         color = (random.choice(range(100,255)) , 0, 0)
         pos = (4,4)
-#        radius = random.choice(self.radius)
         pygame.draw.circle(self.image, color, pos, radius)
 
-        #self.image = utils.load_image(DROP)
         self.rect = self.image.get_rect()
 	
     def update(self, times):
         if times % 2 != 0: return
         self.x += self.vx
         self.y += self.vy
-        self.vy += 1
+        self.vy += 3
         self.rect.left = self.x
         self.rect.top = self.y
         
