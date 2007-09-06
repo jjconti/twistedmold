@@ -18,14 +18,15 @@ class Explotion(object):
         if self.explotion:
             self.blood.update(tics)
             self.blood.draw(screen)
-            self.blood_flag += 1             
-            
-        if self.blood_flag == 50:
-            explotion = False
+
+            self.explotion = False
+            for blood_drop in self.blood:
+                if not blood_drop.is_dead():
+                    self.explotion = True
+                    break
 
     def boom(self, rect):
-        self.blood_flag = 0
-        self.explotion = True    
+        self.explotion = True
     
         for blood_drop in self.blood:
             blood_drop.set_position(rect.top,rect.left)

@@ -136,21 +136,21 @@ class BloodDrop(pygame.sprite.Sprite):
         self.image = pygame.Surface((8,8))
         self.image.set_colorkey((0,0,0))
         
-        
         radius = random.choice(range(1,3))
         color = (random.choice(range(100,255)) , 0, 0)
         pos = (4,4)
         pygame.draw.circle(self.image, color, pos, radius)
 
         self.rect = self.image.get_rect()
+        self.dead = True
     
     def update(self, times):
-        if times % 2 != 0: return
-        self.x += self.vx
-        self.y += self.vy
-        self.vy += 3
-        self.rect.left = self.x
-        self.rect.top = self.y
+        if not self.dead:
+            self.x += self.vx
+            self.y += self.vy
+            self.vy += 1.2
+            self.rect.left = self.x
+            self.rect.top = self.y
         
     def set_position(self, top, left):
         ang = random.randrange(0,3600)/10.0
@@ -162,4 +162,7 @@ class BloodDrop(pygame.sprite.Sprite):
         self.y = top
         self.rect.left = left
         self.rect.top = top
+        self.dead = (self.y > 550)
 
+    def is_dead(self):
+        return self.dead
