@@ -19,10 +19,10 @@ from scores import HighScores
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
 
-levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10   , max_time=15, energy_add=5, img=LEVEL1),
-          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=15, energy_add=5, img=LEVEL2),
-          3: dict(energy_leap=0.2, mold_density=45, mold_velocity=15   , max_time=20, energy_add=5, img=LEVEL3),
-          4: dict(energy_leap=0.3, mold_density=55, mold_velocity=20   , max_time=25, energy_add=5, img=LEVEL4)}
+levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10   , max_time=10, energy_add=5, img=LEVEL1),
+          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=10, energy_add=5, img=LEVEL2),
+          3: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=15, energy_add=5, img=LEVEL3),
+          4: dict(energy_leap=0.1, mold_density=55, mold_velocity=20   , max_time=15, energy_add=5, img=LEVEL4)}
 LEVELS = 4
 
 class Level(object):
@@ -31,7 +31,7 @@ class Level(object):
     '''mold_density_tl y mold_density_bl. Mientras mas bajos mas mold aparecen, mientras mas separados mas disperso'''
 
 
-    def __init__(self, screen, father, level, points):
+    def __init__(self, screen, father, level, total_pos_points, total_neg_points):
 
         self.screen = screen
         self.father = father
@@ -55,10 +55,15 @@ class Level(object):
         self.bm = BottleManager()
         self.bm.mm = self.mm
 
-        self.points = points
-        self.pointsCounter = Points(self.points)
-        self.mm.pointsCounter = self.pointsCounter        
+        self.total_pos_points = total_pos_points
+        self.total_neg_points = total_neg_points
 
+        self.pos_points = 0
+        self.neg_points = 0
+        
+        
+        self.pointsCounter = Points(0,0)
+        self.mm.level = self
         self.tics = 0
 
         self.snow_slim = pygame.sprite.Group()
@@ -156,23 +161,34 @@ class Level(object):
     
         if self.exit:
             return self.father
-        elif not self.level_time.seconds:
+        elif not self.level_time.seconds:        
+            if self.pos_points*1.0 / (self.pos_points*1.0 + self.neg_points*1.0) < 0.6:
+                def f(screen):
+                    return HighScores(screen, self.father).loop()
+                return f
+            
             if self.level < LEVELS:
                 def f(screen):
-                    return Level(screen, self.father, self.level + 1, self.points)
-                #return self.father #hay que preguntar si paso de nivel y mandarlo al proxino sino gameover
+                    return Level(screen, self.father, self.level + 1, self.total_pos_points + self.pos_points, self.total_neg_points + self.neg_points)
                 return f
             else:
+                print self.total_pos_points + self.pos_points #puntos positivos totales
+                print self.total_neg_points + self.neg_points #puntos negativos totales
+                
                 print "definir una funcion que retorne una animacion de victoria"
+
                 def f(screen):
-                    return HighScores(self.screen, self.father, self.points)
+                    return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points)
+
                 return f
+
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
                 def g(screen):
-                    return HighScores(self.screen, self.father, self.points) 
+                    return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points) 
                 music.play_gameover()
                 return Visual(screen, [utils.load_image(GAMEOVER)], [3], g)               
+
             return f
 
     def update(self):
@@ -192,8 +208,9 @@ class Level(object):
         #Verify collision
         if self.mm.fit(self.hero.group, self.tics):
             self.explotion.boom(self.hero.parts['cheat'].rect)
-            self.points += 1
-            self.pointsCounter.update(self.points)
+            self.pos_points += 1
+
+        self.pointsCounter.update(self.pos_points, self.neg_points)            
             
 	
     def draw(self):
