@@ -46,7 +46,7 @@ class HighScores(object):
         top = self.top_scores
         for i in range(MAX):
             if self.score > top[i][1]:
-                name = InputPanel(self.screen).loop()
+                name = InputPanel(self.screen,self.score).loop()
                 self.top_scores = top[:i] + [(name, self.score)] + top[i:-1]
                 break
         f = file(config.HISCORES, 'w')
@@ -128,10 +128,11 @@ class HighScores(object):
                     x1 = x2 + ((config.width * 0.86) * (50 - timeloop) / 50)
                 else:
                     x1=x2
-                    bg.blit(img, (x, y))
                 x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                 x -= img.get_width()/2
                 self.screen.blit(img, (x, y))
+                if x1 == x2:
+                    bg.blit(img, (x, y))
                 y += hor_step + 10
         
         return bg
@@ -147,15 +148,17 @@ class HighScores(object):
 class InputPanel(object):
     '''A generic input panel.'''
 
-    def __init__(self, screen):
+    def __init__(self, screen, score):
         self.screen = screen
         self.cursor = '|'
         self.text = ""
         self.done = False
         self.font1 = pygame.font.Font(config.FONT3, 40)
         self.clock = pygame.time.Clock()
-        
-        text_list=["CONGRATULATION !!!","WELCOME TO THE \"HALL OF FAME\"","Please, introduces your name"]
+
+        score_text="Your score is "+str(score)
+        text_list=["CONGRATULATION !!!","WELCOME TO THE \"HALL OF FAME\"","Please, introduces your name","  ",score_text]
+        print text_list
         self.background = HighScores(screen).draw_screen(text_list)
         pygame.display.flip()
         
