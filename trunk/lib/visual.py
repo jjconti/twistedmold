@@ -1,20 +1,24 @@
 import pygame
-import time
 from pygame.locals import *
 
 class Visual(object):
-    def __init__(self, screen, images, times, func):
-        
+    def __init__(self, screen, images, times, func=None):
         self.screen = screen
         self.images = images
-        self.times = times
+        self.times = [x*1000 for x in times]
         self.func = func    #father function
 
     def loop(self):
         for image, time_sleep in zip(self.images, self.times):
             self.screen.blit(image, (0,0))
             pygame.display.flip()
-            time.sleep(time_sleep)
+            i = 1
+            while i < time_sleep:
+                pygame.time.delay(1)
+                i += 1
+                for event in pygame.event.get():
+                    if event.type == KEYDOWN:
+                        return self.func
         return self.func
 
 if __name__ == '__main__':
@@ -32,7 +36,8 @@ if __name__ == '__main__':
         image = image.convert()
         image.fill(fill[x])
         images.append(image)
-    times = [0.2,1.2,6.3,3]
+    # time in milisecons
+    times = [950,700,650,800]
     visual = Visual(screen, images, times, prueba)
     func = visual.loop()
     func()
