@@ -29,7 +29,7 @@ class HighScores(object):
         if (not os.path.exists(config.HISCORES)) and (self.score <= 0):
             text_list=["HIGH SCORE","I\'m sorry","Nobody has been saved.","Nobody has stopped being zombie"]
             self.draw_screen(text_list)
-            self._waitKey()
+            return self._waitKey()
         else:
             self.top_scores = self._load_score()
             if self.score > 0:
@@ -37,7 +37,7 @@ class HighScores(object):
             text_list = self._convert()
             text_list[0:0]=['HIGH SCORES']
             self.draw_screen(text_list)
-            self._waitKey()
+            return self._waitKey()
 
     def _add(self):
         #Check minor_value before adding
