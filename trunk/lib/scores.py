@@ -19,9 +19,9 @@ SCORE_DEAD = 500 # you is happy dead
 
 class HighScores(object):
 
-    def __init__(self, screen, option=None, score=-1):
+    def __init__(self, screen, father=None, score=-1):
         self.screen = screen
-        self.option = option
+        self.father = father
         self.score = score
         self.top_scores = []
 
@@ -141,7 +141,7 @@ class HighScores(object):
             event = pygame.event.wait()
             if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
                 pygame.event.get()
-                return self.option
+                return self.father
 
 
 class InputPanel(object):
