@@ -19,7 +19,7 @@ class Wheather(pygame.sprite.Sprite):
         radius = random.choice(range(min_radius,max_radius))
 
         cordenates = range(700)
-        self.x = random.choice(cordenates) 
+        self.x = random.choice(cordenates)
         self.y= random.choice(cordenates)
 
         surface_size = (8,8)
