@@ -17,10 +17,10 @@ from menu import Menu
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
 
-levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10   , max_time=1, energy_add=5, img=LEVEL1),
-          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=1, energy_add=5, img=LEVEL2),
-          3: dict(energy_leap=0.2, mold_density=45, mold_velocity=15   , max_time=2, energy_add=5, img=LEVEL3),
-          4: dict(energy_leap=0.3, mold_density=55, mold_velocity=20   , max_time=2, energy_add=5, img=LEVEL4)}
+levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10   , max_time=15, energy_add=5, img=LEVEL1),
+          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=15, energy_add=5, img=LEVEL2),
+          3: dict(energy_leap=0.2, mold_density=45, mold_velocity=15   , max_time=20, energy_add=5, img=LEVEL3),
+          4: dict(energy_leap=0.3, mold_density=55, mold_velocity=20   , max_time=25, energy_add=5, img=LEVEL4)}
 LEVELS = 4
 
 class Level(object):
