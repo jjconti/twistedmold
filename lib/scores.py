@@ -142,7 +142,7 @@ class HighScores(object):
         while 1:
             event = pygame.event.wait()
             if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
-                #sys.exit(0)
+                pygame.event.get()
                 return self.option
 
 
