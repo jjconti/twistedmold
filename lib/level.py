@@ -21,7 +21,7 @@ class Level(object):
     
     '''mold_density_tl y mold_density_bl. Mientras mas bajos mas mold aparecen, mientras mas separados mas disperso'''
 
-    def __init__(self, screen, father, energy_leap=0.07, energy_add=5, mold_density=30, mold_velocity=30):
+    def __init__(self, screen, father, energy_leap=0.05, energy_add=5, mold_density=30, mold_velocity=30):
         self.screen = screen
         self.father = father
 
