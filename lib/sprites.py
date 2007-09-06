@@ -111,13 +111,15 @@ class Part(pygame.sprite.Sprite):
 
 class Bottle(pygame.sprite.Sprite):
 
-    def __init__(self, energy):
+    def __init__(self, params):
         pygame.sprite.Sprite.__init__(self) 
+        print "www"
+        print params
         self.velocity = 4
-        self.image = utils.load_image("data//imgs//ball.png")
+        self.image = utils.load_image(params["image"])
+        self.energy = params["energy"]
         self.rect = self.image.get_rect(top=random.randrange(0, 550), right=width)
-        self.energy = energy
-
+        
     def update(self):
         if not random.randrange(2): 
             '''From right to left'''
