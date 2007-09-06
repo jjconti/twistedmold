@@ -23,13 +23,25 @@ class MoldsManager(object):
                 part.move()
 	        #delete old mold
             if max(r.rect.right for r in m) < 0:
-                print "delete"
-		self.molds.remove(m)
+                self.pointsCounter.add_negative()
+                self.molds.remove(m)
                 del m
 
     def draw(self, screen):
         for m in self.molds:
             m.draw(screen)
+
+    def destroy_all(self):
+        temp = []
+        print len(self.molds)
+        for m in self.molds:
+            temp.append(m)
+
+        for a in temp:
+            self.pointsCounter.add_positive()
+            self.molds.remove(a)
+            del a
+            
 
     def gen(self, times):
 
