@@ -24,6 +24,8 @@ class HighScores(object):
         self.father = father
         self.score = score
         self.top_scores = []
+        self.font1 = pygame.font.Font(config.FONT3, 40)
+        self.font2 = pygame.font.Font(config.FONT3, 30)
 
     def loop(self):
         if (not os.path.exists(config.HISCORES)) and (self.score <= 0):
@@ -88,22 +90,20 @@ class HighScores(object):
         pygame.display.set_caption(config.WINDOW_TITLE)
         background = utils.load_image(config.BGIMAGE1)
 
-        font1 = pygame.font.Font(config.FONT2, 40)
-        font2 = pygame.font.Font(config.FONT2, 20)
         clock = pygame.time.Clock()
 
         title = text_list[0]
         text_list.remove(title)
 
-        title_img = font1.render(title, True, config.RED)
-        topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
+        title_img = self.font1.render(title, True, config.RED)
+        topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 25
         background.blit(title_img, topleft)
         bg = background.copy()
 
         self.screen.blit(background, (0, 0))
         pygame.display.flip()
 
-        hor_step = font2.get_height()
+        hor_step = self.font2.get_height()
         done = False
         timeloop = 0
         state = 0
@@ -112,7 +112,7 @@ class HighScores(object):
             clock.tick(config.CLOCK_TICS)
             pygame.display.flip()
             self.screen.blit(background, (0, 0))
-            y = hor_step + 100
+            y = hor_step + 80
 
             timeloop += 1
             if timeloop == config.CLOCK_TICS:
@@ -120,7 +120,7 @@ class HighScores(object):
                 done = True
 
             for i,text_item in enumerate(text_list):
-                img = font2.render(text_item, True, config.RED)
+                img = self.font2.render(text_item, True, config.RED)
                 x2 = self.screen.get_width()/2
                 if (state == 0) and (i%2 == 0):
                     x1 = x2 - ((config.width * 0.86) * (50 - timeloop) / 50)
@@ -132,7 +132,7 @@ class HighScores(object):
                 x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                 x -= img.get_width()/2
                 self.screen.blit(img, (x, y))
-                y += hor_step + 15
+                y += hor_step + 10
         
         return bg
 
@@ -152,7 +152,7 @@ class InputPanel(object):
         self.cursor = '|'
         self.text = ""
         self.done = False
-        self.font1 = pygame.font.Font(config.FONT2, 40)
+        self.font1 = pygame.font.Font(config.FONT3, 40)
         self.clock = pygame.time.Clock()
         
         text_list=["CONGRATULATION !!!","WELCOME TO THE \"HALL OF FAME\"","Please, introduces your name"]
@@ -199,7 +199,7 @@ class InputPanel(object):
         self.done = True
 
     def _draw_text(self):
-        y = 350 # Tune this value as you need
+        y = 300 # Tune this value as you need
         text_img = self.font1.render(self.text + self.cursor, True, config.RED)
         x = (self.screen.get_width() - text_img.get_width()) / 2
         self.screen.blit(text_img, (x,y))
