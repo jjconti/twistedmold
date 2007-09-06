@@ -16,6 +16,7 @@ CREDITS = os.path.join(DATA, "credit.dat")
 IMGS = os.path.join(DATA, "imgs")
 DROP = os.path.join(IMGS, "drop.gif")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
+INTROS = os.path.join(IMGS, "intro")
 parts = os.path.join(IMGS, "body")
 SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
@@ -54,3 +55,26 @@ WHITE = (250, 250, 250)
 GREY = (100, 100, 100)
 
 CLOCK_TICS = 80
+
+# imagenes intro
+INTRO_IMAGES = [os.path.join(INTROS, "intro0001.png"),
+                os.path.join(INTROS, "intro0009.png"),
+                os.path.join(INTROS, "intro0015.png"),
+                os.path.join(INTROS, "intro0016.png"),
+                os.path.join(INTROS, "intro0017.png"),
+                os.path.join(INTROS, "intro0018.png"),
+                os.path.join(INTROS, "intro0019.png"),
+                os.path.join(INTROS, "intro0020.png"),
+                os.path.join(INTROS, "intro0021.png"),
+                os.path.join(INTROS, "intro0022.png"),
+                os.path.join(INTROS, "intro0023.png"),
+                os.path.join(INTROS, "intro0024.png"),
+                os.path.join(INTROS, "intro0025.png"),
+                os.path.join(INTROS, "intro0032.png"),
+                os.path.join(INTROS, "intro0033.png"),
+                os.path.join(INTROS, "intro0034.png"),
+                os.path.join(INTROS, "intro0035.png"),
+                ]
+
+INTRO_TIMES = [0.672, 0.504, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084,
+               0.084, 0.084, 0.084, 0.588, 0.084, 0.084, 0.084, 2.856]
