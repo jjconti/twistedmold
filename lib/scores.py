@@ -41,8 +41,6 @@ class HighScores(object):
 
     def _add(self):
         #Check minor_value before adding
-        #name = 'Fulano de tal'
-        #name = InputPanel(self.screen).loop()
         top = self.top_scores
         for i in range(MAX):
             if self.score > top[i][1]:
