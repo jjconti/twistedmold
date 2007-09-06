@@ -60,6 +60,8 @@ class Level(object):
             self.snow_fat.add(sprite)
 	 
         self.energy_bar = EnergyBar(self.energy_leap)
+        self.bm.energy_bar = self.energy_bar
+
         self.level_time = LevelTime()
 
         self.gadgets = pygame.sprite.RenderUpdates()
@@ -83,6 +85,8 @@ class Level(object):
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
 
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
+        self.bm.hero=self.hero
+
         self.explotion = Explotion()
 
         self.control_down = -1
@@ -129,7 +133,7 @@ class Level(object):
                 if self.control_left >= self.control_tiempo:
                     self.control_left = 0
 
-            self.clock.tick(50)
+            self.clock.tick(CLOCK_TICS)
 
             pygame.display.flip()
     
@@ -158,7 +162,7 @@ class Level(object):
         if self.mm.fit(self.hero.group, self.tics):
             self.explotion.boom(self.hero.parts['cheat'].rect)
             self.pointsCounter.add_positive()
-            self.energy_bar.add_energy(self.energy_add)
+            
 	
     def draw(self):
         self.snow_slim.draw(self.screen)
