@@ -27,7 +27,7 @@ class Menu(object):
         self.timeloop = 0
         self.state = 0 
         
-        self.background = utils.load_image(BGIMAGE1)
+        self.background = utils.load_image(MENUBGIMAGE)
         title_img = font1.render(title, True, GREY)
         topleft = (self.background.get_rect().width - title_img.get_rect().width) / 2, 30
         self.background.blit(title_img, topleft)

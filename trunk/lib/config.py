@@ -24,6 +24,7 @@ FONTS = os.path.join(DATA, "fonts")
 
 BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
 BGIMAGE2 = os.path.join(BACKGROUNDS, "bg2.png")
+MENUBGIMAGE = os.path.join(BACKGROUNDS, "menubg.png")
 
 GAMEOVER = os.path.join(IMGS, "gameover.png")
 LEVEL1 = os.path.join(IMGS, "level1.png")
