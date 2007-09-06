@@ -15,9 +15,6 @@ def main():
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption(WINDOW_TITLE)
 
-    background = utils.create_surface((width, height), (0,0,0))
-    screen.blit(background, (0, 0))
-
   	#Shooter opcion
     opcion = menu
     while opcion is not exit:
