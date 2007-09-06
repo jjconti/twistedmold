@@ -117,7 +117,7 @@ class Bottle(pygame.sprite.Sprite):
     def __init__(self, params):
         pygame.sprite.Sprite.__init__(self) 
         self.velocity = params["velocity"]
-        self.image = utils.load_image(params["image"])
+        self.image = utils.load_image(params["image"], -1)
         self.energy = params["energy"]
         self.destroy_all = params.get("destroy_all", False)
         self.rect = self.image.get_rect(top=random.randrange(0, 550), right=width)
