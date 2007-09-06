@@ -11,7 +11,8 @@ half = side / 2
 
 
 DATA = os.path.join("data")
-HISCORES = os.path.join(DATA, "scores.high")
+HISCORES = os.path.join(DATA, "scores.dat")
+CREDITS = os.path.join(DATA, "credit.dat")
 IMGS = os.path.join(DATA, "imgs")
 DROP = os.path.join(IMGS, "drop.gif")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
@@ -42,6 +43,7 @@ PLAYMUSIC = os.path.join(SOUNDS, "credits.ogg")
                      
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 FONT2 = os.path.join(FONTS, "tasapainoaisti.ttf")
+FONT3 = os.path.join(FONTS, "acquaint.ttf")
 
 COLOR1 = (10, 50, 200) 
 BLACK = (0, 0, 0)
