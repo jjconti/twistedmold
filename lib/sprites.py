@@ -143,7 +143,7 @@ class BloodDrop(pygame.sprite.Sprite):
         pygame.draw.circle(self.image, color, pos, radius)
 
         self.rect = self.image.get_rect()
-	
+    
     def update(self, times):
         if times % 2 != 0: return
         self.x += self.vx
@@ -153,9 +153,9 @@ class BloodDrop(pygame.sprite.Sprite):
         self.rect.top = self.y
         
     def set_position(self, top, left):
-    	ang = random.randrange(0,3600)/10.0
+        ang = random.randrange(0,3600)/10.0
         ang = math.pi * ang / 180.0
-    	vel = random.randrange(50,250)/10.0
+        vel = random.randrange(50,250)/10.0
         self.vx = math.cos(ang) * vel
         self.vy = math.sin(ang) * vel
         self.x = left

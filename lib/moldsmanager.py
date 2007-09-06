@@ -10,18 +10,18 @@ class MoldsManager(object):
 
     def __init__(self, mold_density, mold_velocity):
         self.molds = []
-    	self.mold_density = mold_density
-    	self.mold_velocity = mold_velocity
+        self.mold_density = mold_density
+        self.mold_velocity = mold_velocity
         self.tops = [25, 125, 250, 375]
 
 
     def move(self, times):
         if times % self.mold_velocity != 0: return
-	
+    
         for m in self.molds:
             for part in m:
                 part.move()
-	    #delete old mold
+        #delete old mold
             if max(r.rect.right for r in m) < 0:
                 self.level.neg_points += 1
                 print self.level.neg_points
@@ -74,10 +74,10 @@ class MoldsManager(object):
             if len(d):
                 del mold
                 return         
-	
+    
         for i in xrange(0,random.randrange(0, 6)):
             twist(blocks, i)
-	    
+    
         self._add(mold)
 
     def _add(self, m):

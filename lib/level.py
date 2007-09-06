@@ -19,10 +19,14 @@ from scores import HighScores
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
 
-levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10   , max_time=10, energy_add=5, img=LEVEL1),
-          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=10, energy_add=5, img=LEVEL2),
-          3: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=15, energy_add=5, img=LEVEL3),
-          4: dict(energy_leap=0.1, mold_density=55, mold_velocity=20   , max_time=15, energy_add=5, img=LEVEL4)}
+levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10,
+                  max_time=15, img=LEVEL1),
+          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15,
+                  max_time=15, img=LEVEL2),
+          3: dict(energy_leap=0.2, mold_density=45, mold_velocity=15,
+                  max_time=20, img=LEVEL3),
+          4: dict(energy_leap=0.3, mold_density=55, mold_velocity=25,
+                  max_time=25, img=LEVEL4)}
 LEVELS = 4
 
 class Level(object):
@@ -38,16 +42,15 @@ class Level(object):
         self.level = level
         self.background = utils.load_image(BGIMAGE2)
       
-    	#parameters
-    	self.energy_leap = levels[level]['energy_leap']
-    	self.energy_add = levels[level]['energy_add']
-    	self.mold_density = levels[level]['mold_density']
-    	self.mold_velocity = levels[level]['mold_velocity']
+        #parameters
+        self.energy_leap = levels[level]['energy_leap']
+        self.mold_density = levels[level]['mold_density']
+        self.mold_velocity = levels[level]['mold_velocity']
         self.max_time = levels[level]['max_time']
         #menu control
         self.options = [("Yes", self.father),("No", None)]
         self.exit = False
-	
+    
         #Create the game clock
         self.clock = pygame.time.Clock()
 
@@ -76,7 +79,7 @@ class Level(object):
         for x in range(75):
             sprite = Wheather(3,5)
             self.snow_fat.add(sprite)
-	 
+    
         self.energy_bar = EnergyBar(self.energy_leap)
         self.bm.energy_bar = self.energy_bar
 
@@ -86,7 +89,7 @@ class Level(object):
         self.gadgets.add(self.pointsCounter)
         self.gadgets.add(self.energy_bar)
         self.gadgets.add(self.level_time)
-	
+    
         #Create the hero parts
         rhand = Part(lit='a', numb=1, top=center, left=0)
         head = Part(lit='b', numb=1, top=center, left=2 * side)
@@ -217,7 +220,7 @@ class Level(object):
 
         self.pointsCounter.update(self.pos_points, self.neg_points)            
             
-	
+    
     def draw(self):
         self.snow_slim.draw(self.screen)
         
@@ -225,7 +228,7 @@ class Level(object):
         self.mm.draw(self.screen)
         
         self.hero.group.draw(self.screen)
-        self.snow_fat.draw(self.screen)	
+        self.snow_fat.draw(self.screen)    
         self.gadgets.draw(self.screen)
 
     def control(self, event):
