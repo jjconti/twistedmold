@@ -5,20 +5,34 @@ class Visual(object):
     def __init__(self, screen, images, times, func=None):
         self.screen = screen
         self.images = images
-        self.times = [x*1000 for x in times]
+        if times == -1:
+            self.times = -1
+        else:
+            self.times = [x*1000 for x in times]
         self.func = func    #father function
+        
 
     def loop(self):
-        for image, time_sleep in zip(self.images, self.times):
-            self.screen.blit(image, (0,0))
+        if self.times == -1:
+            self.screen.blit(self.images, (0,0))
             pygame.display.flip()
-            i = 1
-            while i < time_sleep:
-                pygame.time.delay(1)
-                i += 1
+            while True:
                 for event in pygame.event.get():
-                    if event.type == KEYDOWN and (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
+                    if event.type == KEYDOWN and \
+                        (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
                         return self.func
+        else:
+            for image, time_sleep in zip(self.images, self.times):
+                self.screen.blit(image, (0,0))
+                pygame.display.flip()
+                i = 1
+                while i < time_sleep:
+                    pygame.time.delay(1)
+                    i += 1
+                    for event in pygame.event.get():
+                        if event.type == KEYDOWN and \
+                                (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
+                            return self.func
         return self.func
 
 if __name__ == '__main__':
