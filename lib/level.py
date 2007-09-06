@@ -155,8 +155,7 @@ class Level(object):
             pygame.display.flip()
     
         if self.exit:
-            return HighScores(self.screen, self.father).loop()
-            #return self.father
+            return self.father
         elif not self.level_time.seconds:
             if self.level < LEVELS:
                 def f(screen):
@@ -165,11 +164,14 @@ class Level(object):
                 return f
             else:
                 print "definir una funcion que retorne una animacion de victoria"
-                return HighScores(self.screen, self.father, self.points).loop()
+                def f(screen):
+                    return HighScores(self.screen, self.father, self.points)
+                return f
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
-                father=Visual(screen, [utils.load_image(GAMEOVER)], [2], self.father)
-                return HighScores(self.screen, father, self.points).loop()
+                def g(screen):
+                    return HighScores(self.screen, self.father, self.points)                
+                return Visual(screen, [utils.load_image(GAMEOVER)], [2], g)               
             return f
 
     def update(self):
