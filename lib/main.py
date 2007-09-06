@@ -29,7 +29,7 @@ def menu(screen):
     return Menu(screen, options, WINDOW_TITLE)
 
 def play(screen):
-    return Level(screen, menu, energy_leap=.05, mold_velocity=10, mold_density=75)
+    return Level(screen, menu, 1, 0)
 
 def exit():
     sys.exit(0)
