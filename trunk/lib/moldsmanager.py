@@ -23,7 +23,7 @@ class MoldsManager(object):
                 part.move()
 	        #delete old mold
             if max(r.rect.right for r in m) < 0:
-                self.pointsCounter.add_negative()
+                #self.pointsCounter.add_negative()
                 self.molds.remove(m)
                 del m
 
@@ -38,7 +38,7 @@ class MoldsManager(object):
             temp.append(m)
 
         for a in temp:
-            self.pointsCounter.add_positive()
+            #self.pointsCounter.add_positive()
             self.molds.remove(a)
             del a
             
