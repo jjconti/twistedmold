@@ -109,6 +109,18 @@ class Part(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(self.image, rot)
         self.image = pygame.transform.flip(self.image, flipx, flipy)
 
+class Bottle(pygame.sprite.Sprite):
+
+    def __init__(self, **kwargs):
+        pygame.sprite.Sprite.__init__(self) 
+        self.velocity = 4
+        self.image = utils.load_image("data//imgs//ball.png")
+        self.rect = self.image.get_rect(top=random.randrange(0, 550), right=width)
+
+    def update(self):
+        if not random.randrange(2): 
+            '''From right to left'''
+            self.rect.move_ip(-self.velocity, 0)
 
 class BloodDrop(pygame.sprite.Sprite):
     def __init__ (self):

@@ -7,6 +7,7 @@ import music
 import utils
 from hero import Hero
 from moldsmanager import MoldsManager
+from bottlemanager import BottleManager
 from config import  *
 from explotion import Explotion
 from wheather import Wheather
@@ -41,6 +42,8 @@ class Level(object):
         self.clock = pygame.time.Clock()
 
         self.mm = MoldsManager(self.mold_density, self.mold_velocity)
+        self.bm = BottleManager()
+
         self.points = 0
         self.pointsCounter = Points(0)
         self.tics = 0
@@ -144,6 +147,8 @@ class Level(object):
         self.energy_bar.update(self.tics)
         self.level_time.update(self.tics)
 
+        self.bm.update()        
+
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
         #Blood Explotion
@@ -158,6 +163,7 @@ class Level(object):
     def draw(self):
         self.snow_slim.draw(self.screen)
         
+        self.bm.draw(self.screen)
         self.mm.draw(self.screen)
         
         self.hero.group.draw(self.screen)
