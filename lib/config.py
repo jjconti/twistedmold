@@ -23,6 +23,13 @@ FONTS = os.path.join(DATA, "fonts")
 BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
 BGIMAGE2 = os.path.join(BACKGROUNDS, "bg2.png")
 
+GAMEOVER = os.path.join(IMGS, "gameover.png")
+LEVEL1 = os.path.join(IMGS, "level1.png")
+LEVEL2 = os.path.join(IMGS, "level2.png")
+LEVEL3 = os.path.join(IMGS, "level3.png")
+LEVEL4 = os.path.join(IMGS, "level4.png")
+
+
 BLOOP = os.path.join(SOUNDS, "bloop.wav")
 SCREAM1 = os.path.join(SOUNDS, "31818__malexmedia__malexmedia_man_scream.wav")
 SCREAM2 = os.path.join(SOUNDS, "34283__hello_flowers__Flowers_Like_to_Scream_03.wav")
@@ -30,9 +37,6 @@ SCREAM3 = os.path.join(SOUNDS, "34292__hello_flowers__Flowers_Like_to_Scream_12.
 CRACK1 = os.path.join(SOUNDS, "21914__Halleck__neck_crack.wav")
 
                      
-#FONT1 = os.path.join(FONTS,"FreeMonoBold.ttf")
-#FONT1 = os.path.join(FONTS,"ds_moster.ttf")
-
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 FONT2 = os.path.join(FONTS, "tasapainoaisti.ttf")
 

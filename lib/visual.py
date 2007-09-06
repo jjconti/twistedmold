@@ -8,7 +8,7 @@ class Visual(object):
         self.screen = screen
         self.images = images
         self.times = times
-        self.func = func
+        self.func = func    #father function
 
     def loop(self):
         for image, time_sleep in zip(self.images, self.times):

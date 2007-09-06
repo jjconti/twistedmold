@@ -11,54 +11,57 @@ class Points(pygame.sprite.Sprite):
     
     def __init__(self, points):
         pygame.sprite.Sprite.__init__(self)
-        self.positive_points = points
-        self.negative_points = points
+        self.points = points
         self.font = pygame.font.Font(FONT1, 35)
         self.image = self._image()
         self.rect = self.image.get_rect(top=0, right=width - 1)
 
-    def add_positive(self):
-        self.positive_points += 1
+    def update(self, points):
+        self.points = points
         self.image = self._image()
         self.rect = self.image.get_rect(top=0, right=width - 1)
 
-    def add_negative(self):
-        self.negative_points += 1
-        #self.image = self._image()        
-     
     def _image(self):
-        return self.font.render("Points: " + str(self.positive_points), True, COLOR1)
+        return self.font.render("Points: " + str(self.points), True, COLOR1)
 
 
 class EnergyBar(pygame.sprite.Sprite):
-    '''A tiem bar'''
-    def __init__(self, time_leap):
+    '''An energy bar'''
+    def __init__(self, energy_leap):
         pygame.sprite.Sprite.__init__(self)
-        self.energy_leap = time_leap
+        self.energy_leap = energy_leap
         self.energy_percent = 100 #percent remanding of time
         self.image = self._image()
-        self.rect = self.image.get_rect(bottom=height - 1, left=0)
+        self.rect = self.image.get_rect(bottom=height, left=0)
 
     def update(self, tics):
         self.energy_percent -= self.energy_leap
         self.image = self._image()
 
     def add_energy(self, add_percent):
-	self.energy_percent += add_percent
+        self.energy_percent = min(100, add_percent + self.energy_percent)
         
     def _image(self):
+
+        font = pygame.font.Font(FONT1, 14)
+        text = font.render("Energy", True, BLACK)
         h = 15
-        w = int(width * self.energy_percent / 100)
+        w = max(int(width * self.energy_percent / 100), 0)
         if self.energy_percent > 60: 
             color = GREEN
         elif self.energy_percent > 30:
             color = ORANGE
         else:
             color = RED
-        return utils.create_surface((w,h), color)
+        img = utils.create_surface((w,h), color)
+        w1 = img.get_rect().width
+        w2 = text.get_rect().width
+        if w1 > 1.2 * w2:        
+            img.blit(text, (w1 - w2, 0))
+        return img
 
 class LevelTime(pygame.sprite.Sprite):
-    '''A tiem bar'''
+
     def __init__(self, seconds=270):
         pygame.sprite.Sprite.__init__(self)
         self.font = pygame.font.Font(FONT1, 35)

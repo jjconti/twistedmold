@@ -11,32 +11,40 @@ from bottlemanager import BottleManager
 from config import  *
 from explotion import Explotion
 from wheather import Wheather
+from visual import Visual
 from menu import Menu
 
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
+
+levels = {1: dict(energy_leap=0.05, mold_density=35, mold_velocity=10   , max_time=1, energy_add=5, img=LEVEL1),
+          2: dict(energy_leap=0.1, mold_density=45, mold_velocity=15   , max_time=1, energy_add=5, img=LEVEL2),
+          3: dict(energy_leap=0.2, mold_density=45, mold_velocity=15   , max_time=2, energy_add=5, img=LEVEL3),
+          4: dict(energy_leap=0.3, mold_density=55, mold_velocity=20   , max_time=2, energy_add=5, img=LEVEL4)}
+LEVELS = 4
 
 class Level(object):
     '''TwistedMold level'''
     
     '''mold_density_tl y mold_density_bl. Mientras mas bajos mas mold aparecen, mientras mas separados mas disperso'''
 
-    def __init__(self, screen, father, energy_leap=0.07, energy_add=5, mold_density=30, mold_velocity=30):
+
+    def __init__(self, screen, father, level, points):
+
         self.screen = screen
         self.father = father
-
+        self.level = level
         self.background = utils.load_image(BGIMAGE2)
-        #self.screen.blit(self.background, (0, 0))
-  	
+      
     	#parameters
-    	self.energy_leap = energy_leap
-    	self.energy_add = energy_add
-    	self.mold_density = mold_density
-    	self.mold_velocity = mold_velocity
-
+    	self.energy_leap = levels[level]['energy_leap']
+    	self.energy_add = levels[level]['energy_add']
+    	self.mold_density = levels[level]['mold_density']
+    	self.mold_velocity = levels[level]['mold_velocity']
+        self.max_time = levels[level]['max_time']
         #menu control
         self.options = [("Yes", self.father),("No", None)]
-        self.game_over = False
+        self.exit = False
 	
         #Create the game clock
         self.clock = pygame.time.Clock()
@@ -45,8 +53,8 @@ class Level(object):
         self.bm = BottleManager()
         self.bm.mm = self.mm
 
-        self.points = 0
-        self.pointsCounter = Points(0)
+        self.points = points
+        self.pointsCounter = Points(self.points)
         self.mm.pointsCounter = self.pointsCounter        
 
         self.tics = 0
@@ -65,7 +73,7 @@ class Level(object):
         self.energy_bar = EnergyBar(self.energy_leap)
         self.bm.energy_bar = self.energy_bar
 
-        self.level_time = LevelTime()
+        self.level_time = LevelTime(self.max_time)
 
         self.gadgets = pygame.sprite.RenderUpdates()
         self.gadgets.add(self.pointsCounter)
@@ -98,8 +106,12 @@ class Level(object):
         self.control_right = -1
         self.control_tiempo = 5
 
+        #Show level image
+
+        Visual(self.screen, [utils.load_image(levels[self.level]['img'])], [2], None).loop()
+
     def loop(self):  
-        while not self.finnish():
+        while not self.finish():
             self.tics += 1     
             self.screen.blit(self.background, (-(self.tics % 700),0)) 
             self.update()
@@ -140,12 +152,20 @@ class Level(object):
 
             pygame.display.flip()
     
-        if self.game_over:
+        if self.exit:
             return self.father
-        elif not self.level_time:
-            return self.father #hay que preguntar si paso de nivel y mandarlo al proxino sino gameover
-        elif not self.energy_bar:
-            return self.father #gameover
+        elif not self.level_time.seconds:
+            if self.level < LEVELS:
+                def f(screen):
+                    return Level(screen, self.father, self.level + 1, self.points)
+                #return self.father #hay que preguntar si paso de nivel y mandarlo al proxino sino gameover
+                return f
+            else:
+                print "definir una funcion que retorne una animacion de victoria"
+        elif self.energy_bar.energy_percent <= 0:
+            def f(screen):
+                return Visual(screen, [utils.load_image(GAMEOVER)], [2], self.father)
+            return f
 
     def update(self):
         self.snow_slim.update()
@@ -164,7 +184,8 @@ class Level(object):
         #Verify collision
         if self.mm.fit(self.hero.group, self.tics):
             self.explotion.boom(self.hero.parts['cheat'].rect)
-            self.pointsCounter.add_positive()
+            self.points += 1
+            self.pointsCounter.update(self.points)
             
 	
     def draw(self):
@@ -196,9 +217,9 @@ class Level(object):
                 music.play_scream()
 
             if event.key == K_ESCAPE:
-                mem = Menu(self.screen, self.options, "Do you want to exit?").loop()
+                mem = Menu(self.screen, self.options, "Do you want to quit?").loop()
                 if mem == self.father:
-                    self.game_over = True
+                    self.exit = True
 
         if event.type == KEYUP:
             if event.key == K_DOWN:
@@ -210,10 +231,10 @@ class Level(object):
             if event.key == K_LEFT:
                 self.control_left = -1
 
-    def finnish(self):
-        if self.level_time.seconds == 0 or self.energy_bar.energy_percent == 0 or self.game_over:
+    def finish(self):
+        if self.level_time.seconds == 0 or self.energy_bar.energy_percent <= 0 or self.exit:
             return True
-    
+
         return False
 
 
