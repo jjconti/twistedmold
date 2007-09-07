@@ -13,9 +13,18 @@ class MoldsManager(object):
         self.mold_density = mold_density
         self.mold_velocity = mold_velocity
         self.tops = [25, 125, 250, 375]
+        self.destroy_all_flag = False
+        self.destroy_all_finish = 0
 
 
     def move(self, times):
+    
+        if self.destroy_all_finish == 100:
+            self.destroy_all_flag = False
+            self.destroy_all_finish = 0
+        
+        if self.destroy_all_flag: return
+        
         if times % self.mold_velocity != 0: return
     
         for m in self.molds:
@@ -29,10 +38,18 @@ class MoldsManager(object):
                 del m
 
     def draw(self, screen):
+        if self.destroy_all_flag:
+            self.destroy_all_finish += 1
+            circle = pygame.draw.circle(screen, (240,251,227), (250,250), self.destroy_all_finish*5+10, 10)
+                #pygame.display.update()                
+        
+        
         for m in self.molds:
             m.draw(screen)
 
     def destroy_all(self):
+        self.destroy_all_flag = True
+            
         temp = []
         print len(self.molds)
         for m in self.molds:
