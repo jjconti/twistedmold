@@ -111,9 +111,8 @@ class MoldsManager(object):
 
     def fit(self, hero, times):
         '''Ask if the hero fit any mold and remove the fitted mold.'''
-        for m in self.molds:        
-            d = pygame.sprite.groupcollide(hero, m, False, False)
-            if len(d) == 10:
+        for m in self.molds:
+            if hero.fit(m):
                 self.molds.remove(m)
                 m.empty()
                 del m

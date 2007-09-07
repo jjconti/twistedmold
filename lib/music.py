@@ -4,6 +4,7 @@ import utils
 import pygame
 pygame.init()
 pygame.mixer.init()
+pygame.mixer.music.set_volume(0.0)
 
 SOUNDS = {}
 SOUNDS['eat'] = utils.load_sound(BLOOP)
@@ -15,13 +16,14 @@ SOUNDS['gameover'] = utils.load_sound(GAMEOVERMUSIC)
 SOUNDS['sword1'] = utils.load_sound(SWORD1)
 SOUNDS['sword2'] = utils.load_sound(SWORD2)
 
-
-last_music = False
+last_music = None
 
 def play_menu1():
+    SOUNDS['sword1'].set_volume(0.5)
     SOUNDS['sword1'].play()
 
 def play_menu2():
+    SOUNDS['sword2'].set_volume(0.5)
     SOUNDS['sword2'].play()
 
 def play_bloop():
@@ -42,5 +44,8 @@ def play_music(music_name):
 
 def stop_music():
     global last_music
-    last_music = False
+    last_music = None
     pygame.mixer.music.stop()
+
+def is_playing_music():
+    return last_music != None
