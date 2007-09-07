@@ -42,7 +42,7 @@ class Wheather(pygame.sprite.Sprite):
 
         pos = (self.func_x(num) + self.x, func_y + self.y)
         self.rect.center = pos
-        if self.rect.center[1] > height:
+        if self.rect.center[1] > HEIGHT:
             self.rect.center = (0,pos[1])
             self.num = self.count()
             self.y = 0

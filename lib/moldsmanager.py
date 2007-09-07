@@ -74,16 +74,16 @@ class MoldsManager(object):
         #Create mold blocks
         top = random.choice(self.tops)
 
-        rhand = Part(lit='k', numb=1, top=top, left=width)
-        head = Part(lit='k', numb=1, top=top, left=width + 2 * side)
-        lhand = Part(lit='k', numb=1, top=top, left=width + 4 * side)
-        rarm = Part(lit='k', numb=1, top=top + side, left=width)
-        rshould = Part(lit='k', numb=1, top=top + side, left=width + side)
-        cheat = Part(lit='k', numb=1, top=top + side, left=width + 2 * side)
-        lshould = Part(lit='k', numb=1, top=top + side, left=width + 3 * side)
-        larm = Part(lit='k', numb=1, top=top + side, left=width + 4 * side)
-        legs = Part(lit='k', numb=1, top=top + 2 * side, left=width + 2 * side)
-        foots = Part(lit='k', numb=1, top=top + 3 * side, left=width + 2 * side)
+        rhand = Part(lit='k', numb=1, top=top, left=WIDTH)
+        head = Part(lit='k', numb=1, top=top, left=WIDTH + 2 * SIDE)
+        lhand = Part(lit='k', numb=1, top=top, left=WIDTH + 4 * SIDE)
+        rarm = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH)
+        rshould = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + SIDE)
+        cheat = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + 2 * SIDE)
+        lshould = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + 3 * SIDE)
+        larm = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + 4 * SIDE)
+        legs = Part(lit='k', numb=1, top=top + 2 * SIDE, left=WIDTH + 2 * SIDE)
+        foots = Part(lit='k', numb=1, top=top + 3 * SIDE, left=WIDTH + 2 * SIDE)
 
         blocks = dict(rhand=rhand, head=head, lhand=lhand, rarm=rarm, rshould=rshould, \
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)

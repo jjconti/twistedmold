@@ -16,13 +16,13 @@ class Points(pygame.sprite.Sprite):
         self.level = kwargs["level"]
         self.font = pygame.font.Font(FONT1, 35)
         self.image = self._image()
-        self.rect = self.image.get_rect(top=0, right=width - 1)
+        self.rect = self.image.get_rect(top=0, right=WIDTH - 1)
 
     def update(self, points, neg_points):
         self.points = points
         self.neg_points = neg_points
         self.image = self._image()
-        self.rect = self.image.get_rect(top=0, right=width - 1)
+        self.rect = self.image.get_rect(top=0, right=WIDTH - 1)
 
     def _image(self):
         return self.font.render("Level " + str(self.level) + "         Points: " + str(self.points) + " Lost: " + str(self.neg_points) + " ", True, COLOR1)
@@ -35,7 +35,7 @@ class EnergyBar(pygame.sprite.Sprite):
         self.energy_leap = energy_leap
         self.energy_percent = 100 #percent remanding of time
         self.image = self._image()
-        self.rect = self.image.get_rect(bottom=height, left=0)
+        self.rect = self.image.get_rect(bottom=HEIGHT, left=0)
 
     def update(self, tics):
         self.energy_percent -= self.energy_leap
@@ -49,7 +49,7 @@ class EnergyBar(pygame.sprite.Sprite):
         font = pygame.font.Font(FONT1, 14)
         text = font.render("Energy", True, BLACK)
         h = 15
-        w = max(int(width * self.energy_percent / 100), 0)
+        w = max(int(WIDTH * self.energy_percent / 100), 0)
         if self.energy_percent > 60: 
             color = GREEN
         elif self.energy_percent > 30:
@@ -86,7 +86,7 @@ class Part(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.lit = kwargs['lit']
         self.numb = kwargs['numb']
-        self.image = utils.load_image(os.path.join(parts, self.lit + str(self.numb) + ".png"), -1)
+        self.image = utils.load_image(os.path.join(PARTS, self.lit + str(self.numb) + ".png"), -1)
         self.rect = self.image.get_rect(top=kwargs['top'], left=kwargs['left'])
 
     def __str__(self):
@@ -94,19 +94,19 @@ class Part(pygame.sprite.Sprite):
 
     def move(self):
         '''From right to left'''
-        self.rect.move_ip(-side, 0)
+        self.rect.move_ip(-SIDE, 0)
         
     def right(self):
-        self.rect.move_ip(side, 0)
+        self.rect.move_ip(SIDE, 0)
  
     def left(self):
-        self.rect.move_ip(-side, 0)        
+        self.rect.move_ip(-SIDE, 0)        
 
     def up(self):
-        self.rect.move_ip(0, -side)
+        self.rect.move_ip(0, -SIDE)
 
     def down(self): 
-        self.rect.move_ip(0, side)
+        self.rect.move_ip(0, SIDE)
 
     def twist(self, x, y, rot=0, flipx=False, flipy=False):
         '''x,y: offsets, rot: deegrees rotation'''
@@ -126,7 +126,7 @@ class Bottle(pygame.sprite.Sprite):
         
         self.energy = params["energy"]
         self.destroy_all = params.get("destroy_all", False)
-        self.rect = self.image.get_rect(top=random.randrange(0, 550), right=width)
+        self.rect = self.image.get_rect(top=random .randrange(0, 550), right=WIDTH)
         self.ang = 0
         
     def update(self):

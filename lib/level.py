@@ -123,16 +123,16 @@ class Level(object):
         self.gadgets.add(self.level_time)
     
         #Create the hero parts
-        rhand = Part(lit='a', numb=1, top=center, left=0)
-        head = Part(lit='b', numb=1, top=center, left=2 * side)
-        lhand = Part(lit='c', numb=1, top=center, left=4 * side)
-        rarm = Part(lit='d', numb=1, top=center + side, left=0)
-        rshould = Part(lit='e', numb=1, top=center + side, left=side)
-        cheat = Part(lit='f', numb=1, top=center + side, left=2 * side)
-        lshould = Part(lit='g', numb=1, top=center + side, left=3 * side)
-        larm = Part(lit='h', numb=1, top=center + side, left=4 * side)
-        legs = Part(lit='i', numb=1, top=center + 2 * side, left=2 * side)
-        foots = Part(lit='j', numb=1, top=center + 3 * side, left=2 * side)
+        rhand = Part(lit='a', numb=1, top=CENTER, left=0)
+        head = Part(lit='b', numb=1, top=CENTER, left=2 * SIDE)
+        lhand = Part(lit='c', numb=1, top=CENTER, left=4 * SIDE)
+        rarm = Part(lit='d', numb=1, top=CENTER + SIDE, left=0)
+        rshould = Part(lit='e', numb=1, top=CENTER + SIDE, left=SIDE)
+        cheat = Part(lit='f', numb=1, top=CENTER + SIDE, left=2 * SIDE)
+        lshould = Part(lit='g', numb=1, top=CENTER + SIDE, left=3 * SIDE)
+        larm = Part(lit='h', numb=1, top=CENTER + SIDE, left=4 * SIDE)
+        legs = Part(lit='i', numb=1, top=CENTER + 2 * SIDE, left=2 * SIDE)
+        foots = Part(lit='j', numb=1, top=CENTER + 3 * SIDE, left=2 * SIDE)
 
         parts = dict(rhand=rhand, head=head, lhand=lhand, rarm=rarm, rshould=rshould, \
                             cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
