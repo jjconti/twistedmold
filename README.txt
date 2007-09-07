@@ -4,7 +4,7 @@ Twisted Zombie
 Entry in PyWeek #5  <http://www.pyweek.org/5/>
 Team: Pythonerds (aka santa_fe)
 Members: Juanjo Conti, Mariano Galán, Diego Levental,
-         Davil Capello, Sebastian Galeano, César Portela,
+         David Capello, Sebastian Galeano, César Portela,
          Manuel Kaufmann
 
 
