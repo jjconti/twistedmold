@@ -49,7 +49,10 @@ def scores(screen):
 
 
 def help(screen):
-    return Help(screen,menu)
+    bg = utils.load_image(HELPBG)
+    text = utils.load_image(HELP, (0,0,0))
+    bg.blit(text, (0,0))
+    return Visual(screen, bg, -1)
 
 
 def credits(screen):
