@@ -197,7 +197,8 @@ class Level(object):
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
                 def g(screen):
-                    return HighScores(self.screen, self.father, self.total_points) 
+                    return HighScores(self.screen, self.father, self.total_points)
+                music.stop_music()
                 music.play_gameover()
                 return Visual(screen, [utils.load_image(GAMEOVER)], [3], g)               
 
