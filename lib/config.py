@@ -36,6 +36,8 @@ LEVEL3 = os.path.join(IMGS, "level3.png")
 LEVEL4 = os.path.join(IMGS, "level4.png")
 STORY = os.path.join(IMGS, "story.png")
 STORYBG = os.path.join(IMGS, "bgclean.png")
+HELP = os.path.join(IMGS, "story.png") # Reemplazar por un texto con la ayuda.
+HELPBG = os.path.join(IMGS, "bgclean.png")
 
 
 
