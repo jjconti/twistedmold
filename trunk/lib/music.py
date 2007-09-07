@@ -35,12 +35,3 @@ def stop_music():
     global last_music
     last_music = False
     pygame.mixer.music.stop()
-
-def loop_menu():
-    play_music(MENUMUSIC)
-
-def loop_credits():
-    play_music(CREDITSMUSIC)
-
-def loop_play():
-    play_music(PLAYMUSIC)
