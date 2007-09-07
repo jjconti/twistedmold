@@ -43,29 +43,29 @@ class Hero(object):
                           legs2left =HeroPart(self.body_image, Rect(3*SIDE, 2*SIDE, 2*SIDE, 1*SIDE), (2, 2)), \
                           legs2right=HeroPart(self.body_image, Rect(0*SIDE, 2*SIDE, 2*SIDE, 1*SIDE), (1, 2)))
 
-        self.x = 2*SIDE
-        self.y = 10*SIDE
+        self.x = (LEVEL_LEFT)*SIDE
+        self.y = (LEVEL_TOP+LEVEL_HEIGHT/2-2)*SIDE
         self.pos = 0
         self.group = pygame.sprite.Group()
         self.setup_parts()
 
     def up(self):
-        if self.y > 0:
+        if self.y > LEVEL_TOP*SIDE:
             self.y -= SIDE;
             self.setup_parts()
 
     def down(self):
-        if self.y < HEIGHT:
+        if self.y < (LEVEL_TOP+LEVEL_HEIGHT-4)*SIDE:
             self.y += SIDE;
             self.setup_parts()
 
     def left(self):
-        if self.x > 0:
+        if self.x > LEVEL_LEFT*SIDE:
             self.x -= SIDE;
             self.setup_parts()
 
     def right(self):
-        if self.x < WIDTH:
+        if self.x < (LEVEL_LEFT+LEVEL_WIDTH-5)*SIDE:
             self.x += SIDE;
             self.setup_parts()
 
