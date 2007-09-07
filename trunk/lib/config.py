@@ -17,6 +17,7 @@ IMGS = os.path.join(DATA, "imgs")
 DROP = os.path.join(IMGS, "drop.gif")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
 INTROS = os.path.join(IMGS, "intro")
+BOTTLES = os.path.join(IMGS, "bottles")
 parts = os.path.join(IMGS, "body")
 SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
@@ -79,3 +80,8 @@ INTRO_IMAGES = [os.path.join(INTROS, "intro0001.png"),
 
 INTRO_TIMES = [0.672, 0.504, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084,
                0.084, 0.084, 0.084, 0.588, 0.084, 0.084, 0.084, 2.856]
+
+BOTTLE_BLUE = os.path.join(BOTTLES, "bottle_blue.png")
+BOTTLE_GREEN = os.path.join(BOTTLES, "bottle_green.png")
+BOTTLE_ORANGE  = os.path.join(BOTTLES, "bottle_orange.png")
+BOTTLE_RED  = os.path.join(BOTTLES, "bottle_red.png")
