@@ -4,7 +4,6 @@ import utils
 import pygame
 pygame.init()
 pygame.mixer.init()
-pygame.mixer.music.set_volume(0.0)
 
 SOUNDS = {}
 SOUNDS['eat'] = utils.load_sound(BLOOP)
