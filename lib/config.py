@@ -34,6 +34,9 @@ LEVEL1 = os.path.join(IMGS, "level1.png")
 LEVEL2 = os.path.join(IMGS, "level2.png")
 LEVEL3 = os.path.join(IMGS, "level3.png")
 LEVEL4 = os.path.join(IMGS, "level4.png")
+STORY = os.path.join(IMGS, "story.png")
+STORYBG = os.path.join(IMGS, "bgclean.png")
+
 
 
 BLOOP = os.path.join(SOUNDS, "bloop.wav")

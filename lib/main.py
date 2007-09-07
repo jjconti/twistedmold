@@ -37,7 +37,7 @@ def main():
     opcion()        #Exit
 
 def menu(screen):
-    options = [("Play", play), ("Story", None), ("Help", help), \
+    options = [("Play", play), ("Story", story), ("Help", help), \
                ("High Scores", scores), ("Credits", credits), ("Exit",  exit)]
     return Menu(screen, options, WINDOW_TITLE)
 
@@ -55,6 +55,11 @@ def help(screen):
 def credits(screen):
     return Credits(screen,menu)
 
+def story(screen):
+    bg = utils.load_image(STORYBG)
+    text = utils.load_image(STORY, (0,0,0))
+    bg.blit(text, (0,0))
+    return Visual(screen, bg, -1)
 
 def exit():
     sys.exit(0)
