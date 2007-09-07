@@ -26,7 +26,7 @@ class MoldsManager(object):
             
         
         if self.destroy_all_flag:
-            self.expansion_radius = self.destroy_all_finish*15+10 
+            self.expansion_radius = self.destroy_all_finish*15+20 
             x,y = self.destroy_all_center
             temp = []                       
             for m in self.molds:
@@ -58,7 +58,7 @@ class MoldsManager(object):
         if self.destroy_all_flag:
             self.destroy_all_finish += 1
             x,y = self.destroy_all_center
-            circle = pygame.draw.circle(screen, (240,251,227),(y,x),self.expansion_radius, 10)
+            circle = pygame.draw.circle(screen, (240,251,227),(y,x),self.expansion_radius, 20)
 
         for m in self.molds:
             m.draw(screen)
