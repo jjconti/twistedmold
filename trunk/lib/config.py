@@ -12,7 +12,7 @@ half = side / 2
 
 DATA = os.path.join("data")
 HISCORES = os.path.join(DATA, "scores.dat")
-CREDITS = os.path.join(DATA, "credit.dat")
+CREDITS = os.path.join(DATA, "credits.txt")
 IMGS = os.path.join(DATA, "imgs")
 DROP = os.path.join(IMGS, "drop.gif")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
