@@ -43,7 +43,7 @@ class Credits(object):
     def _draw_screen(self):
 
         pygame.display.set_caption(config.WINDOW_TITLE)
-        background = utils.load_image(config.MENUBGIMAGE)
+        background = utils.load_image(config.CREDITIMAGE)
 
         font1 = pygame.font.Font(config.FONT3, 20)
         font2 = pygame.font.Font(config.FONT3, 40)
