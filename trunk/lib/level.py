@@ -97,7 +97,7 @@ class Level(object):
         self.neg_points = 0
         
         
-        self.pointsCounter = Points(0,0)
+        self.pointsCounter = Points(0,0,level=level)
         self.mm.level = self
         self.tics = 0
 
