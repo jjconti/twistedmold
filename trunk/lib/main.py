@@ -7,7 +7,11 @@ from level import Level
 from menu import Menu
 from scores import HighScores
 from visual import Visual
+
+from help import Help
+
 from credits import Credits
+
 
 if not pygame.font: print 'Warning, fonts disabled'
 if not pygame.mixer: print 'Warning, sound disabled'
@@ -33,7 +37,7 @@ def main():
     opcion()        #Exit
 
 def menu(screen):
-    options = [("Play", play), ("Setup", None), ("Help", None), \
+    options = [("Play", play), ("Setup", None), ("Help", help), \
                ("High Scores", scores), ("Credits", credits), ("Exit",  exit)]
     return Menu(screen, options, WINDOW_TITLE)
 
@@ -43,8 +47,14 @@ def play(screen):
 def scores(screen):
     return HighScores(screen,menu)
 
+
+def help(screen):
+    return Help(screen,menu)
+
+
 def credits(screen):
     return Credits(screen,menu)
+
 
 def exit():
     sys.exit(0)
