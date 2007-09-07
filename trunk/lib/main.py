@@ -53,7 +53,7 @@ def help(screen):
     bg = utils.load_image(MENUBGIMAGE)
     text = utils.load_image(HELP, (0,0,0))
     bg.blit(text, (0,0))
-    return Visual(screen, bg, -1)
+    return Visual(screen, bg, -1, menu)
 
 def credits(screen):
     return Credits(screen,menu)
@@ -63,7 +63,7 @@ def story(screen):
     bg = utils.load_image(MENUBGIMAGE)
     text = utils.load_image(STORY, (0,0,0))
     bg.blit(text, (0,0))
-    return Visual(screen, bg, -1)
+    return Visual(screen, bg, -1, menu)
 
 def exit():
     sys.exit(0)
