@@ -3,6 +3,7 @@ from config import *
 import utils
 import pygame
 pygame.init()
+pygame.mixer.init(44100, -16, 2, 1024)
 
 SOUNDS = {}
 SOUNDS['eat'] = utils.load_sound(BLOOP)
@@ -11,6 +12,8 @@ SOUNDS['scream2'] = utils.load_sound(SCREAM2)
 SOUNDS['scream3'] = utils.load_sound(SCREAM3)
 SOUNDS['crack1'] = utils.load_sound(CRACK1)
 SOUNDS['gameover'] = utils.load_sound(GAMEOVERMUSIC)
+
+last_music = False
 
 def play_bloop():
     SOUNDS['eat'].play()
@@ -21,14 +24,23 @@ def play_scream():
 def play_gameover():
     SOUNDS['gameover'].play()
 
+def play_music(music_name):
+    global last_music
+    if last_music != music_name:
+        last_music = music_name
+        pygame.mixer.music.load(music_name)
+        pygame.mixer.music.play(-1)
+
+def stop_music():
+    global last_music
+    last_music = False
+    pygame.mixer.music.stop()
+
 def loop_menu():
-    pygame.mixer.music.load(MENUMUSIC)
-    pygame.mixer.music.play(-1)
+    play_music(MENUMUSIC)
 
 def loop_credits():
-    pygame.mixer.music.load(CREDITSMUSIC)
-    pygame.mixer.music.play(-1)
+    play_music(CREDITSMUSIC)
 
 def loop_play():
-    pygame.mixer.music.load(PLAYMUSIC)
-    pygame.mixer.music.play(-1)
+    play_music(PLAYMUSIC)
