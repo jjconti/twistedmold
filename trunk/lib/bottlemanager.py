@@ -22,7 +22,7 @@ class BottleManager(object):
         self.bottle1_density = bottle1_density
         self.bottle2_density = bottle2_density
         self.bottle3_density = bottle3_density
-        self.bottle4_mount = 10
+        self.bottle4_mount = bottle4_mount
         self.bottle4_current_mount = 0
 
         self.bottles.add(Bottle(self.bottle1))
@@ -47,7 +47,7 @@ class BottleManager(object):
             bot = Bottle(self.bottle3)
             self.bottles.add(bot)
 
-        if random.randrange(100) == 0 and self.bottle4_current_mount < self.bottle4_mount: 
+        if random.randrange(400) == 0 and self.bottle4_current_mount < self.bottle4_mount:
             bot = Bottle(self.bottle4)
             self.bottles.add(bot)
             self.bottle4_current_mount += 1
