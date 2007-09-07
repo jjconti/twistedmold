@@ -22,11 +22,12 @@ parts = os.path.join(IMGS, "body")
 SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
-
+ICON = os.path.join(IMGS, "icon.png")
 BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
 BGIMAGE2 = os.path.join(BACKGROUNDS, "bg2.png")
 MENUBGIMAGE = os.path.join(BACKGROUNDS, "menubg.png")
 CREDITIMAGE = os.path.join(BACKGROUNDS, "credits.png")
+
 
 GAMEOVER = os.path.join(IMGS, "gameover.png")
 LEVEL1 = os.path.join(IMGS, "level1.png")
@@ -82,7 +83,7 @@ INTRO_IMAGES = [os.path.join(INTROS, "intro0001.png"),
 INTRO_TIMES = [0.672, 0.504, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084,
                0.084, 0.084, 0.084, 0.588, 0.084, 0.084, 0.084, 2.856]
 
-BOTTLE_BLUE = os.path.join(BOTTLES, "bottle_blue.png")
+BOTTLE_BLUE = os.path.join(BOTTLES, "bottle_bluejj.png")
 BOTTLE_GREEN = os.path.join(BOTTLES, "bottle_green.png")
 BOTTLE_ORANGE  = os.path.join(BOTTLES, "bottle_orange.png")
 BOTTLE_RED  = os.path.join(BOTTLES, "bottle_red.png")
