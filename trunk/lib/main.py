@@ -37,7 +37,7 @@ def main():
     opcion()        #Exit
 
 def menu(screen):
-    options = [("Play", play), ("Setup", None), ("Help", help), \
+    options = [("Play", play), ("Story", None), ("Help", help), \
                ("High Scores", scores), ("Credits", credits), ("Exit",  exit)]
     return Menu(screen, options, WINDOW_TITLE)
 
