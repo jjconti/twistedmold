@@ -12,10 +12,10 @@ from pygame.locals import *
 
 from time import sleep
 
-MAX = 10 # max player number in highscore screen 
+MAX = 10 # max players number in highscore screen 
 CPL = 15 # max char per line
-SCORE_HUMAN = 1000 # you begin to be human
-SCORE_DEAD = 500 # you is happy dead
+SCORE_HUMAN = 100 # you are a human
+SCORE_DEAD = 50 # you are a happy dead
 
 class HighScores(object):
 
@@ -24,8 +24,8 @@ class HighScores(object):
         self.father = father
         self.score = score
         self.top_scores = []
-        self.font1 = pygame.font.Font(config.FONT3, 40)
-        self.font2 = pygame.font.Font(config.FONT3, 30)
+        self.font1 = pygame.font.Font(config.FONT2, 40)
+        self.font2 = pygame.font.Font(config.FONT2, 30)
 
     def loop(self):
         if (not os.path.exists(config.HISCORES)) and (self.score <= 0):
