@@ -10,12 +10,12 @@ import utils
 import pygame
 from pygame.locals import *
 
-from time import sleep
 
 MAX = 10 # max players number in highscore screen 
 CPL = 15 # max char per line
-SCORE_HUMAN = 100 # you are a human
-SCORE_DEAD = 50 # you are a happy dead
+
+SCORE_HUMAN = 60 # you begin to be human
+SCORE_DEAD = 30 # you is happy dead
 
 class HighScores(object):
 
@@ -24,8 +24,8 @@ class HighScores(object):
         self.father = father
         self.score = score
         self.top_scores = []
-        self.font1 = pygame.font.Font(config.FONT2, 40)
-        self.font2 = pygame.font.Font(config.FONT2, 30)
+        self.font1 = pygame.font.Font(config.FONT3, 40)
+        self.font2 = pygame.font.Font(config.FONT3, 30)
 
     def loop(self):
         if (not os.path.exists(config.HISCORES)) and (self.score <= 0):
@@ -88,14 +88,14 @@ class HighScores(object):
     def draw_screen(self, text_list):
 
         pygame.display.set_caption(config.WINDOW_TITLE)
-        background = utils.load_image(config.BGIMAGE1)
+        background = utils.load_image(config.MENUBGIMAGE)
 
         clock = pygame.time.Clock()
 
         title = text_list[0]
         text_list.remove(title)
 
-        title_img = self.font1.render(title, True, config.RED)
+        title_img = self.font1.render(title, True, config.WHITE)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 25
         background.blit(title_img, topleft)
         bg = background.copy()
@@ -120,7 +120,7 @@ class HighScores(object):
                 done = True
 
             for i,text_item in enumerate(text_list):
-                img = self.font2.render(text_item, True, config.RED)
+                img = self.font2.render(text_item, True, config.WHITE)
                 x2 = self.screen.get_width()/2
                 if (state == 0) and (i%2 == 0):
                     x1 = x2 - ((config.width * 0.86) * (50 - timeloop) / 50)
@@ -203,7 +203,7 @@ class InputPanel(object):
 
     def _draw_text(self):
         y = 300 # Tune this value as you need
-        text_img = self.font1.render(self.text + self.cursor, True, config.RED)
+        text_img = self.font1.render(self.text + self.cursor, True, config.WHITE)
         x = (self.screen.get_width() - text_img.get_width()) / 2
         self.screen.blit(text_img, (x,y))
 

@@ -1,0 +1,4 @@
+arte,fulano 1
+arte,fulano 2
+grafica,fulano 10
+
