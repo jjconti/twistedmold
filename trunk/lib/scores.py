@@ -158,7 +158,6 @@ class InputPanel(object):
 
         score_text="Your score is "+str(score)
         text_list=["CONGRATULATION !!!","WELCOME TO THE \"HALL OF FAME\"","Please, introduces your name","  ",score_text]
-        print text_list
         self.background = HighScores(screen).draw_screen(text_list)
         pygame.display.flip()
         
