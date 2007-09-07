@@ -9,6 +9,10 @@ CENTER = HEIGHT / 2
 SIDE = 25
 HALF = SIDE / 2
 
+LEVEL_TOP = 1
+LEVEL_LEFT = 0
+LEVEL_WIDTH = WIDTH / SIDE - LEVEL_LEFT
+LEVEL_HEIGHT = HEIGHT / SIDE - LEVEL_TOP
 
 DATA = os.path.join("data")
 HISCORES = os.path.join(DATA, "scores.dat")

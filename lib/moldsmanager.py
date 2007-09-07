@@ -13,10 +13,12 @@ class MoldsManager(object):
         self.molds = []
         self.mold_density = mold_density
         self.mold_velocity = mold_velocity
-        self.tops = [25, 125, 250, 375]
         self.destroy_all_flag = False
         self.destroy_all_finish = 0
 
+        self.tops = []
+        for y in range(LEVEL_TOP, LEVEL_TOP+LEVEL_HEIGHT-4, 4):
+            self.tops.append(y*SIDE)
 
     def move(self, times):
     
@@ -96,7 +98,7 @@ class MoldsManager(object):
             d = pygame.sprite.groupcollide(mold, m, False, False)
             if len(d):
                 del mold
-                return         
+                return
     
         for i in xrange(0,random.randrange(0, 6)):
             twist(blocks, i)
