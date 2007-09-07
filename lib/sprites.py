@@ -120,7 +120,7 @@ class Bottle(pygame.sprite.Sprite):
     def __init__(self, params):
         pygame.sprite.Sprite.__init__(self) 
         self.velocity = params["velocity"]
-        self.image = utils.load_image(params["image"], -1)
+        self.image = utils.load_image(params["image"], (0,0,0))
         self.rotation = params["rotation"]
         self.original_image = self.image
         
