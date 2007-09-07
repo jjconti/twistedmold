@@ -36,7 +36,7 @@ class Menu(object):
 
     def loop(self):
         '''Returns the asosiated object for the selected item'''
-        #music.loop_menu()
+        music.loop_menu()
         while not self.done:
 
             self.clock.tick(CLOCK_TICS)
