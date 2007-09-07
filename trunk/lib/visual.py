@@ -19,6 +19,8 @@ class Visual(object):
             pygame.display.flip()
             while True:
                 for event in pygame.event.get():
+                    if event.type == QUIT:
+                            sys.exit(0)
                     if event.type == KEYDOWN and \
                         (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
                         return self.func
