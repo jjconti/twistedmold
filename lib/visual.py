@@ -1,3 +1,4 @@
+import sys
 import pygame
 from pygame.locals import *
 
@@ -30,6 +31,8 @@ class Visual(object):
                     pygame.time.delay(1)
                     i += 1
                     for event in pygame.event.get():
+                        if event.type == QUIT:
+                            sys.exit(0)
                         if event.type == KEYDOWN and \
                                 (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
                             return self.func
