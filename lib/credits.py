@@ -1,12 +1,12 @@
 '''score releted stuff'''
 
 import math
-
-import config
-import utils
 import pygame
 from pygame.locals import *
 
+from config import *
+import utils
+import music
 
 class Credits(object):
 
@@ -16,13 +16,14 @@ class Credits(object):
         self.credits = []
 
     def loop(self):
+        music.play_music(CREDITSMUSIC)
         self._load_credits()
         self._draw_screen()
         return self._waitKey()
 
     def _load_credits(self):
         try:
-            f=open(config.CREDITS,'r')
+            f=open(CREDITS,'r')
             aux=f.read()
             f.close()
             aux=aux.split('\n')[:-2]
@@ -30,7 +31,7 @@ class Credits(object):
                 self.credits.append(item.split(','))
             #self._convert()
         except IOError:
-            print 'Cannot open credit file'
+            print 'Cannot open credits file'
 
     def _convert(self):
         for item in self.credits:
@@ -42,15 +43,15 @@ class Credits(object):
 
     def _draw_screen(self):
 
-        pygame.display.set_caption(config.WINDOW_TITLE)
-        background = utils.load_image(config.CREDITIMAGE)
+        pygame.display.set_caption(WINDOW_TITLE)
+        background = utils.load_image(CREDITIMAGE)
 
-        font1 = pygame.font.Font(config.FONT3, 20)
-        font2 = pygame.font.Font(config.FONT3, 40)
+        font1 = pygame.font.Font(FONT3, 20)
+        font2 = pygame.font.Font(FONT3, 40)
         clock = pygame.time.Clock()
 
         title = 'CREDITS'
-        title_img = font2.render(title, True, config.WHITE)
+        title_img = font2.render(title, True, WHITE)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
         background.blit(title_img, topleft)
  
@@ -66,8 +67,8 @@ class Credits(object):
         w = self.screen.get_width()
         
         for item in self.credits:
-            img1 = font1.render(item[0], True, config.WHITE)
-            img2 = font2.render(item[1], True, config.WHITE)
+            img1 = font1.render(item[0], True, WHITE)
+            img2 = font2.render(item[1], True, WHITE)
             self.screen.blit(background, (0, 0))
             pygame.display.flip()
             
