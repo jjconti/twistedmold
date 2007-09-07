@@ -79,6 +79,8 @@ class Credits(object):
                     pygame.time.delay(1)
                 x1 -= img1.get_width()/2
                 x2 -= img2.get_width()/2
+                if x1 == x2:
+                    pygame.time.delay(2)
                 self.screen.blit(img1, (x1, y1))
                 self.screen.blit(img2, (x2, y2))
                 pygame.display.flip()
