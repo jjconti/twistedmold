@@ -187,7 +187,8 @@ class Level(object):
             if self.pos_points*1.0 / (self.pos_points*1.0 + self.neg_points*1.0) < 0.6:
                 def f(screen):
                     def g(screen):
-                        return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points) 
+                        return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points)
+                    music.stop_music()
                     music.play_gameover()
                     return Visual(screen, [utils.load_image(GAMEOVER)], [3], g)               
 
