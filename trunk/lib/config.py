@@ -38,7 +38,6 @@ STORYBG = os.path.join(IMGS, "bgclean.png")
 HELP = os.path.join(IMGS, "help.png") # Reemplazar por un texto con la ayuda.
 HELPBG = os.path.join(IMGS, "bgclean.png")
 
-
 BLOOP = os.path.join(SOUNDS, "bloop.wav")
 SWORD1 = os.path.join(SOUNDS, "37596__hello_flowers__Sword.wav")
 SWORD2 = os.path.join(SOUNDS, "29613__Erdie__Rubbing_metal03.wav")
@@ -92,3 +91,5 @@ BOTTLE_BLUE = os.path.join(BOTTLES, "bottle_blue.png")
 BOTTLE_GREEN = os.path.join(BOTTLES, "bottle_green.png")
 BOTTLE_ORANGE  = os.path.join(BOTTLES, "bottle_orange.png")
 BOTTLE_RED  = os.path.join(BOTTLES, "bottle_red.png")
+
+BODY1 = os.path.join(IMGS, os.path.join("body", "body1.png"))

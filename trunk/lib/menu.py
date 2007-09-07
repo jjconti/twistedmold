@@ -36,7 +36,8 @@ class Menu(object):
 
     def loop(self):
         '''Returns the asosiated object for the selected item'''
-        music.play_music(MENUMUSIC)
+        if not music.is_playing_music():
+            music.play_music(MENUMUSIC)
         while not self.done:
 
             self.clock.tick(CLOCK_TICS)

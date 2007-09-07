@@ -115,6 +115,18 @@ class Part(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(self.image, rot)
         self.image = pygame.transform.flip(self.image, flipx, flipy)
 
+class HeroPart(pygame.sprite.Sprite):
+
+    def __init__(self, src_image, rect, offset):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = src_image.subsurface(rect)
+        self.rect = pygame.Rect((0, 0), rect.size)
+        self.offset = offset
+
+    def setup_rect(self, x, y):
+        self.rect = pygame.Rect(x+self.offset[0]*SIDE, y+self.offset[1]*SIDE, \
+                                self.rect.width, self.rect.height)
+
 class Bottle(pygame.sprite.Sprite):
 
     def __init__(self, params):
@@ -162,7 +174,7 @@ class BloodDrop(pygame.sprite.Sprite):
             self.rect.left = self.x
             self.rect.top = self.y
         
-    def set_position(self, top, left):
+    def set_position(self, left, top):
         ang = random.randrange(0,3600)/10.0
         ang = math.pi * ang / 180.0
         vel = random.randrange(50,250)/10.0

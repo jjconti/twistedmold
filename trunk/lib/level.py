@@ -121,23 +121,8 @@ class Level(object):
         self.gadgets.add(self.pointsCounter)
         self.gadgets.add(self.energy_bar)
         self.gadgets.add(self.level_time)
-    
-        #Create the hero parts
-        rhand = Part(lit='a', numb=1, top=CENTER, left=0)
-        head = Part(lit='b', numb=1, top=CENTER, left=2 * SIDE)
-        lhand = Part(lit='c', numb=1, top=CENTER, left=4 * SIDE)
-        rarm = Part(lit='d', numb=1, top=CENTER + SIDE, left=0)
-        rshould = Part(lit='e', numb=1, top=CENTER + SIDE, left=SIDE)
-        cheat = Part(lit='f', numb=1, top=CENTER + SIDE, left=2 * SIDE)
-        lshould = Part(lit='g', numb=1, top=CENTER + SIDE, left=3 * SIDE)
-        larm = Part(lit='h', numb=1, top=CENTER + SIDE, left=4 * SIDE)
-        legs = Part(lit='i', numb=1, top=CENTER + 2 * SIDE, left=2 * SIDE)
-        foots = Part(lit='j', numb=1, top=CENTER + 3 * SIDE, left=2 * SIDE)
 
-        parts = dict(rhand=rhand, head=head, lhand=lhand, rarm=rarm, rshould=rshould, \
-                            cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
-
-        self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
+        self.hero = Hero()
         self.bm.hero=self.hero
         self.mm.hero=self.hero
 
@@ -247,8 +232,8 @@ class Level(object):
         self.explotion.update(self.tics, self.screen)
  
         #Verify collision
-        if self.mm.fit(self.hero.group, self.tics):
-            self.explotion.boom(self.hero.parts['cheat'].rect)
+        if self.mm.fit(self.hero, self.tics):
+            self.explotion.boom(self.hero.get_center())
             self.pos_points += 1
 
         self.pointsCounter.update(self.pos_points, self.neg_points)            
