@@ -67,7 +67,7 @@ LEVELS = 4
 class Level(object):
     '''TwistedMold level'''
 
-    def __init__(self, screen, father, level, total_pos_points, total_neg_points):
+    def __init__(self, screen, father, level, total_points):
 
         self.screen = screen
         self.father = father
@@ -90,14 +90,9 @@ class Level(object):
         self.bm = BottleManager(*levels[self.level]['bottle_density'])
         self.bm.mm = self.mm
 
-        self.total_pos_points = total_pos_points
-        self.total_neg_points = total_neg_points
-
-        self.pos_points = 0
-        self.neg_points = 0
+        self.total_points = total_points
         
-        
-        self.pointsCounter = Points(0,0,level=level)
+        self.pointsCounter = Points(self.total_points,level=level)
         self.mm.level = self
         self.tics = 0
 
@@ -183,36 +178,26 @@ class Level(object):
     
         if self.exit:
             return self.father
-        elif not self.level_time.seconds:        
-            if self.pos_points*1.0 / (self.pos_points*1.0 + self.neg_points*1.0) < 0.6:
-                def f(screen):
-                    def g(screen):
-                        return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points)
-                    music.stop_music()
-                    music.play_gameover()
-                    return Visual(screen, [utils.load_image(GAMEOVER)], [3], g)               
 
-                return f
-            
+        elif not self.level_time.seconds:                   
+
             if self.level < LEVELS:
                 def f(screen):
-                    return Level(screen, self.father, self.level + 1, self.total_pos_points + self.pos_points, self.total_neg_points + self.neg_points)
+                    return Level(screen, self.father, self.level + 1, self.total_points)
                 return f
             else:
-                print self.total_pos_points + self.pos_points #puntos positivos totales
-                print self.total_neg_points + self.neg_points #puntos negativos totales
                 
                 print "definir una funcion que retorne una animacion de victoria"
 
                 def f(screen):
-                    return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points)
+                    return HighScores(self.screen, self.father, self.total_points)
 
                 return f
 
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
                 def g(screen):
-                    return HighScores(self.screen, self.father, self.total_pos_points + self.pos_points) 
+                    return HighScores(self.screen, self.father, self.total_points) 
                 music.play_gameover()
                 return Visual(screen, [utils.load_image(GAMEOVER)], [3], g)               
 
@@ -235,9 +220,9 @@ class Level(object):
         #Verify collision
         if self.mm.fit(self.hero, self.tics):
             self.explotion.boom(self.hero.get_center())
-            self.pos_points += 1
+            self.total_points += 1
 
-        self.pointsCounter.update(self.pos_points, self.neg_points)            
+        self.pointsCounter.update(self.total_points)            
             
     
     def draw(self):

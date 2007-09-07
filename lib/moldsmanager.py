@@ -40,7 +40,7 @@ class MoldsManager(object):
                         break
                     
             for t in temp:
-                self.level.pos_points += 1
+                #self.level.pos_points += 1
                 self.molds.remove(t)
                 del t
                     
@@ -52,7 +52,6 @@ class MoldsManager(object):
                 part.move()
         #delete old mold
             if max(r.rect.right for r in m) < 0:
-                self.level.neg_points += 1
                 self.molds.remove(m)
                 del m
 
