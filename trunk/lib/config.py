@@ -83,7 +83,7 @@ INTRO_IMAGES = [os.path.join(INTROS, "intro0001.png"),
 INTRO_TIMES = [0.672, 0.504, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084, 0.084,
                0.084, 0.084, 0.084, 0.588, 0.084, 0.084, 0.084, 2.856]
 
-BOTTLE_BLUE = os.path.join(BOTTLES, "bottle_bluejj.png")
+BOTTLE_BLUE = os.path.join(BOTTLES, "bottle_blue.png")
 BOTTLE_GREEN = os.path.join(BOTTLES, "bottle_green.png")
 BOTTLE_ORANGE  = os.path.join(BOTTLES, "bottle_orange.png")
 BOTTLE_RED  = os.path.join(BOTTLES, "bottle_red.png")
