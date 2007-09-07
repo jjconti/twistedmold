@@ -285,8 +285,12 @@ class Level(object):
                 music.play_scream()
 
             if event.key == K_ESCAPE:
+                pygame.mixer.music.set_volume(0.5)
                 mem = Menu(self.screen, self.options, "Do you want to quit?").loop()
+                pygame.mixer.music.set_volume(1.0)
+
                 if mem == self.father:
+                    music.stop_music()
                     self.exit = True
 
         if event.type == KEYUP:
