@@ -17,7 +17,7 @@ class Hero(object):
 
     def down(self):
         bottom = max([p.rect.bottom for p in self.group])
-        if bottom < height:
+        if bottom < HEIGHT:
             for p in self.group:
                 p.down()
 
@@ -29,7 +29,7 @@ class Hero(object):
 
     def right(self):
         right = max([p.rect.right for p in self.group])
-        if right < width:
+        if right < WIDTH:
             for p in self.group:
                 p.right()
 

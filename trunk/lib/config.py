@@ -2,12 +2,12 @@
 import os
 
 WINDOW_TITLE = "Twisted Zombie 1.0"
-width = 700
-height = 550
-center = height / 2
+WIDTH = 700
+HEIGHT = 550
+CENTER = HEIGHT / 2
 
-side = 25
-half = side / 2
+SIDE = 25
+HALF = SIDE / 2
 
 
 DATA = os.path.join("data")
@@ -18,7 +18,7 @@ DROP = os.path.join(IMGS, "drop.gif")
 BACKGROUNDS = os.path.join(IMGS, "backgrounds")
 INTROS = os.path.join(IMGS, "intro")
 BOTTLES = os.path.join(IMGS, "bottles")
-parts = os.path.join(IMGS, "body")
+PARTS = os.path.join(IMGS, "body")
 SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")

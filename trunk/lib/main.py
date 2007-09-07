@@ -19,7 +19,7 @@ if not pygame.mixer: print 'Warning, sound disabled'
 def main():
     #Initialize 
     pygame.init()
-    screen = pygame.display.set_mode((width, height))
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption(WINDOW_TITLE)
     icon = utils.load_image(ICON)
     pygame.display.set_icon(icon)

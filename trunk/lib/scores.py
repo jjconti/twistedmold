@@ -5,7 +5,7 @@ import pickle
 import sys
 import math
 
-import config
+from config import *
 import utils
 import pygame
 from pygame.locals import *
@@ -24,11 +24,11 @@ class HighScores(object):
         self.father = father
         self.score = score
         self.top_scores = []
-        self.font1 = pygame.font.Font(config.FONT3, 40)
-        self.font2 = pygame.font.Font(config.FONT3, 30)
+        self.font1 = pygame.font.Font(FONT3, 40)
+        self.font2 = pygame.font.Font(FONT3, 30)
 
     def loop(self):
-        if (not os.path.exists(config.HISCORES)) and (self.score <= 0):
+        if (not os.path.exists(HISCORES)) and (self.score <= 0):
             text_list=["HIGH SCORE","I\'m sorry","Nobody has been saved.","Nobody has stopped being zombie"]
             self.draw_screen(text_list)
             return self._waitKey()
@@ -49,12 +49,12 @@ class HighScores(object):
                 name = InputPanel(self.screen,self.score).loop()
                 self.top_scores = top[:i] + [(name, self.score)] + top[i:-1]
                 break
-        f = file(config.HISCORES, 'w')
+        f = file(HISCORES, 'w')
         pickle.dump(self.top_scores,f)
 
     def _load_score(self):
         top_scores = []
-        if not os.path.exists(config.HISCORES):
+        if not os.path.exists(HISCORES):
             top_scores = [("", 0),
                             ("", 0),
                             ("", 0),
@@ -65,10 +65,10 @@ class HighScores(object):
                             ("", 0),
                             ("", 0),
                             ("", 0),]
-            f = file(config.HISCORES, 'w')
+            f = file(HISCORES, 'w')
             pickle.dump(top_scores, f)
         else:
-            f = file(config.HISCORES)
+            f = file(HISCORES)
             top_scores = pickle.load(f)
         return top_scores
 
@@ -87,15 +87,15 @@ class HighScores(object):
 
     def draw_screen(self, text_list):
 
-        pygame.display.set_caption(config.WINDOW_TITLE)
-        background = utils.load_image(config.MENUBGIMAGE)
+        pygame.display.set_caption(WINDOW_TITLE)
+        background = utils.load_image(MENUBGIMAGE)
 
         clock = pygame.time.Clock()
 
         title = text_list[0]
         text_list.remove(title)
 
-        title_img = self.font1.render(title, True, config.WHITE)
+        title_img = self.font1.render(title, True, WHITE)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 25
         background.blit(title_img, topleft)
         bg = background.copy()
@@ -109,23 +109,23 @@ class HighScores(object):
         state = 0
 
         while not done:
-            clock.tick(config.CLOCK_TICS)
+            clock.tick(CLOCK_TICS)
             pygame.display.flip()
             self.screen.blit(background, (0, 0))
             y = hor_step + 80
 
             timeloop += 1
-            if timeloop == config.CLOCK_TICS:
+            if timeloop == CLOCK_TICS:
                 state = 1
                 done = True
 
             for i,text_item in enumerate(text_list):
-                img = self.font2.render(text_item, True, config.WHITE)
+                img = self.font2.render(text_item, True, WHITE)
                 x2 = self.screen.get_width()/2
                 if (state == 0) and (i%2 == 0):
-                    x1 = x2 - ((config.width * 0.86) * (50 - timeloop) / 50)
+                    x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
                 elif (state == 0) and (i%2 == 1):
-                    x1 = x2 + ((config.width * 0.86) * (50 - timeloop) / 50)
+                    x1 = x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50)
                 else:
                     x1=x2
                 x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
@@ -153,7 +153,7 @@ class InputPanel(object):
         self.cursor = '|'
         self.text = ""
         self.done = False
-        self.font1 = pygame.font.Font(config.FONT3, 40)
+        self.font1 = pygame.font.Font(FONT3, 40)
         self.clock = pygame.time.Clock()
 
         score_text="Your score is "+str(score)
@@ -165,7 +165,7 @@ class InputPanel(object):
 
     def loop(self):
         while not self.done:
-            self.clock.tick(config.CLOCK_TICS)
+            self.clock.tick(CLOCK_TICS)
             self.screen.blit(self.background, (0,0))    
 
             for event in pygame.event.get():
@@ -202,7 +202,7 @@ class InputPanel(object):
 
     def _draw_text(self):
         y = 300 # Tune this value as you need
-        text_img = self.font1.render(self.text + self.cursor, True, config.WHITE)
+        text_img = self.font1.render(self.text + self.cursor, True, WHITE)
         x = (self.screen.get_width() - text_img.get_width()) / 2
         self.screen.blit(text_img, (x,y))
 

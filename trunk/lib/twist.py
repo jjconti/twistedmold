@@ -11,25 +11,25 @@ def twist(part, pos=0):
     return (pos + 1) % 6     
 
 def _twist_0(part):
-    part['foots'].twist(-side, side, 90)
+    part['foots'].twist(-SIDE, SIDE, 90)
 
 def _twist_1(part):
-    part['lhand'].twist(2 * side, 0, 180)
+    part['lhand'].twist(2 * SIDE, 0, 180)
     part['larm'].twist(0, 0, 0, False, True)
 
 def _twist_2(part):
-    part['rhand'].twist(2 * side, 0, 180)
+    part['rhand'].twist(2 * SIDE, 0, 180)
     part['rarm'].twist(0, 0, 0, False, True)
 
 def _twist_3(part):
-    part['lhand'].twist(-2 * side, 0, 180)
+    part['lhand'].twist(-2 * SIDE, 0, 180)
     part['larm'].twist(0, 0, 0, False, True)
-    part['foots'].twist(0, -2 * side, 180)
+    part['foots'].twist(0, -2 * SIDE, 180)
 
 def _twist_4(part):
-    part['foots'].twist(side, side, 90)
+    part['foots'].twist(SIDE, SIDE, 90)
 
 def _twist_5(part):
-    part['rhand'].twist(-2 * side, 0, 180)
+    part['rhand'].twist(-2 * SIDE, 0, 180)
     part['rarm'].twist(0, 0, 0, False, True)
 
