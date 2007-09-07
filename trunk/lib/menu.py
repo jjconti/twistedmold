@@ -59,21 +59,20 @@ class Menu(object):
             sys.exit(0)
         if event.type == KEYDOWN:
             if event.key in (K_SPACE, K_RETURN, K_KP_ENTER):
+                music.play_menu2()
                 self.select()
             elif event.key == K_UP:
+                music.play_menu1()
                 if self.index > 0:
                     self.set_index(self.index - 1)
                 else:
                     self.set_index(self.last_index)
             elif event.key == K_DOWN:
+                music.play_menu1()
                 if self.index < self.last_index:
                     self.set_index(self.index + 1)
                 else:
                     self.set_index(0)
-            elif event.key == K_ESCAPE:
-                '''Do you think this feature is good?'''
-                self.index = self.last_index
-                self.select()
         if event.type == MOUSEMOTION:
             x,y = pygame.mouse.get_pos()
             for i in range(len(self.unselected_rects)):

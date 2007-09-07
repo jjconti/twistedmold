@@ -12,8 +12,17 @@ SOUNDS['scream2'] = utils.load_sound(SCREAM2)
 SOUNDS['scream3'] = utils.load_sound(SCREAM3)
 SOUNDS['crack1'] = utils.load_sound(CRACK1)
 SOUNDS['gameover'] = utils.load_sound(GAMEOVERMUSIC)
+SOUNDS['sword1'] = utils.load_sound(SWORD1)
+SOUNDS['sword2'] = utils.load_sound(SWORD2)
+
 
 last_music = False
+
+def play_menu1():
+    SOUNDS['sword1'].play()
+
+def play_menu2():
+    SOUNDS['sword2'].play()
 
 def play_bloop():
     SOUNDS['eat'].play()
