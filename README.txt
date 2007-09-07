@@ -3,8 +3,9 @@ Twisted Zombie
 
 Entry in PyWeek #5  <http://www.pyweek.org/5/>
 Team: Pythonerds (aka santa_fe)
-Members: Juanjo Conti, Mariano Galán, Diego Levental, 
-         Davil Capello, Sebastian Galeano, César Portela
+Members: Juanjo Conti, Mariano Galán, Diego Levental,
+         Davil Capello, Sebastian Galeano, César Portela,
+         Manuel Kaufmann
 
 
 DEPENDENCIES:
@@ -26,10 +27,11 @@ Othewise open a terminal / console and "cd" to the game directory and run:
 
 HOW TO PLAY THE GAME:
 
-Move your zombie with the arrows keys.
+Move your zombie with the arrows keys and twist whit space bar.
 
 
 LICENSE:
 
-This game skellington is distributed as Free Software acording GPL v3. See COPYING file for more information.
+This game skellington is distributed as Free Software acording GPL v3.
+See COPYING file for more information.
 
