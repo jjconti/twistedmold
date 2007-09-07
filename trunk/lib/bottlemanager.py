@@ -47,7 +47,7 @@ class BottleManager(object):
             bot = Bottle(self.bottle3)
             self.bottles.add(bot)
 
-        if random.randrange(100) == 0 and self.bottle4_current_mount < self.bottle4_mount:
+        if random.randrange(400) == 0 and self.bottle4_current_mount < self.bottle4_mount:
             bot = Bottle(self.bottle4)
             self.bottles.add(bot)
             self.bottle4_current_mount += 1
