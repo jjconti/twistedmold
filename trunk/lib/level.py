@@ -156,7 +156,7 @@ class Level(object):
         Visual(self.screen, [utils.load_image(levels[self.level]['img'])], [2], None).loop()
 
     def loop(self):  
-        #music.loop_play()   
+        music.loop_play()
         while not self.finish():
             self.tics += 1     
             self.screen.blit(self.background, (-(self.tics % 700),0)) 
