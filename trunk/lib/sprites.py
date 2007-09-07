@@ -137,7 +137,7 @@ class BloodDrop(pygame.sprite.Sprite):
         self.image.set_colorkey((0,0,0))
         
         radius = random.choice(range(1,3))
-        color = (random.choice(range(100,255)) , 0, 0)
+        color = (random.choice(range(100,200)) , 196, 245)
         pos = (4,4)
         pygame.draw.circle(self.image, color, pos, radius)
 
