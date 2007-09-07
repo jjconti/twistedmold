@@ -120,13 +120,22 @@ class Bottle(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self) 
         self.velocity = params["velocity"]
         self.image = utils.load_image(params["image"], -1)
+        self.rotation = params["rotation"]
+        self.original_image = self.image
+        
         self.energy = params["energy"]
         self.destroy_all = params.get("destroy_all", False)
         self.rect = self.image.get_rect(top=random.randrange(0, 550), right=width)
+        self.ang = 0
         
     def update(self):
         if not random.randrange(2): 
             '''From right to left'''
+	    center = self.rect.center
+
+            self.image = pygame.transform.rotate(self.original_image,self.ang)
+	    self.rect = self.image.get_rect(center=center)                        
+            self.ang += self.rotation
             self.rect.move_ip(-self.velocity, 0)
 
 class BloodDrop(pygame.sprite.Sprite):
