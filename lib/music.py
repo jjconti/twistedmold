@@ -3,7 +3,7 @@ from config import *
 import utils
 import pygame
 pygame.init()
-pygame.mixer.init(44100, -16, 2, 1024)
+pygame.mixer.init()
 
 SOUNDS = {}
 SOUNDS['eat'] = utils.load_sound(BLOOP)
