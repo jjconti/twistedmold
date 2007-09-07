@@ -54,7 +54,7 @@ level 4:
     - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
     ganar este nivel)
 '''
-levels = {1: dict(energy_leap=0.075, mold_density=55, mold_velocity=12,
+levels = {1: dict(energy_leap=0.075, mold_density=50, mold_velocity=12,
                   max_time=15, img=LEVEL1, bottle_density=(400,550,7000,0)),
           2: dict(energy_leap=0.105, mold_density=40, mold_velocity=15,
                   max_time=15, img=LEVEL2, bottle_density=(500,300,400,0)),
