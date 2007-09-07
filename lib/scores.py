@@ -9,7 +9,7 @@ from config import *
 import utils
 import pygame
 from pygame.locals import *
-
+import music
 
 MAX = 10 # max players number in highscore screen 
 CPL = 15 # max char per line
@@ -28,8 +28,10 @@ class HighScores(object):
         self.font2 = pygame.font.Font(FONT3, 30)
 
     def loop(self):
+        music.stop_music()
         if (not os.path.exists(HISCORES)) and (self.score <= 0):
             text_list=["HIGH SCORE","I\'m sorry","Nobody has been saved.","Nobody has stopped being zombie"]
+            music.play_music(PLAYMUSIC)
             self.draw_screen(text_list)
             return self._waitKey()
         else:
@@ -38,6 +40,7 @@ class HighScores(object):
                 self._add()
             text_list = self._convert()
             text_list[0:0]=['HIGH SCORES']
+            music.play_music(PLAYMUSIC)
             self.draw_screen(text_list)
             return self._waitKey()
 
@@ -141,7 +144,7 @@ class HighScores(object):
         while 1:
             event = pygame.event.wait()
             if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
-                pygame.event.get()
+                music.stop_music()
                 return self.father
 
 
@@ -149,6 +152,7 @@ class InputPanel(object):
     '''A generic input panel.'''
 
     def __init__(self, screen, score):
+        music.play_music(MENUMUSIC)
         self.screen = screen
         self.cursor = '|'
         self.text = ""
@@ -173,7 +177,7 @@ class InputPanel(object):
 
             self._draw_text()
             pygame.display.flip()
-
+        music.stop_music()
         return self.text
 
     def control(self, event):
