@@ -20,6 +20,7 @@ class Credits(object):
         self.font2 = pygame.font.Font(FONT3, 40)
 
     def loop(self):
+        music_stop_music()
         music.play_music(CREDITSMUSIC)
         self._load_credits()
         self._draw_screen()
@@ -112,6 +113,7 @@ class Credits(object):
                     y += hor_step + 10
 
     def _waitKey(self):
+        music_stop_music()
         while 1:
             event = pygame.event.wait()
             if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
