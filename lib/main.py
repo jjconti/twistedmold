@@ -17,6 +17,8 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption(WINDOW_TITLE)
+    icon = utils.load_image(ICON)
+    pygame.display.set_icon(icon)
 
     images = [utils.load_image(image) for image in INTRO_IMAGES]
     visual = Visual(screen, images, INTRO_TIMES)
