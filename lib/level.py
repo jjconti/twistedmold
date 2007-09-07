@@ -55,7 +55,7 @@ level 4:
     ganar este nivel)
 '''
 levels = {1: dict(energy_leap=0.075, mold_density=55, mold_velocity=12,
-                  max_time=15, img=LEVEL1, bottle_density=(400,550,7000,0)),
+                  max_time=15, img=LEVEL1, bottle_density=(400,550,7000,10)),
           2: dict(energy_leap=0.105, mold_density=40, mold_velocity=15,
                   max_time=15, img=LEVEL2, bottle_density=(500,300,400,0)),
           3: dict(energy_leap=0.13, mold_density=35, mold_velocity=15,
@@ -66,9 +66,6 @@ LEVELS = 4
 
 class Level(object):
     '''TwistedMold level'''
-    
-    '''mold_density_tl y mold_density_bl. Mientras mas bajos mas mold aparecen, mientras mas separados mas disperso'''
-
 
     def __init__(self, screen, father, level, total_pos_points, total_neg_points):
 
@@ -142,6 +139,7 @@ class Level(object):
 
         self.hero = Hero(pygame.sprite.RenderUpdates(), parts)
         self.bm.hero=self.hero
+        self.mm.hero=self.hero
 
         self.explotion = Explotion()
 

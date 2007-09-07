@@ -5,6 +5,7 @@ from twist import twist
 import utils
 from config import *
 import music
+import math
 
 class MoldsManager(object):
 
@@ -19,11 +20,28 @@ class MoldsManager(object):
 
     def move(self, times):
     
-        if self.destroy_all_finish == 100:
+        if self.destroy_all_finish == 40:
             self.destroy_all_flag = False
             self.destroy_all_finish = 0
+            
         
-        if self.destroy_all_flag: return
+        if self.destroy_all_flag:
+            self.expansion_radius = self.destroy_all_finish*15+10 
+            x,y = self.destroy_all_center
+            temp = []                       
+            for m in self.molds:
+                for part in m:
+                    (xp,yp) = part.rect.top, part.rect.left
+                    distance = math.sqrt(math.pow( (xp - x), 2) + math.pow( (yp - y), 2))
+                    if distance < self.expansion_radius:
+                        temp.append(m)
+                        break
+                    
+            for t in temp:
+                self.level.pos_points += 1
+                self.molds.remove(t)
+                del t
+                    
         
         if times % self.mold_velocity != 0: return
     
@@ -33,33 +51,21 @@ class MoldsManager(object):
         #delete old mold
             if max(r.rect.right for r in m) < 0:
                 self.level.neg_points += 1
-                print self.level.neg_points
                 self.molds.remove(m)
                 del m
 
     def draw(self, screen):
         if self.destroy_all_flag:
             self.destroy_all_finish += 1
-            circle = pygame.draw.circle(screen, (240,251,227), (250,250), self.destroy_all_finish*5+10, 10)
-                #pygame.display.update()                
-        
-        
+            x,y = self.destroy_all_center
+            circle = pygame.draw.circle(screen, (240,251,227),(y,x),self.expansion_radius, 10)
+
         for m in self.molds:
             m.draw(screen)
 
-    def destroy_all(self):
+    def destroy_all(self, destroy_all_center):
         self.destroy_all_flag = True
-            
-        temp = []
-        print len(self.molds)
-        for m in self.molds:
-            temp.append(m)
-
-        for a in temp:
-            self.level.pos_points += 1
-            self.molds.remove(a)
-            del a
-            
+        self.destroy_all_center = destroy_all_center
 
     def gen(self, times):
 
