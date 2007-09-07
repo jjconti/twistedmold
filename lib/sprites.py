@@ -85,7 +85,7 @@ class Part(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.lit = kwargs['lit']
         self.numb = kwargs['numb']
-        self.image = utils.load_image(os.path.join(parts, self.lit + str(self.numb) + ".png"))
+        self.image = utils.load_image(os.path.join(parts, self.lit + str(self.numb) + ".png"), -1)
         self.rect = self.image.get_rect(top=kwargs['top'], left=kwargs['left'])
 
     def __str__(self):
