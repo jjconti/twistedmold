@@ -58,7 +58,7 @@ SCREAM1 = os.path.join(SOUNDS, "31818__malexmedia__malexmedia_man_scream.wav")
 CRACK1 = os.path.join(SOUNDS, "21914__Halleck__neck_crack.wav")
 GAMEOVERMUSIC = os.path.join(SOUNDS, "gameover.ogg")
 WINMUSIC = os.path.join(SOUNDS, "final.ogg")
-
+BOTTLESOUND = os.path.join(SOUNDS, "32744__HardPCM__Burp007.wav")
 CREDITSMUSIC = os.path.join(SOUNDS, "credits.ogg")
 MENUMUSIC = os.path.join(SOUNDS, "menu.ogg")
 PLAYMUSIC = os.path.join(SOUNDS, "play_music.ogg")
