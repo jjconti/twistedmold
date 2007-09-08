@@ -2,11 +2,16 @@ Twisted Zombie
 ==============
 
 Entry in PyWeek #5  <http://www.pyweek.org/5/>
-Team: Pythonerds (aka santa_fe)
-Members: Juanjo Conti, Mariano Galán, Diego Levental,
-         David Capello, Sebastian Galeano, César Portela,
-         Manuel Kaufmann
 
+Team: Pythonerds (aka santa_fe)
+
+Members: Juanjo Conti <jjconti@gnu.org>
+         Mariano Galán <chinomng@gmail.com>
+         Diego Levental <diegolevental@gmail.com>
+         David Capello <davidcapello@gmail.com>
+         Sebastian Galeano <sgaliano@gmail.com>
+         César Portela <ceportela@gmail.com>
+         Manuel Kaufmann <humitos@gmail.com>
 
 DEPENDENCIES:
 
@@ -15,6 +20,8 @@ You might need to install some of these before running the game:
   Python:     http://www.python.org/    (works with 2.4 or 2.5)
   PyGame:     http://www.pygame.org/
 
+    Note: some GNU/Linux users have reported visualization errores while 
+    running the game with python 2.5. If you do so, run it with python 2.4.
 
 RUNNING THE GAME:
 
@@ -27,7 +34,7 @@ Othewise open a terminal / console and "cd" to the game directory and run:
 
 HOW TO PLAY THE GAME:
 
-Move your zombie with the arrows keys and twist whit space bar.
+Move your zombie with the arrows keys and twist it whit the space bar.
 
 
 LICENSE:
