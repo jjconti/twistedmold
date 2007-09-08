@@ -22,7 +22,7 @@ class Points(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
     def _image(self):
-        return self.font.render("Points: " + str(self.points) + " ", True, COLOR1)
+        return self.font.render("Points: " + str(self.points) + " ", True, COLORTIME1)
 
 class LevelIndicator(pygame.sprite.Sprite):
     
@@ -39,7 +39,7 @@ class LevelIndicator(pygame.sprite.Sprite):
 #        self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
     def _image(self):
-        return self.font.render("Level " + str(self.level), True, COLOR1)
+        return self.font.render("Level " + str(self.level), True, COLORTIME1)
 
 
 
@@ -93,7 +93,7 @@ class LevelTime(pygame.sprite.Sprite):
         self.image = self._image()
 
     def _image(self):
-        return self.font.render("TIME: " + str(self.seconds), True, COLOR1)
+        return self.font.render("TIME: " + str(self.seconds), True, COLORTIME1)
     
 class Part(pygame.sprite.Sprite):
 

@@ -72,6 +72,12 @@ BLUE = (122, 138, 166)
 
 CLOCK_TICS = 80
 
+#titles of
+COLORPOINTS1 = (143,0,222)
+COLORLEVEL1 = (68,5,23)
+COLORTIME1 = (214,2,84)
+
+
 # imagenes intro
 INTRO_IMAGES = [os.path.join(INTROS, "intro0001.png"),
                 os.path.join(INTROS, "intro0009.png"),
