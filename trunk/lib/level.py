@@ -113,6 +113,7 @@ class Level(object):
     
         self.energy_bar = EnergyBar(self.energy_leap)
         self.bm.energy_bar = self.energy_bar
+        self.mm.energy_bar = self.energy_bar
 
         self.level_time = LevelTime(self.max_time)
 
