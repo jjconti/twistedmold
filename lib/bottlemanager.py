@@ -69,10 +69,10 @@ class BottleManager(object):
         else:
             self.bottle4_flag -= 1
             
-    def impact(self):
-        music.play_bottle()
+    def impact(self):   
         d = pygame.sprite.groupcollide(self.bottles,self.hero.group, True, False)
         if d:
+            music.play_bottle()
             for bottle in d.keys():
                 self.energy_bar.add_energy(bottle.energy)
                 if bottle.destroy_all:
