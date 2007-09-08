@@ -29,7 +29,7 @@ def play_bloop():
     SOUNDS['eat'].play()
 
 def play_bottle():
-    SOUNDS['eat'].play()
+    SOUNDS['bottle'].play()
 
 def play_scream():
     SOUNDS['crack1'].play()
