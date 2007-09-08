@@ -17,6 +17,9 @@ LEVEL_LEFT = 0
 LEVEL_WIDTH = WIDTH / SIDE - LEVEL_LEFT
 LEVEL_HEIGHT = HEIGHT / SIDE - LEVEL_TOP
 
+BODY_WIDTH = 5
+BODY_HEIGHT = 4
+
 DATA = os.path.join("data")
 HISCORES = os.path.join(DATA, "scores.dat")
 CREDITS = os.path.join(DATA, "credits.txt")
@@ -118,3 +121,4 @@ BOTTLE_ORANGE  = os.path.join(BOTTLES, "bottle_orange.png")
 BOTTLE_RED  = os.path.join(BOTTLES, "bottle_red.png")
 
 BODY1 = os.path.join(IMGS, os.path.join("body", "body1.png"))
+MOLD1 = os.path.join(IMGS, os.path.join("body", "mold1.png"))

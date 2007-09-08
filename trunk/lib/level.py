@@ -165,7 +165,7 @@ class Level(object):
         if self.exit:
             return self.father
         elif not self.level_time.seconds:                   
-            music.stop_music()
+            #music.stop_music()
 
             if self.level < LEVELS:
                 def f(screen):
@@ -208,7 +208,7 @@ class Level(object):
         self.explotion.update(self.tics, self.screen)
  
         #Verify collision
-        if self.mm.fit(self.hero, self.tics):
+        if self.mm.is_fitting(self.hero, self.tics):
             self.explotion.boom(self.hero.get_center())
             self.total_points += 1
 
@@ -222,7 +222,7 @@ class Level(object):
         self.bm.draw(self.screen)
         self.mm.draw(self.screen)
         
-        self.hero.group.draw(self.screen)
+        self.hero.draw(self.screen)
         self.snow_fat.draw(self.screen)    
         self.gadgets.draw(self.screen)
 

@@ -95,42 +95,7 @@ class LevelTime(pygame.sprite.Sprite):
     def _image(self):
         return self.font.render("TIME: " + str(self.seconds), True, COLORSCORED)
     
-class Part(pygame.sprite.Sprite):
-
-    def __init__(self, **kwargs):
-        pygame.sprite.Sprite.__init__(self)
-        self.lit = kwargs['lit']
-        self.numb = kwargs['numb']
-        self.image = utils.load_image(os.path.join(PARTS, self.lit + str(self.numb) + ".png"), -1)
-        self.rect = self.image.get_rect(top=kwargs['top'], left=kwargs['left'])
-
-    def __str__(self):
-        return "Parte"
-
-    def move(self):
-        '''From right to left'''
-        self.rect.move_ip(-SIDE, 0)
-        
-    def right(self):
-        self.rect.move_ip(SIDE, 0)
- 
-    def left(self):
-        self.rect.move_ip(-SIDE, 0)        
-
-    def up(self):
-        self.rect.move_ip(0, -SIDE)
-
-    def down(self): 
-        self.rect.move_ip(0, SIDE)
-
-    def twist(self, x, y, rot=0, flipx=False, flipy=False):
-        '''x,y: offsets, rot: deegrees rotation'''
-        self.rect.top += x
-        self.rect.left += y 
-        self.image = pygame.transform.rotate(self.image, rot)
-        self.image = pygame.transform.flip(self.image, flipx, flipy)
-
-class HeroPart(pygame.sprite.Sprite):
+class BodyPart(pygame.sprite.Sprite):
 
     def __init__(self, src_image, rect, offset):
         pygame.sprite.Sprite.__init__(self)

@@ -1,9 +1,8 @@
 import pygame
 import random
-from sprites import Part
-from twist import twist
 import utils
 from config import *
+from mold import Mold
 import music
 import math
 
@@ -18,40 +17,37 @@ class MoldsManager(object):
 
         self.tops = []
         for y in range(LEVEL_TOP, LEVEL_TOP+LEVEL_HEIGHT-4, 4):
-            self.tops.append(y*SIDE)
+            self.tops.append(y)
 
     def move(self, times):
-    
+
         if self.destroy_all_finish == 40:
             self.destroy_all_flag = False
             self.destroy_all_finish = 0
-            
-        
+
         if self.destroy_all_flag:
-            self.expansion_radius = self.destroy_all_finish*15+20 
-            x,y = self.destroy_all_center
-            temp = []                       
+            self.expansion_radius = self.destroy_all_finish*15+20
+            y,x = self.destroy_all_center
+            temp = []
             for m in self.molds:
-                for part in m:
-                    (xp,yp) = part.rect.top, part.rect.left
-                    distance = math.sqrt(math.pow( (xp - x), 2) + math.pow( (yp - y), 2))
-                    if distance < self.expansion_radius:
-                        temp.append(m)
-                        break
-                    
+                xp,yp = m.get_center()
+                distance = math.sqrt(math.pow(xp - x, 2) + \
+                                     math.pow(yp - y, 2))
+                if distance < self.expansion_radius:
+                    temp.append(m)
+                    break
+
             for t in temp:
                 #self.level.pos_points += 1
                 self.molds.remove(t)
                 del t
-                    
         
         if times % self.mold_velocity != 0: return
     
         for m in self.molds:
-            for part in m:
-                part.move()
-        #delete old mold
-            if max(r.rect.right for r in m) < 0:
+            m.move()
+            # Delete old mold
+            if m.x+BODY_WIDTH < 0:
                 self.molds.remove(m)
                 del m
 
@@ -72,36 +68,16 @@ class MoldsManager(object):
 
         if random.randrange(self.mold_density) != 0: return
 
-        #Create mold blocks
+        # Create the new mold
         top = random.choice(self.tops)
+        mold = Mold(LEVEL_WIDTH, top, random.randrange(0, 6))
 
-        rhand = Part(lit='k', numb=1, top=top, left=WIDTH)
-        head = Part(lit='k', numb=1, top=top, left=WIDTH + 2 * SIDE)
-        lhand = Part(lit='k', numb=1, top=top, left=WIDTH + 4 * SIDE)
-        rarm = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH)
-        rshould = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + SIDE)
-        cheat = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + 2 * SIDE)
-        lshould = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + 3 * SIDE)
-        larm = Part(lit='k', numb=1, top=top + SIDE, left=WIDTH + 4 * SIDE)
-        legs = Part(lit='k', numb=1, top=top + 2 * SIDE, left=WIDTH + 2 * SIDE)
-        foots = Part(lit='k', numb=1, top=top + 3 * SIDE, left=WIDTH + 2 * SIDE)
-
-        blocks = dict(rhand=rhand, head=head, lhand=lhand, rarm=rarm, rshould=rshould, \
-                            cheat=cheat, lshould=lshould, larm=larm, legs=legs, foots=foots)
-
-        mold = pygame.sprite.RenderUpdates()
-        mold.add(blocks.values())
-        
-        #Avoid molds overlaping
+        # Avoid molds overlaping
         for m in self.molds:
-            d = pygame.sprite.groupcollide(mold, m, False, False)
-            if len(d):
+            if mold.is_collision(m):
                 del mold
                 return
-    
-        for i in xrange(0,random.randrange(0, 6)):
-            twist(blocks, i)
-    
+
         self._add(mold)
 
     def _add(self, m):
@@ -110,12 +86,11 @@ class MoldsManager(object):
     def _remove(self, m):
         self.molds.remove(m)
 
-    def fit(self, hero, times):
+    def is_fitting(self, hero, times):
         '''Ask if the hero fit any mold and remove the fitted mold.'''
         for m in self.molds:
-            if hero.fit(m):
+            if hero.is_fitting(m):
                 self.molds.remove(m)
-                m.empty()
                 del m
                 music.play_bloop()
                 self.level.energy_bar.add_energy(3)
