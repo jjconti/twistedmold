@@ -14,7 +14,7 @@ SOUNDS['crack1'] = utils.load_sound(CRACK1)
 SOUNDS['gameover'] = utils.load_sound(GAMEOVERMUSIC)
 SOUNDS['sword1'] = utils.load_sound(SWORD1)
 SOUNDS['sword2'] = utils.load_sound(SWORD2)
-
+SOUNDS['bottle'] = utils.load_sound(BOTTLESOUND)
 last_music = None
 
 def play_menu1():
@@ -26,6 +26,9 @@ def play_menu2():
     SOUNDS['sword2'].play()
 
 def play_bloop():
+    SOUNDS['eat'].play()
+
+def play_bottle():
     SOUNDS['eat'].play()
 
 def play_scream():
