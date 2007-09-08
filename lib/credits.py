@@ -135,7 +135,7 @@ class Credits(object):
                             return self.father
                         
                         self.screen.blit(img2, (x-separator, y-separator))
-                        self.screen.blit(img, (x1-x, y))
+                        self.screen.blit(img, (x1-x2, y))
                         y += hor_step + 10
 
                 if self._verifyKey():
