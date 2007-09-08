@@ -190,7 +190,7 @@ class Level(object):
             return f
 
     def update(self):
-        if self.level in(2,5):
+        if self.level in(4,5):
             self.snow_slim.update()               
 
         self.energy_bar.update(self.tics)
@@ -201,7 +201,7 @@ class Level(object):
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
 
-        if self.level in(2,5):
+        if self.level in(4,5):
             self.snow_fat.update() 
 
         #Blood Explotion
