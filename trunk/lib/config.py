@@ -27,7 +27,7 @@ SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
 
-ICON = os.path.join(IMGS, "icon.png")
+ICON = os.path.join(IMGS, "icon.jpg")
 BGLEVEL1 = os.path.join(BACKGROUNDS, "bg1.png")
 BGLEVEL2 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
 BGLEVEL3 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
