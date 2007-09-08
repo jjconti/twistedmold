@@ -129,7 +129,7 @@ class Level(object):
         self.control_up = -1
         self.control_left = -1
         self.control_right = -1
-        self.control_tiempo = 5
+        self.control_tiempo = 3
 
         #Show level image
 
