@@ -21,8 +21,8 @@ class Menu(object):
         font2 = pygame.font.Font(FONT2, 45)
         self.hor_step = font2.get_height() + 20
         self.clock = pygame.time.Clock()
-        self.selected_imgs = [font2.render(text, True, GREY) for text in self.items]
-        self.unselected_imgs = [font2.render(text, True, WHITE) for text in self.items]
+        self.selected_imgs = [font2.render(text, True, WHITE) for text in self.items]
+        self.unselected_imgs = [font2.render(text, True, GREY) for text in self.items]
         self.unselected_rects = None
         self.timeloop = 0
         self.state = 0 
