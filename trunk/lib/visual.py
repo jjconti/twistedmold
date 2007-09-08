@@ -18,12 +18,14 @@ class Visual(object):
             self.screen.blit(self.images, (0,0))
             pygame.display.flip()
             while True:
-                for event in pygame.event.get():
-                    if event.type == QUIT:
-                            sys.exit(0)
-                    if event.type == KEYDOWN and \
-                        (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
-                        return self.func
+                pygame.event.clear()
+                event = pygame.event.wait()
+                if (event.type == QUIT):
+                    sys.exit(0)
+                elif (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
+                    pygame.event.clear()
+                    break
+            return self.func
         else:
             for image, time_sleep in zip(self.images, self.times):
                 self.screen.blit(image, (0,0))
@@ -32,12 +34,13 @@ class Visual(object):
                 while i < time_sleep:
                     pygame.time.delay(1)
                     i += 1
-                    for event in pygame.event.get():
-                        if event.type == QUIT:
-                            sys.exit(0)
-                        if event.type == KEYDOWN and \
+                    if pygame.event.peek([KEYDOWN, KEYUP, QUIT]):
+                        for event in pygame.event.get():
+                            if event.type == QUIT:
+                                sys.exit(0)
+                            if event.type == KEYDOWN and \
                                 (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
-                            return self.func
+                                return self.func
         return self.func
 
 if __name__ == '__main__':
