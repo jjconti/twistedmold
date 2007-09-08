@@ -17,9 +17,9 @@ class Credits(object):
         self.screen = screen
         self.father = father
         self.credits = []
-        self.font1 = pygame.font.Font(FONT4, 20)
-        self.font2 = pygame.font.Font(FONT4, 40)
-        self.font3 = pygame.font.Font(FONT4, 60)
+        self.font1 = pygame.font.Font(FONT2, 20)
+        self.font2 = pygame.font.Font(FONT2, 40)
+        self.font3 = pygame.font.Font(FONT2, 60)
 
     def loop(self):
         music.stop_music()
@@ -47,7 +47,7 @@ class Credits(object):
         background = utils.load_image(CREDITIMAGE)
 
         clock = pygame.time.Clock()
-        separator = 2
+        separator = 3
 
         title = 'CREDITS'
         title_img = self.font3.render(title, True, WHITE)

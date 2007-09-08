@@ -24,8 +24,8 @@ class HighScores(object):
         self.father = father
         self.score = score
         self.top_scores = []
-        self.font1 = pygame.font.Font(FONT4, 40)
-        self.font2 = pygame.font.Font(FONT4, 30)
+        self.font1 = pygame.font.Font(FONT2, 40)
+        self.font2 = pygame.font.Font(FONT2, 30)
 
     def loop(self):
         music.stop_music()
@@ -91,7 +91,7 @@ class HighScores(object):
     def draw_screen(self, text_list):
 
         pygame.display.set_caption(WINDOW_TITLE)
-        background = utils.load_image(MENUBGIMAGE)
+        background = utils.load_image(CREDITIMAGE)
 
         clock = pygame.time.Clock()
         separator = 2
@@ -99,8 +99,8 @@ class HighScores(object):
         title = text_list[0]
         text_list.remove(title)
 
-        title_img = self.font1.render(title, True, BLACK)
-        title_img2 = self.font1.render(title, True, WHITE)
+        title_img = self.font1.render(title, True, WHITE)
+        title_img2 = self.font1.render(title, True, BLUE)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 25
         topleft2 = (background.get_rect().width - title_img.get_rect().width) / 2-separator, 25-separator
         background.blit(title_img2, topleft2)
@@ -127,8 +127,8 @@ class HighScores(object):
                 done = True
 
             for i,text_item in enumerate(text_list):
-                img = self.font2.render(text_item, True, BLACK)
-                img2 = self.font2.render(text_item, True, WHITE)
+                img = self.font2.render(text_item, True, WHITE)
+                img2 = self.font2.render(text_item, True, BLUE)
                 x2 = self.screen.get_width()/2
                 if (state == 0) and (i%2 == 0):
                     x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
@@ -149,7 +149,9 @@ class HighScores(object):
     def _waitKey(self):
         while 1:
             event = pygame.event.wait()
-            if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
+            if (event.type == QUIT):
+                sys.exit(0)
+            elif (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
                 music.stop_music()
                 return self.father
 
@@ -212,8 +214,8 @@ class InputPanel(object):
     def _draw_text(self):
         y = 300 # Tune this value as you need
         separator = 2
-        text_img = self.font1.render(self.text + self.cursor, True, BLACK)
-        text_img2 = self.font1.render(self.text + self.cursor, True, WHITE)
+        text_img = self.font1.render(self.text + self.cursor, True, WHITE)
+        text_img2 = self.font1.render(self.text + self.cursor, True, BLUE)
         x = (self.screen.get_width() - text_img.get_width()) / 2
         self.screen.blit(text_img2, (x-separator,y-separator))
         self.screen.blit(text_img, (x,y))
