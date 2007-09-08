@@ -98,7 +98,6 @@ class Credits(object):
                         x -= img.get_width()/2
                         self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
-                        if x1 == x2: xFinal = x
                         y += hor_step + 10
 
                 pygame.time.delay(100)
@@ -123,7 +122,7 @@ class Credits(object):
                     for i,text_item in enumerate(text_list):
                         img = self.font2.render(text_item, True, WHITE)
                         img2 = self.font2.render(text_item, True, BLUE)
-                        x2 = self.screen.get_width()/2
+                        #x2 = self.screen.get_width()/2
                         if (i%2 == 0):
                             x1 = (x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50))
                         elif (i%2 == 1):
@@ -134,9 +133,9 @@ class Credits(object):
                         if self._verifyKey():
                             music.stop_music()
                             return self.father
-                        x += 10
+                        
                         self.screen.blit(img2, (x-separator, y-separator))
-                        self.screen.blit(img, (x, y))
+                        self.screen.blit(img, (x1-x, y))
                         y += hor_step + 10
 
                 if self._verifyKey():
