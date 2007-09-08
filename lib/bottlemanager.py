@@ -40,28 +40,28 @@ class BottleManager(object):
         self.bottles.update()
         self.impact()
 
-        if random.randrange(self.bottle1_density) == 0 and self.bottle1_flag: 
+        if random.randrange(self.bottle1_density) == 0 and not self.bottle1_flag: 
             bot = Bottle(self.bottle1)
             self.bottles.add(bot)
             self.bottle1_flag = CLOCK_TICS*2
         else:
             self.bottle1_flag -= 1
 
-        if random.randrange(self.bottle2_density) == 0 and self.bottle1_flag: 
+        if random.randrange(self.bottle2_density) == 0 and not self.bottle2_flag: 
             bot = Bottle(self.bottle2)
             self.bottles.add(bot)
             self.bottle2_flag = CLOCK_TICS*2
         else:
             self.bottle2_flag -= 1
 
-        if random.randrange(self.bottle3_density) == 0 and self.bottle1_flag: 
+        if random.randrange(self.bottle3_density) == 0 and not self.bottle3_flag: 
             bot = Bottle(self.bottle3)
             self.bottles.add(bot)
             self.bottle3_flag = CLOCK_TICS*2
         else:
             self.bottle3_flag -= 1
 
-        if random.randrange(400) == 0 and self.bottle4_current_mount < self.bottle4_mount and self.bottle1_flag:
+        if random.randrange(400) == 0 and self.bottle4_current_mount < self.bottle4_mount and not self.bottle4_flag:
             bot = Bottle(self.bottle4)
             self.bottles.add(bot)
             self.bottle4_current_mount += 1
@@ -70,6 +70,7 @@ class BottleManager(object):
             self.bottle4_flag -= 1
             
     def impact(self):
+        music.play_bottle()
         d = pygame.sprite.groupcollide(self.bottles,self.hero.group, True, False)
         if d:
             for bottle in d.keys():
