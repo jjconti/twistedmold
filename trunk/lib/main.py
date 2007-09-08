@@ -2,6 +2,7 @@ import sys
 import pygame
 from pygame.locals import *
 import utils
+import music
 from config import  *
 from level import Level
 from menu import Menu
@@ -24,9 +25,12 @@ def main():
     icon = utils.load_image(ICON, (0,0,0))
     pygame.display.set_icon(icon)
 
+    #Introduction
     images = [utils.load_image(image) for image in INTRO_IMAGES]
     visual = Visual(screen, images, INTRO_TIMES)
+    music.play_music(INTROMUSIC, 1)
     visual.loop()
+    music.stop_music()
     
     #Shooter opcion
     opcion = menu

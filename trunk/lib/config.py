@@ -70,6 +70,7 @@ BOTTLESOUND = os.path.join(SOUNDS, "32744__HardPCM__Burp007.wav")
 CREDITSMUSIC = os.path.join(SOUNDS, "credits.ogg")
 MENUMUSIC = os.path.join(SOUNDS, "menu.ogg")
 PLAYMUSIC = os.path.join(SOUNDS, "play_music.ogg")
+INTROMUSIC = os.path.join(SOUNDS, "bach.ogg")
                      
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 FONT2 = os.path.join(FONTS, "tasapainoaisti.ttf")
