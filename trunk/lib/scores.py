@@ -78,7 +78,7 @@ class HighScores(object):
                 elif element[1] >= SCORE_DEAD:
                     kind=" (HAPPY DEAD)"
                 else:
-                    kind=""
+                    kind="(you are in the limb)"
                 top7.append(str(i+1) + " " + element[0] + "  " + str(element[1]) + kind)
         return top7
 
