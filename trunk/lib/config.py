@@ -32,10 +32,10 @@ FONTS = os.path.join(DATA, "fonts")
 
 ICON = os.path.join(IMGS, "icon.jpg")
 BGLEVEL1 = os.path.join(BACKGROUNDS, "bg1.png")
-BGLEVEL2 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
+BGLEVEL2 = os.path.join(BACKGROUNDS, "bg2.png")
 BGLEVEL3 = os.path.join(BACKGROUNDS, "bg3.png")
-BGLEVEL4 = os.path.join(BACKGROUNDS, "bg2.png")
-BGLEVEL5 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
+BGLEVEL4 = os.path.join(BACKGROUNDS, "bg4.png")
+BGLEVEL5 = os.path.join(BACKGROUNDS, "bg5.png")
 
 
 MENUBGIMAGE = os.path.join(BACKGROUNDS, "menubg.png")
