@@ -132,7 +132,7 @@ class Level(object):
         self.control_up = -1
         self.control_left = -1
         self.control_right = -1
-        self.control_tiempo = 3
+        self.control_tiempo = 5
 
         self.next_scream = random.randrange(400,500)
 
@@ -192,6 +192,7 @@ class Level(object):
         if self.exit:
             return self.father
         elif not self.level_time.seconds:                   
+            music.stop_music()
 
             if self.level < LEVELS:
                 def f(screen):
@@ -266,8 +267,11 @@ class Level(object):
                 self.control_right = 0
             if event.key == K_LEFT:
                 self.control_left = 0
-            if event.key == K_SPACE:
-                self.hero.twist()
+            if event.key in(K_SPACE, K_a):
+                self.hero.twist_right()
+                music.play_scream()
+            if event.key == K_s:
+                self.hero.twist_right()
                 music.play_scream()
 
             if event.key == K_ESCAPE:
