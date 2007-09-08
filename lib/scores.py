@@ -91,14 +91,14 @@ class HighScores(object):
     def draw_screen(self, text_list):
 
         pygame.display.set_caption(WINDOW_TITLE)
-        background = utils.load_image(MENUBGIMAGE)
+        background = utils.load_image(CREDITIMAGE)
 
         clock = pygame.time.Clock()
 
         title = text_list[0]
         text_list.remove(title)
 
-        title_img = self.font1.render(title, True, WHITE)
+        title_img = self.font1.render(title, True, BLACK)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 25
         background.blit(title_img, topleft)
         bg = background.copy()
@@ -123,7 +123,7 @@ class HighScores(object):
                 done = True
 
             for i,text_item in enumerate(text_list):
-                img = self.font2.render(text_item, True, WHITE)
+                img = self.font2.render(text_item, True, BLACK)
                 x2 = self.screen.get_width()/2
                 if (state == 0) and (i%2 == 0):
                     x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
@@ -146,7 +146,6 @@ class HighScores(object):
             if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
                 music.stop_music()
                 return self.father
-
 
 class InputPanel(object):
     '''A generic input panel.'''

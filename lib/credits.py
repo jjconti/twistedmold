@@ -47,7 +47,7 @@ class Credits(object):
         clock = pygame.time.Clock()
 
         title = 'CREDITS'
-        title_img = self.font2.render(title, True, WHITE)
+        title_img = self.font2.render(title, True, BLACK)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
         background.blit(title_img, topleft)
  
@@ -72,7 +72,7 @@ class Credits(object):
                     done = True
 
                 for i,text_item in enumerate(text_list):
-                    img = self.font2.render(text_item, True, WHITE)
+                    img = self.font2.render(text_item, True, BLACK)
                     x2 = self.screen.get_width()/2
                     if (state == 0) and (i%2 == 0):
                         x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
@@ -111,7 +111,7 @@ class Credits(object):
                     done = True
 
                 for i,text_item in enumerate(text_list):
-                    img = self.font2.render(text_item, True, WHITE)
+                    img = self.font2.render(text_item, True, BLACK)
                     x2 = self.screen.get_width()/2
                     if (i%2 == 0):
                         x1 = (x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50))
