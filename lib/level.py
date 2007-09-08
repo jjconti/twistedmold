@@ -48,11 +48,15 @@ level 3:
     - dificil, pero no tanto, como para pasarlo poniendole ganas
 
 level 4:
+
+level 5:
+
     - la energia casi que la perdemos enseguida, necesitamos comer muchas
     naranjas y azules
     - es dificil, bastante
     - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
     ganar este nivel)
+
 '''
 levels = {1: dict(energy_leap=0.075, mold_density=50, mold_velocity=12,
                   max_time=15, img=LEVEL1, bottle_density=(400,550,7000,1)),
@@ -199,13 +203,12 @@ class Level(object):
                     return Level(screen, self.father, self.level + 1, self.total_points)
                 return f
             else:
-                
-                print "definir una funcion que retorne una animacion de victoria"
-
                 def f(screen):
-                    return HighScores(self.screen, self.father, self.total_points)
-
-                return f
+                    def g(screen):
+                        return HighScores(self.screen, self.father, self.total_points) 
+                    music.play_music(WIN)
+                    return Visual(screen, utils.load_image(WINIMAGE), -1, g)
+                return f               
 
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
