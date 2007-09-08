@@ -11,7 +11,7 @@ import pygame
 from pygame.locals import *
 import music
 
-MAX = 10 # max players number in highscore screen 
+MAX = 7 # max players number in highscore screen - magical number
 CPL = 15 # max char per line
 
 SCORE_HUMAN = 60 # you begin to be human
@@ -64,10 +64,7 @@ class HighScores(object):
                             ("", 0),
                             ("", 0),
                             ("", 0),
-                            ("", 0),
-                            ("", 0),
-                            ("", 0),
-                            ("", 0),]
+                            ("", 0)]
             f = file(HISCORES, 'w')
             pickle.dump(top_scores, f)
         else:
@@ -76,7 +73,7 @@ class HighScores(object):
         return top_scores
 
     def _convert(self):
-        top10 = []
+        top7 = []
         for i,element in enumerate(self.top_scores):
             if element[1] != 0:
                 if element[1] >= SCORE_HUMAN:
@@ -85,8 +82,8 @@ class HighScores(object):
                     kind=" (HAPPY DEAD)"
                 else:
                     kind=""
-                top10.append(str(i+1) + " " + element[0] + "  " + str(element[1]) + kind)
-        return top10
+                top7.append(str(i+1) + " " + element[0] + "  " + str(element[1]) + kind)
+        return top7
 
     def draw_screen(self, text_list):
 
