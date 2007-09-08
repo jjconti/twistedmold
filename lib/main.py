@@ -21,7 +21,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption(WINDOW_TITLE)
-    icon = utils.load_image(ICON)
+    icon = utils.load_image(ICON, (0,0,0))
     pygame.display.set_icon(icon)
 
     images = [utils.load_image(image) for image in INTRO_IMAGES]

@@ -1,5 +1,10 @@
-arte,fulano 1
-arte,fulano 2
-grafica,fulano 10
-url,http://code.google.com/p/twistedmold
+Developers,
+,Juanjo Conti
+,Mariano Galán
+,Diego Levental
+,David Capello 
+,Sebastian Galeano
+,César Portela
+capo,Manuel Kaufmann
+url,http://zombie.firebirds.com.ar
 
