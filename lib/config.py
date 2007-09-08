@@ -27,7 +27,7 @@ SOUNDS = os.path.join(DATA, "sounds")
 MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
 
-ICON = os.path.join(IMGS, "icon.jpg")
+ICON = os.path.join(IMGS, "icon.png")
 BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
 BGIMAGE2 = os.path.join(BACKGROUNDS, "bg2.png")
 MENUBGIMAGE = os.path.join(BACKGROUNDS, "menubg.png")
@@ -51,6 +51,7 @@ SCREAM2 = os.path.join(SOUNDS, "34283__hello_flowers__Flowers_Like_to_Scream_03.
 SCREAM3 = os.path.join(SOUNDS, "34292__hello_flowers__Flowers_Like_to_Scream_12.wav")
 CRACK1 = os.path.join(SOUNDS, "21914__Halleck__neck_crack.wav")
 GAMEOVERMUSIC = os.path.join(SOUNDS, "gameover.ogg")
+
 CREDITSMUSIC = os.path.join(SOUNDS, "credits.ogg")
 MENUMUSIC = os.path.join(SOUNDS, "menu.ogg")
 PLAYMUSIC = os.path.join(SOUNDS, "play_music.ogg")

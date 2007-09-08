@@ -38,8 +38,12 @@ def play_random_scream():
 def play_gameover():
     SOUNDS['gameover'].play()
 
-def play_music(level):
-    SOUNDS['play_music'].play()    
+def play_music(music_name):
+    global last_music
+    if last_music != music_name:
+        last_music = music_name
+        pygame.mixer.music.load(music_name)
+        pygame.mixer.music.play(-1)
 
 def stop_music():
     global last_music
