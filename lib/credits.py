@@ -24,7 +24,10 @@ class Credits(object):
         music.play_music(CREDITSMUSIC)
         self._load_credits()
         self._draw_screen()
-        return self._waitKey()
+        pygame.time.delay(200)
+        music.stop_music()
+        return self.father
+        #return self._waitKey()
 
     def _load_credits(self):
         try:
@@ -34,7 +37,6 @@ class Credits(object):
             aux=aux.split('\n')[:-2]
             for item in aux:
                 self.credits.append(item.split(','))
-            #self._convert()
         except IOError:
             print 'Cannot open credits file'
 
@@ -78,12 +80,20 @@ class Credits(object):
                         x1 = x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50)
                     else:
                         x1=x2
+
+                    if self._verifyKey():
+                        music.stop_music()
+                        return self.father
+
                     x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                     x -= img.get_width()/2
                     self.screen.blit(img, (x, y))
                     y += hor_step + 10
 
-            pygame.time.delay(250)
+            #pygame.time.delay(250)
+            if self._verifyKey():
+                music.stop_music()
+                return self.father
 
             done = False
             timeloop = CLOCK_TICS
@@ -107,16 +117,26 @@ class Credits(object):
                         x1 = (x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50))
                     elif (i%2 == 1):
                         x1 = (x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50))
+
+                    if self._verifyKey():
+                        music.stop_music()
+                        return self.father
+
                     x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                     x -= img.get_width()/2
                     self.screen.blit(img, (x, y))
                     y += hor_step + 10
 
-    def _waitKey(self):
-        while 1:
-            event = pygame.event.wait()
-            if (event.type == QUIT) or (pygame.key.get_pressed()[K_RETURN]) or (pygame.key.get_pressed()[K_ESCAPE]):
+            if self._verifyKey():
                 music.stop_music()
                 return self.father
+
+    def _verifyKey(self):
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                sys.exit(0)
+            if event.type == KEYDOWN and \
+                (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
+                return True
 
 
