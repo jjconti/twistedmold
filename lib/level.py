@@ -54,15 +54,15 @@ level 4:
     - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
     ganar este nivel)
 '''
-levels = {1: dict(energy_leap=0.050, mold_density=70, mold_velocity=30,
+levels = {1: dict(energy_leap=0.050, mold_density=70, mold_velocity=22,
                   max_time=20, img=LEVEL1, bottle_density=(500,300,4000,1)),
-          2: dict(energy_leap=0.053, mold_density=76, mold_velocity=22,
+          2: dict(energy_leap=0.053, mold_density=76, mold_velocity=17,
                   max_time=25, img=LEVEL2, bottle_density=(500,250,4000,3)),
-          3: dict(energy_leap=0.057, mold_density=72, mold_velocity=19,
+          3: dict(energy_leap=0.057, mold_density=72, mold_velocity=12,
                   max_time=25, img=LEVEL3, bottle_density=(500,200,4000,4)),
-          4: dict(energy_leap=0.062, mold_density=67, mold_velocity=15,
+          4: dict(energy_leap=0.062, mold_density=67, mold_velocity=9,
                   max_time=30, img=LEVEL4, bottle_density=(500,100,4000,5)),
-          5: dict(energy_leap=0.066, mold_density=63, mold_velocity=12,
+          5: dict(energy_leap=0.066, mold_density=63, mold_velocity=7,
                   max_time=35, img=LEVEL5, bottle_density=(500,100,4000,7))}
 
 LEVELS = 5
