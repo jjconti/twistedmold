@@ -9,7 +9,7 @@ import music
 class BottleManager(object):
 
     bottle1 = dict(energy=10, rotation=15, image=BOTTLE_BLUE, velocity=10) # azul
-    bottle2 = dict(energy=-10, rotation=5, image=BOTTLE_GREEN, velocity=3) # verde
+    bottle2 = dict(energy=-10, rotation=5, image=BOTTLE_GREEN, velocity=6) # verde
     bottle3 = dict(energy=25, rotation=30, image=BOTTLE_ORANGE, velocity=20) # naranja
     bottle4 = dict(energy=0, rotation=15, image=BOTTLE_RED, velocity=10, destroy_all=True) # roja
 
