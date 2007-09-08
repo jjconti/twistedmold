@@ -10,7 +10,6 @@ class Menu(object):
     '''A generic menu user interface. Allow both keyboard and mouse selection'''
 
     def __init__(self, screen, options, title, index=0):
-        
         self.screen = screen
         self.items = [x[0] for x in options]
         self.returns = [x[1] for x in options]
@@ -38,27 +37,49 @@ class Menu(object):
         self.background.blit(title_img2, topleft2)
         self.background.blit(title_img, topleft)
 
+        self.draw_end = False
         self._draw_items()
 
     def loop(self):
         '''Returns the asosiated object for the selected item'''
+        pygame.event.clear()
         if not music.is_playing_music():
             music.play_music(MENUMUSIC)
-        while not self.done:
+        while (not self.draw_end) and (not self.done): # menu draw the first time
 
             self.clock.tick(CLOCK_TICS)
 
             self.screen.blit(self.background, (0,0))
-            for event in pygame.event.get():
-                self.control(event)
+
+            if pygame.event.peek([KEYDOWN, KEYUP, QUIT]):
+                for event in pygame.event.get():
+                    self.control(event)
 
             self._draw_items()
-    
             pygame.display.flip()
+
             self.timeloop += 1
             if self.timeloop == 50:
                 self.state=1
+        
+        self.draw_end = False
+        while not self.done: # menu draw only if some key is pressed
 
+            self.clock.tick(CLOCK_TICS)
+
+            self.screen.blit(self.background, (0,0))
+
+            pygame.event.clear()
+            event = pygame.event.wait()
+            self.control(event)
+
+            self._draw_items()
+            pygame.display.flip()
+
+            self.timeloop += 1
+            if self.timeloop == 50:
+                self.state=1
+        
         return self.returns[self.index]
 
     def control(self, event):
@@ -123,6 +144,7 @@ class Menu(object):
                 x1 = x2 + (600 * (50 - self.timeloop) / 50)
             else:  
                 x1 = x2
+                self.draw_end = True
             x = (x1+(x2-x1)*(1-exp(-self.timeloop/20.0)))
             x -= img.get_width() / 2
             self.screen.blit(img2, (x-self.separator,y-self.separator))

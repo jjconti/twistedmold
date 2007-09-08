@@ -137,11 +137,12 @@ class HighScores(object):
                 if x1 == x2:
                     bg.blit(img, (x, y))
                 y += hor_step + 10
-        
+
         return bg
 
     def _waitKey(self):
-        while 1:
+        while True:
+            pygame.event.clear()
             event = pygame.event.wait()
             if (event.type == QUIT):
                 sys.exit(0)

@@ -22,6 +22,7 @@ class Credits(object):
         self.font3 = pygame.font.Font(FONT2, 60)
 
     def loop(self):
+        pygame.event.clear()
         music.stop_music()
         music.play_music(CREDITSMUSIC)
         self._load_credits()
@@ -145,11 +146,12 @@ class Credits(object):
             pygame.time.delay(200)
 
     def _verifyKey(self):
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                sys.exit(0)
-            if event.type == KEYDOWN and \
-                (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
-                return True
-
+        if pygame.event.peek([KEYDOWN, KEYUP, QUIT]):
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    sys.exit(0)
+                if event.type == KEYDOWN and \
+                    (event.key in [K_ESCAPE, K_RETURN, K_KP_ENTER]):
+                    return True
+        return False
 
