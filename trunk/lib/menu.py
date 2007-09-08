@@ -20,7 +20,7 @@ class Menu(object):
         self.separator = 2
         font1 = pygame.font.Font(FONT2, 50)
         font2 = pygame.font.Font(FONT2, 45)
-        self.hor_step = font2.get_height() + 20
+        self.hor_step = font2.get_height() + 10
         self.clock = pygame.time.Clock()
         self.selected_imgs = [font2.render(text, True, WHITE) for text in self.items]
         self.selected_imgs2 = [font2.render(text, True, BLUE) for text in self.items]
