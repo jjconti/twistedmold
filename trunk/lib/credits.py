@@ -47,14 +47,14 @@ class Credits(object):
         background = utils.load_image(CREDITIMAGE)
 
         clock = pygame.time.Clock()
-        #separator = 2
+        separator = 2
 
         title = 'CREDITS'
         title_img = self.font3.render(title, True, WHITE)
-        #title_img2 = self.font3.render(title, True, WHITE)
+        title_img2 = self.font3.render(title, True, BLUE)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
-        #topleft2 = ((background.get_rect().width - title_img.get_rect().width) / 2)-separator, 30-separator
-        #background.blit(title_img2, topleft2)
+        topleft2 = ((background.get_rect().width - title_img.get_rect().width) / 2)-separator, 30-separator
+        background.blit(title_img2, topleft2)
         background.blit(title_img, topleft)
  
         self.screen.blit(background, (0, 0))
@@ -80,7 +80,7 @@ class Credits(object):
 
                     for i,text_item in enumerate(text_list):
                         img = self.font2.render(text_item, True, WHITE)
-                        #img2 = self.font2.render(text_item, True, WHITE)
+                        img2 = self.font2.render(text_item, True, BLUE)
                         x2 = self.screen.get_width()/2
                         if (state == 0) and (i%2 == 0):
                             x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
@@ -95,7 +95,7 @@ class Credits(object):
 
                         x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                         x -= img.get_width()/2
-                        #self.screen.blit(img2, (x-separator, y-separator))
+                        self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
                         y += hor_step + 10
 
@@ -120,7 +120,7 @@ class Credits(object):
 
                     for i,text_item in enumerate(text_list):
                         img = self.font2.render(text_item, True, WHITE)
-                        #img2 = self.font2.render(text_item, True, WHITE)
+                        img2 = self.font2.render(text_item, True, BLUE)
                         x2 = self.screen.get_width()/2
                         if (i%2 == 0):
                             x1 = (x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50))
@@ -133,7 +133,7 @@ class Credits(object):
 
                         x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                         x -= img.get_width()/2
-                        #self.screen.blit(img2, (x-separator, y-separator))
+                        self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
                         y += hor_step + 10
 
