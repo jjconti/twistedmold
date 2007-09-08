@@ -92,7 +92,8 @@ class Level(object):
 
         self.total_points = total_points
         
-        self.pointsCounter = Points(self.total_points,level=level)
+        self.pointsCounter = Points(self.total_points)
+        self.levelIndicator = LevelIndicator(self.level)
         self.mm.level = self
         self.tics = 0
 
@@ -116,6 +117,7 @@ class Level(object):
         self.gadgets.add(self.pointsCounter)
         self.gadgets.add(self.energy_bar)
         self.gadgets.add(self.level_time)
+        self.gadgets.add(self.levelIndicator)
 
         self.hero = Hero()
         self.bm.hero=self.hero
@@ -178,7 +180,6 @@ class Level(object):
     
         if self.exit:
             return self.father
-
         elif not self.level_time.seconds:                   
 
             if self.level < LEVELS:
@@ -206,8 +207,8 @@ class Level(object):
 
     def update(self):
         if self.level > 2:
-            self.snow_slim.update()
-        
+            self.snow_slim.update()               
+
         self.energy_bar.update(self.tics)
         self.level_time.update(self.tics)
 
@@ -217,7 +218,7 @@ class Level(object):
         self.mm.move(self.tics)
 
         if self.level > 2:
-            self.snow_fat.update()        
+            self.snow_fat.update() 
 
         #Blood Explotion
         self.explotion.update(self.tics, self.screen)
@@ -227,7 +228,8 @@ class Level(object):
             self.explotion.boom(self.hero.get_center())
             self.total_points += 1
 
-        self.pointsCounter.update(self.total_points)            
+        self.pointsCounter.update(self.total_points)  
+        self.levelIndicator.update(self.level)          
             
     
     def draw(self):

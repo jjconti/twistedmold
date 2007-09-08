@@ -9,21 +9,38 @@ import math
 
 class Points(pygame.sprite.Sprite):
     
-    def __init__(self, points, **kwargs):
+    def __init__(self, points):
         pygame.sprite.Sprite.__init__(self)
         self.points = points
-        self.level = kwargs["level"]
         self.font = pygame.font.Font(FONT1, 35)
         self.image = self._image()
-        self.rect = self.image.get_rect(top=0, right=WIDTH - 1)
+        self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
     def update(self, points):
         self.points = points
         self.image = self._image()
-        self.rect = self.image.get_rect(top=0, right=WIDTH - 1)
+        self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
     def _image(self):
-        return self.font.render("Level " + str(self.level) + "         Points: " + str(self.points) + " ", True, COLOR1)
+        return self.font.render("Points: " + str(self.points) + " ", True, COLOR1)
+
+class LevelIndicator(pygame.sprite.Sprite):
+    
+    def __init__(self, level):
+        pygame.sprite.Sprite.__init__(self)
+        self.level = level
+        self.font = pygame.font.Font(FONT1, 35)
+        self.image = self._image()
+        self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 300)
+
+#    def update(self, level):
+#        self.points = points
+#        self.image = self._image()
+#        self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
+
+    def _image(self):
+        return self.font.render("Level " + str(self.level), True, COLOR1)
+
 
 
 class EnergyBar(pygame.sprite.Sprite):
@@ -68,7 +85,7 @@ class LevelTime(pygame.sprite.Sprite):
         self.font = pygame.font.Font(FONT1, 35)
         self.seconds = seconds 
         self.image = self._image()
-        self.rect = self.image.get_rect(left=3, top = 2)
+        self.rect = self.image.get_rect(left=3, top = HEIGHT - 50)
 
     def update(self, tics):
         if tics % CLOCK_TICS: return 
