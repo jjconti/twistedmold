@@ -158,7 +158,7 @@ class InputPanel(object):
     def __init__(self, screen, score):
         music.play_music(MENUMUSIC)
         self.screen = screen
-        self.cursor = '|'
+        self.cursor = '!'
         self.text = ""
         self.done = False
         self.font1 = pygame.font.Font(FONT3, 40)
