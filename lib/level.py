@@ -55,15 +55,15 @@ level 4:
     ganar este nivel)
 '''
 levels = {1: dict(energy_leap=0.035, mold_density=80, mold_velocity=12,
-                  max_time=20, img=LEVEL1, bottle_density=(500,500,8000,1)),
+                  max_time=20, img=LEVEL1, bottle_density=(300,300,4000,1)),
           2: dict(energy_leap=0.065, mold_density=76, mold_velocity=15,
-                  max_time=25, img=LEVEL2, bottle_density=(350,350,5000,3)),
+                  max_time=25, img=LEVEL2, bottle_density=(250,250,3500,3)),
           3: dict(energy_leap=0.072, mold_density=72, mold_velocity=17,
-                  max_time=25, img=LEVEL3, bottle_density=(250,200,4000,4)),
-          4: dict(energy_leap=0.080, mold_density=67, mold_velocity=25,
-                  max_time=30, img=LEVEL4, bottle_density=(200,100,3500,5)),
-          5: dict(energy_leap=0.085, mold_density=63, mold_velocity=30,
-                  max_time=35, img=LEVEL5, bottle_density=(180,100,2000,7))}
+                  max_time=25, img=LEVEL3, bottle_density=(250,200,3200,4)),
+          4: dict(energy_leap=0.083, mold_density=67, mold_velocity=25,
+                  max_time=30, img=LEVEL4, bottle_density=(200,100,3000,5)),
+          5: dict(energy_leap=0.088, mold_density=63, mold_velocity=30,
+                  max_time=35, img=LEVEL5, bottle_density=(180,100,2800,7))}
 
 LEVELS = 5
 
