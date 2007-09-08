@@ -88,13 +88,13 @@ class HighScores(object):
         background = utils.load_image(SCOREIMAGE)
 
         clock = pygame.time.Clock()
-        separator = 2
+        separator = 3
 
         title = text_list[0]
         text_list.remove(title)
 
         title_img = self.font1.render(title, True, WHITE)
-        title_img2 = self.font1.render(title, True, BLUE)
+        title_img2 = self.font1.render(title, True, BLACK)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 25
         topleft2 = (background.get_rect().width - title_img.get_rect().width) / 2-separator, 25-separator
         background.blit(title_img2, topleft2)
@@ -122,7 +122,7 @@ class HighScores(object):
 
             for i,text_item in enumerate(text_list):
                 img = self.font2.render(text_item, True, WHITE)
-                img2 = self.font2.render(text_item, True, BLUE)
+                img2 = self.font2.render(text_item, True, BLACK)
                 x2 = self.screen.get_width()/2
                 if (state == 0) and (i%2 == 0):
                     x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
