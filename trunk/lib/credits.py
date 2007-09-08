@@ -1,5 +1,6 @@
 '''score releted stuff'''
 
+import sys
 import math
 import pygame
 from pygame.locals import *
@@ -16,9 +17,9 @@ class Credits(object):
         self.screen = screen
         self.father = father
         self.credits = []
-        self.font1 = pygame.font.Font(FONT3, 20)
-        self.font2 = pygame.font.Font(FONT3, 40)
-        self.font3 = pygame.font.Font(FONT3, 60)
+        self.font1 = pygame.font.Font(FONT4, 20)
+        self.font2 = pygame.font.Font(FONT4, 40)
+        self.font3 = pygame.font.Font(FONT4, 60)
 
     def loop(self):
         music.stop_music()
@@ -46,14 +47,14 @@ class Credits(object):
         background = utils.load_image(CREDITIMAGE)
 
         clock = pygame.time.Clock()
-        separator = 2
+        #separator = 2
 
         title = 'CREDITS'
-        title_img = self.font3.render(title, True, BLACK)
-        title_img2 = self.font3.render(title, True, WHITE)
+        title_img = self.font3.render(title, True, WHITE)
+        #title_img2 = self.font3.render(title, True, WHITE)
         topleft = (background.get_rect().width - title_img.get_rect().width) / 2, 30
-        topleft2 = ((background.get_rect().width - title_img.get_rect().width) / 2)-separator, 30-separator
-        background.blit(title_img2, topleft2)
+        #topleft2 = ((background.get_rect().width - title_img.get_rect().width) / 2)-separator, 30-separator
+        #background.blit(title_img2, topleft2)
         background.blit(title_img, topleft)
  
         self.screen.blit(background, (0, 0))
@@ -78,8 +79,8 @@ class Credits(object):
                         done = True
 
                     for i,text_item in enumerate(text_list):
-                        img = self.font2.render(text_item, True, BLACK)
-                        img2 = self.font2.render(text_item, True, WHITE)
+                        img = self.font2.render(text_item, True, WHITE)
+                        #img2 = self.font2.render(text_item, True, WHITE)
                         x2 = self.screen.get_width()/2
                         if (state == 0) and (i%2 == 0):
                             x1 = x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50)
@@ -94,11 +95,10 @@ class Credits(object):
 
                         x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                         x -= img.get_width()/2
-                        self.screen.blit(img2, (x-separator, y-separator))
+                        #self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
                         y += hor_step + 10
 
-                #pygame.time.delay(250)
                 if self._verifyKey():
                     music.stop_music()
                     return self.father
@@ -119,8 +119,8 @@ class Credits(object):
                         done = True
 
                     for i,text_item in enumerate(text_list):
-                        img = self.font2.render(text_item, True, BLACK)
-                        img2 = self.font2.render(text_item, True, WHITE)
+                        img = self.font2.render(text_item, True, WHITE)
+                        #img2 = self.font2.render(text_item, True, WHITE)
                         x2 = self.screen.get_width()/2
                         if (i%2 == 0):
                             x1 = (x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50))
@@ -133,7 +133,7 @@ class Credits(object):
 
                         x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
                         x -= img.get_width()/2
-                        self.screen.blit(img2, (x-separator, y-separator))
+                        #self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
                         y += hor_step + 10
 

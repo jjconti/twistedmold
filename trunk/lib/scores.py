@@ -24,8 +24,8 @@ class HighScores(object):
         self.father = father
         self.score = score
         self.top_scores = []
-        self.font1 = pygame.font.Font(FONT3, 40)
-        self.font2 = pygame.font.Font(FONT3, 30)
+        self.font1 = pygame.font.Font(FONT4, 40)
+        self.font2 = pygame.font.Font(FONT4, 30)
 
     def loop(self):
         music.stop_music()

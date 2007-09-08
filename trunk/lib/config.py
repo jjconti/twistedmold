@@ -59,6 +59,7 @@ PLAYMUSIC = os.path.join(SOUNDS, "play_music.ogg")
 FONT1 = os.path.join(FONTS, "FreeSerifBold.ttf")
 FONT2 = os.path.join(FONTS, "tasapainoaisti.ttf")
 FONT3 = os.path.join(FONTS, "acquaint.ttf")
+FONT4 = os.path.join(FONTS, "tzltromatic.ttf")
 
 COLOR1 = (10, 50, 200) 
 BLACK = (0, 0, 0)
@@ -67,6 +68,7 @@ ORANGE = (255, 180, 0)
 RED = (250, 0, 0)
 WHITE = (250, 250, 250)
 GREY = (100, 100, 100)
+BLUE = (19, 32, 53)
 
 CLOCK_TICS = 80
 
