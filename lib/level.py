@@ -48,26 +48,22 @@ level 3:
     - dificil, pero no tanto, como para pasarlo poniendole ganas
 
 level 4:
-
-level 5:
-
     - la energia casi que la perdemos enseguida, necesitamos comer muchas
     naranjas y azules
     - es dificil, bastante
     - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
     ganar este nivel)
-
 '''
-levels = {1: dict(energy_leap=0.075, mold_density=50, mold_velocity=12,
-                  max_time=15, img=LEVEL1, bottle_density=(400,550,7000,1)),
-          2: dict(energy_leap=0.105, mold_density=40, mold_velocity=15,
-                  max_time=15, img=LEVEL2, bottle_density=(500,300,400,3)),
-          3: dict(energy_leap=0.13, mold_density=35, mold_velocity=17,
-                  max_time=20, img=LEVEL3, bottle_density=(200,200,200,4)),
-          4: dict(energy_leap=0.2, mold_density=27, mold_velocity=25,
-                  max_time=25, img=LEVEL4, bottle_density=(250,100,100,5)),
-          5: dict(energy_leap=0.2, mold_density=27, mold_velocity=25,
-                  max_time=30, img=LEVEL5, bottle_density=(250,100,100,7))}
+levels = {1: dict(energy_leap=0.02, mold_density=80, mold_velocity=12,
+                  max_time=20, img=LEVEL1, bottle_density=(500,500,8000,1)),
+          2: dict(energy_leap=0.08, mold_density=45, mold_velocity=15,
+                  max_time=25, img=LEVEL2, bottle_density=(500,350,5000,3)),
+          3: dict(energy_leap=0.95, mold_density=40, mold_velocity=17,
+                  max_time=25, img=LEVEL3, bottle_density=(300,200,4000,4)),
+          4: dict(energy_leap=0.102, mold_density=35, mold_velocity=25,
+                  max_time=30, img=LEVEL4, bottle_density=(300,100,3000,5)),
+          5: dict(energy_leap=0.11, mold_density=30, mold_velocity=20,
+                  max_time=35, img=LEVEL5, bottle_density=(250,100,2000,7))}
 
 LEVELS = 5
 
@@ -203,12 +199,13 @@ class Level(object):
                     return Level(screen, self.father, self.level + 1, self.total_points)
                 return f
             else:
+                
+                print "definir una funcion que retorne una animacion de victoria"
+
                 def f(screen):
-                    def g(screen):
-                        return HighScores(self.screen, self.father, self.total_points) 
-                    music.play_music(WIN)
-                    return Visual(screen, utils.load_image(WINIMAGE), -1, g)
-                return f               
+                    return HighScores(self.screen, self.father, self.total_points)
+
+                return f
 
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
@@ -220,7 +217,7 @@ class Level(object):
             return f
 
     def update(self):
-        if self.level > 2:
+        if self.level in(3,5):
             self.snow_slim.update()               
 
         self.energy_bar.update(self.tics)
@@ -231,7 +228,7 @@ class Level(object):
         self.mm.gen(self.tics)
         self.mm.move(self.tics)
 
-        if self.level > 2:
+        if self.level in(3,5):
             self.snow_fat.update() 
 
         #Blood Explotion
