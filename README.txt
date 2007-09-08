@@ -3,7 +3,7 @@ Twisted Zombie
 
 Entry in PyWeek #5  <http://www.pyweek.org/5/>
 
-Team: Pythonerds (aka santa_fe)
+Team: 7 Zombies (aka santa_fe)
 
 Members: Juanjo Conti <jjconti@gnu.org>
          Mariano Galán <chinomng@gmail.com>
@@ -62,6 +62,6 @@ Bottles:
 
 LICENSE:
 
-This game skellington is distributed as Free Software acording GPL v3.
+This game is distributed as Free Software acording GPL v3.
 See COPYING file for more information.
 
