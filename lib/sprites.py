@@ -153,6 +153,7 @@ class BloodDrop(pygame.sprite.Sprite):
             self.vy += 1.2
             self.rect.left = self.x
             self.rect.top = self.y
+            self.dead = (self.y > 550)
         
     def set_position(self, left, top):
         ang = random.randrange(0,3600)/10.0
@@ -164,7 +165,7 @@ class BloodDrop(pygame.sprite.Sprite):
         self.y = top
         self.rect.left = left
         self.rect.top = top
-        self.dead = (self.y > 550)
+        self.dead = False
 
     def is_dead(self):
         return self.dead
