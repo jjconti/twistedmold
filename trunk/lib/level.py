@@ -21,49 +21,21 @@ if not pygame.mixer: print 'Warning, sound disabled'
 
 # bottle_density (azul, verde, naranja, roja_destroy)
 
-'''
-level 1:
-    - la energia baja lento, de tal manera que siempre pasemos de nivel a menos
-    que juguemos mal (comer bolas verdes)
-    - 1 en 7000 posibilidades de que aparezca una naranja que te
-    da mucha energia
-    - los moldes vienen relativamente lento como para que no puedas hacer muchos
-    puntos en este nivel que es mas facil
-    - no hay bolas rojas que borran la pantalla
-    - facil, para ser el primero tiene una buena complejidad (FACIL)
-
-level 2:
-    - no hay bolas rojas que borran la pantalla
-    - mas posibilidades que aparezcan bolas naranjas con energia 1 en 400
-    - aparecen mas moldes en el juego
-    - el tiempo que hay que sobrevivir es el mismo al anterior
-    - es un poco mas dificil que el anterior pero sigue entrando en la categoria
-    de facil. Para pasarlo hay que comer un par de bolas de energia al menos
-
-level 3:
-    - permanecer mas tiempo vivo (se pone mas jodido)
-    - los moldes se aceleran un poco
-    - la energia se pierde mas rapido
-    - es el mas divertido de los cuatro niveles
-    - dificil, pero no tanto, como para pasarlo poniendole ganas
-
-level 4:
-    - la energia casi que la perdemos enseguida, necesitamos comer muchas
-    naranjas y azules
-    - es dificil, bastante
-    - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
-    ganar este nivel)
-'''
 levels = {1: dict(energy_leap=0.050, mold_density=70, mold_velocity=19,
-                  max_time=20, img=LEVEL1, bottle_density=(500,300,4000,1)),
+                  max_time=20, img=LEVEL1, bottle_density=(500,300,4000,1),
+                  background=BGLEVEL1),
           2: dict(energy_leap=0.057, mold_density=76, mold_velocity=15,
-                  max_time=25, img=LEVEL2, bottle_density=(500,250,4000,3)),
+                  max_time=25, img=LEVEL2, bottle_density=(500,250,4000,3),
+                  background=BGLEVEL2),
           3: dict(energy_leap=0.065, mold_density=72, mold_velocity=11,
-                  max_time=25, img=LEVEL3, bottle_density=(500,200,4000,4)),
+                  max_time=25, img=LEVEL3, bottle_density=(500,200,4000,4),
+                  background=BGLEVEL3),
           4: dict(energy_leap=0.066, mold_density=67, mold_velocity=9,
-                  max_time=30, img=LEVEL4, bottle_density=(500,150,4000,5)),
+                  max_time=30, img=LEVEL4, bottle_density=(500,150,4000,5),
+                  background=BGLEVEL4),
           5: dict(energy_leap=0.071, mold_density=63, mold_velocity=8,
-                  max_time=35, img=LEVEL5, bottle_density=(500,100,4000,7))}
+                  max_time=35, img=LEVEL5, bottle_density=(500,100,4000,7),
+                  background=BGLEVEL1)}
 
 LEVELS = 5
 
@@ -75,7 +47,7 @@ class Level(object):
         self.screen = screen
         self.father = father
         self.level = level
-        self.background = utils.load_image(BGIMAGE2)
+        self.background = utils.load_image(levels[level]['background'])
       
         #parameters
         self.energy_leap = levels[level]['energy_leap']
