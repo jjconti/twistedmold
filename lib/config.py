@@ -73,9 +73,8 @@ BLUE = (122, 138, 166)
 CLOCK_TICS = 80
 
 #titles of
-COLORPOINTS1 = (143,0,222)
 COLORLEVEL1 = (68,5,23)
-COLORTIME1 = (187,0,0)
+COLORSCORED = (187,0,0)
 
 
 # imagenes intro
