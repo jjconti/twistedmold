@@ -43,7 +43,7 @@ class Credits(object):
 
     def _draw_screen(self):
         pygame.display.set_caption(WINDOW_TITLE)
-        background = utils.load_image(MENUBGIMAGE)
+        background = utils.load_image(CREDITSIMAGE)
 
         clock = pygame.time.Clock()
         separator = 2
