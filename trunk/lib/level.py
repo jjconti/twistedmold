@@ -62,8 +62,8 @@ levels = {1: dict(energy_leap=0.040, mold_density=80, mold_velocity=12,
                   max_time=25, img=LEVEL3, bottle_density=(250,200,3200,4)),
           4: dict(energy_leap=0.067, mold_density=67, mold_velocity=25,
                   max_time=30, img=LEVEL4, bottle_density=(200,100,3000,5)),
-          5: dict(energy_leap=0.071, mold_density=63, mold_velocity=30,
-                  max_time=35, img=LEVEL5, bottle_density=(180,100,2800,7))}
+          5: dict(energy_leap=0.070, mold_density=63, mold_velocity=30,
+                  max_time=35, img=LEVEL5, bottle_density=(150,100,2800,7))}
 
 LEVELS = 5
 
