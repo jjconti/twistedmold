@@ -35,6 +35,7 @@ def play_scream():
     SOUNDS['crack1'].play()
 
 def play_random_scream():
+    SOUNDS['scream1'].set_volume(0.3)
     SOUNDS['scream1'].play()
 
 def play_gameover():
