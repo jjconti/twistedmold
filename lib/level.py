@@ -267,11 +267,11 @@ class Level(object):
                 self.control_right = 0
             if event.key == K_LEFT:
                 self.control_left = 0
-            if event.key in(K_SPACE, K_a):
+            if event.key in(K_SPACE, K_s):
                 self.hero.twist_right()
                 music.play_scream()
-            if event.key == K_s:
-                self.hero.twist_right()
+            if event.key == K_a:
+                self.hero.twist_left()
                 music.play_scream()
 
             if event.key == K_ESCAPE:
