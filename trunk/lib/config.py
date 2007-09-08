@@ -46,9 +46,9 @@ LEVEL3 = os.path.join(IMGS, "level3.png")
 LEVEL4 = os.path.join(IMGS, "level4.png")
 LEVEL5 = os.path.join(IMGS, "level4.png")
 STORY = os.path.join(IMGS, "story.png")
-STORYBG = os.path.join(IMGS, "for-story.png")
-HELP = os.path.join(IMGS, "help.png") # Reemplazar por un texto con la ayuda.
-HELPBG = os.path.join(IMGS, "horror-house.png")
+STORYBG = os.path.join(IMGS, "horror-house2.png")
+HELP = os.path.join(IMGS, "help.png") 
+HELPBG = os.path.join(IMGS, "horror-house2.png")
 
 BLOOP = os.path.join(SOUNDS, "bloop.wav")
 SWORD1 = os.path.join(SOUNDS, "37596__hello_flowers__Sword.wav")
