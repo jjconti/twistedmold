@@ -13,6 +13,21 @@ Members: Juanjo Conti <jjconti@gnu.org>
          César Portela <ceportela@gmail.com>
          Manuel Kaufmann <humitos@gmail.com>
 
+Programming: Juanjo Conti <jjconti@gnu.org>
+             Mariano Galán <chinomng@gmail.com>
+             Diego Levental <diegolevental@gmail.com>
+             David Capello <davidcapello@gmail.com>
+             César Portela <ceportela@gmail.com>
+             Manuel Kaufmann <humitos@gmail.com>
+
+Graphics: Sebastian Galeano <sgaliano@gmail.com>
+          David Capello <davidcapello@gmail.com>
+          Manuel Kaufmann <humitos@gmail.com>
+
+Music: David Capello <davidcapello@gmail.com>
+
+Sounds: http://freesound.iua.upf.edu
+
 DEPENDENCIES:
 
 You might need to install some of these before running the game:
