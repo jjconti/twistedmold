@@ -1,10 +1,10 @@
 Developers,
-,Juanjo Conti
-,Mariano Galán
-,Diego Levental
-,David Capello 
-,Sebastian Galeano
-,César Portela
-capo,Manuel Kaufmann
+Juanjo,Conti
+Mariano,Galán
+Diego,Levental
+David,Capello 
+Sebastian,Galeano
+César,Portela
+Manuel,Kaufmann
 url,http://zombie.firebirds.com.ar
 
