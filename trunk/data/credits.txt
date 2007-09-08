@@ -1,10 +1,10 @@
 Developers,
 Juanjo,Conti
-Mariano,Galán
+Mariano,Galan
 Diego,Levental
 David,Capello 
 Sebastian,Galeano
-César,Portela
+Cesar,Portela
 Manuel,Kaufmann
-url,http://zombie.firebirds.com.ar
+url,zombie.firebirds.com.ar
 
