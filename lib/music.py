@@ -14,7 +14,6 @@ SOUNDS['crack1'] = utils.load_sound(CRACK1)
 SOUNDS['gameover'] = utils.load_sound(GAMEOVERMUSIC)
 SOUNDS['sword1'] = utils.load_sound(SWORD1)
 SOUNDS['sword2'] = utils.load_sound(SWORD2)
-SOUNDS['play_music'] = utils.load_sound(PLAYMUSIC)
 
 last_music = None
 
