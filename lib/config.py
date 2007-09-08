@@ -37,6 +37,7 @@ BGLEVEL5 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
 
 MENUBGIMAGE = os.path.join(BACKGROUNDS, "menubg.png")
 CREDITIMAGE = os.path.join(BACKGROUNDS, "credits.png")
+SCOREIMAGE = os.path.join(BACKGROUNDS, "cemetery-moon2.png")
 GAMEOVER = os.path.join(IMGS, "gameover.png")
 WIN = os.path.join(IMGS, "win.png")
 LEVEL1 = os.path.join(IMGS, "level1.png")

@@ -88,7 +88,7 @@ class HighScores(object):
     def draw_screen(self, text_list):
 
         pygame.display.set_caption(WINDOW_TITLE)
-        background = utils.load_image(CREDITIMAGE)
+        background = utils.load_image(SCOREIMAGE)
 
         clock = pygame.time.Clock()
         separator = 2
