@@ -6,6 +6,9 @@ WIDTH = 700
 HEIGHT = 550
 CENTER = HEIGHT / 2
 
+SCORE_HUMAN = 80 # you begin to be human
+SCORE_DEAD = 60 # you is happy dead
+
 SIDE = 25
 HALF = SIDE / 2
 

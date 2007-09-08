@@ -14,9 +14,6 @@ import music
 MAX = 7 # max players number in highscore screen - magical number
 CPL = 15 # max char per line
 
-SCORE_HUMAN = 80 # you begin to be human
-SCORE_DEAD = 60 # you is happy dead
-
 class HighScores(object):
 
     def __init__(self, screen, father=None, score=-1):
