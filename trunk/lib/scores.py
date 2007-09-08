@@ -14,8 +14,8 @@ import music
 MAX = 7 # max players number in highscore screen - magical number
 CPL = 15 # max char per line
 
-SCORE_HUMAN = 60 # you begin to be human
-SCORE_DEAD = 30 # you is happy dead
+SCORE_HUMAN = 80 # you begin to be human
+SCORE_DEAD = 60 # you is happy dead
 
 class HighScores(object):
 
@@ -161,7 +161,7 @@ class InputPanel(object):
         self.cursor = '!'
         self.text = ""
         self.done = False
-        self.font1 = pygame.font.Font(FONT3, 40)
+        self.font1 = pygame.font.Font(FONT3, 50)
         self.clock = pygame.time.Clock()
 
         score_text="Your score is "+str(score)
