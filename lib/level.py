@@ -54,15 +54,15 @@ level 4:
     - entretenido para ser el ultimo nivel (hay que jugarle un par de veces para
     ganar este nivel)
 '''
-levels = {1: dict(energy_leap=0.040, mold_density=80, mold_velocity=12,
+levels = {1: dict(energy_leap=0.050, mold_density=70, mold_velocity=35,
                   max_time=20, img=LEVEL1, bottle_density=(300,300,4000,1)),
-          2: dict(energy_leap=0.055, mold_density=76, mold_velocity=15,
+          2: dict(energy_leap=0.053, mold_density=76, mold_velocity=26,
                   max_time=25, img=LEVEL2, bottle_density=(250,250,3500,3)),
-          3: dict(energy_leap=0.062, mold_density=72, mold_velocity=17,
+          3: dict(energy_leap=0.057, mold_density=72, mold_velocity=23,
                   max_time=25, img=LEVEL3, bottle_density=(250,200,3200,4)),
-          4: dict(energy_leap=0.067, mold_density=67, mold_velocity=25,
+          4: dict(energy_leap=0.062, mold_density=67, mold_velocity=18,
                   max_time=30, img=LEVEL4, bottle_density=(200,100,3000,5)),
-          5: dict(energy_leap=0.070, mold_density=63, mold_velocity=30,
+          5: dict(energy_leap=0.066, mold_density=63, mold_velocity=15,
                   max_time=35, img=LEVEL5, bottle_density=(150,100,2800,7))}
 
 LEVELS = 5
@@ -200,11 +200,11 @@ class Level(object):
                 return f
             else:
                 
-                print "definir una funcion que retorne una animacion de victoria"
-
                 def f(screen):
-                    return HighScores(self.screen, self.father, self.total_points)
-
+                    def g(screen):
+                        return HighScores(self.screen, self.father, self.total_points)
+                    music.play_music(WINMUSIC)
+                    return Visual(screen,utils.load_image(WIN),-1,g)
                 return f
 
         elif self.energy_bar.energy_percent <= 0:

@@ -118,6 +118,7 @@ class MoldsManager(object):
                 m.empty()
                 del m
                 music.play_bloop()
+                self.level.energy_bar.add_energy(5)
                 return True
             
         return False
