@@ -69,9 +69,16 @@ class Hero(object):
             self.x += SIDE;
             self.setup_parts()
 
-    def twist(self):
+    def twist_right(self):
         #self.pos = twist(self.parts, self.pos)
         self.pos = (self.pos + 1) % 6
+        self.setup_parts()
+
+    def twist_left(self):
+        #self.pos = twist(self.parts, self.pos)
+        self.pos -= 1
+        if self.pos == 0:
+            self.pos = 5
         self.setup_parts()
 
     def get_center(self):
