@@ -61,11 +61,12 @@ class Credits(object):
         pygame.display.flip()
         hor_step = self.font2.get_height()
 
-        while 1:
+        while True:
             for text_list in self.credits:
                 done = False
                 timeloop = 0
                 state = 0
+                xFinal = 0
 
                 while not done:
                     clock.tick(CLOCK_TICS)
@@ -88,7 +89,7 @@ class Credits(object):
                             x1 = x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50)
                         else:
                             x1=x2
-
+ 
                         if self._verifyKey():
                             music.stop_music()
                             return self.father
@@ -97,6 +98,7 @@ class Credits(object):
                         x -= img.get_width()/2
                         self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
+                        if x1 == x2: xFinal = x
                         y += hor_step + 10
 
                 pygame.time.delay(100)
@@ -107,7 +109,6 @@ class Credits(object):
 
                 done = False
                 timeloop = CLOCK_TICS
-                state = 1
 
                 while not done:
                     clock.tick(CLOCK_TICS)
@@ -117,7 +118,6 @@ class Credits(object):
 
                     timeloop -= 1
                     if timeloop == 0:
-                        state = 0
                         done = True
 
                     for i,text_item in enumerate(text_list):
@@ -128,13 +128,13 @@ class Credits(object):
                             x1 = (x2 + ((WIDTH * 0.86) * (50 - timeloop) / 50))
                         elif (i%2 == 1):
                             x1 = (x2 - ((WIDTH * 0.86) * (50 - timeloop) / 50))
+                        x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
+                        x -= img.get_width()/2
 
                         if self._verifyKey():
                             music.stop_music()
                             return self.father
-
-                        x = (x1+(x2-x1)*(1-math.exp(-timeloop/20.0)))
-                        x -= img.get_width()/2
+                        x += 10
                         self.screen.blit(img2, (x-separator, y-separator))
                         self.screen.blit(img, (x, y))
                         y += hor_step + 10
