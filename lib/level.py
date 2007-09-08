@@ -35,7 +35,7 @@ levels = {1: dict(energy_leap=0.057, mold_density=70, mold_velocity=19,
                   background=BGLEVEL4),
           5: dict(energy_leap=0.069, mold_density=63, mold_velocity=6,
                   max_time=35, img=LEVEL5, bottle_density=(500,100,4000,7),
-                  background=BGLEVEL1)}
+                  background=BGLEVEL5)}
 
 LEVELS = 5
 
