@@ -17,19 +17,25 @@ class Menu(object):
         self.last_index = len(self.items) - 1
         self.index = index
         self.done = False
+        self.separator = 2
         font1 = pygame.font.Font(FONT2, 50)
         font2 = pygame.font.Font(FONT2, 45)
         self.hor_step = font2.get_height() + 20
         self.clock = pygame.time.Clock()
         self.selected_imgs = [font2.render(text, True, WHITE) for text in self.items]
+        self.selected_imgs2 = [font2.render(text, True, BLUE) for text in self.items]
         self.unselected_imgs = [font2.render(text, True, GREY) for text in self.items]
+        self.unselected_imgs2 = [font2.render(text, True, BLUE) for text in self.items]
         self.unselected_rects = None
         self.timeloop = 0
         self.state = 0 
         
         self.background = utils.load_image(MENUBGIMAGE)
         title_img = font1.render(title, True, GREY)
+        title_img2 = font1.render(title, True, BLUE)
         topleft = (self.background.get_rect().width - title_img.get_rect().width) / 2, 30
+        topleft2 = (self.background.get_rect().width - title_img.get_rect().width) / 2-self.separator, 30-self.separator
+        self.background.blit(title_img2, topleft2)
         self.background.blit(title_img, topleft)
 
         self._draw_items()
@@ -104,8 +110,10 @@ class Menu(object):
         for i in range(len(self.items)):
             if i == self.index:
                 img = self.selected_imgs[i]
+                img2 = self.selected_imgs2[i]
             else:
                 img = self.unselected_imgs[i]
+                img2 = self.unselected_imgs2[i]
             
             x2 = self.screen.get_width()/2
             
@@ -117,8 +125,9 @@ class Menu(object):
                 x1 = x2
             x = (x1+(x2-x1)*(1-exp(-self.timeloop/20.0)))
             x -= img.get_width() / 2
+            self.screen.blit(img2, (x-self.separator,y-self.separator))
             self.screen.blit(img, (x,y))
-                
+
             if self.unselected_rects is None:
                 rects += [img.get_rect().move(x,y)]
 
