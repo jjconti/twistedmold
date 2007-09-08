@@ -77,7 +77,7 @@ class Hero(object):
     def twist_left(self):
         #self.pos = twist(self.parts, self.pos)
         self.pos -= 1
-        if self.pos == 0:
+        if self.pos == -1:
             self.pos = 5
         self.setup_parts()
 
