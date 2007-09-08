@@ -28,8 +28,13 @@ MUSIC = os.path.join(DATA, "music")
 FONTS = os.path.join(DATA, "fonts")
 
 ICON = os.path.join(IMGS, "icon.png")
-BGIMAGE1 = os.path.join(BACKGROUNDS, "bg1.png")
-BGIMAGE2 = os.path.join(BACKGROUNDS, "bg2.png")
+BGLEVEL1 = os.path.join(BACKGROUNDS, "bg1.png")
+BGLEVEL2 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
+BGLEVEL3 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
+BGLEVEL4 = os.path.join(BACKGROUNDS, "bg2.png")
+BGLEVEL5 = os.path.join(BACKGROUNDS, "bg2-1_1.png")
+
+
 MENUBGIMAGE = os.path.join(BACKGROUNDS, "menubg.png")
 CREDITIMAGE = os.path.join(IMGS, "cemetery-moon2.png")
 GAMEOVER = os.path.join(IMGS, "gameover.png")
