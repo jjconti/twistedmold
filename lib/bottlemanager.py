@@ -1,7 +1,6 @@
 import pygame
 import random
 from sprites import Bottle
-from twist import twist
 import utils
 from config import *
 import music
@@ -93,5 +92,5 @@ class BottleManager(object):
             for bottle in d.keys():
                 self.energy_bar.add_energy(bottle.energy)
                 if bottle.destroy_all:
-                    self.mm.destroy_all((bottle.rect.top, bottle.rect.left))    
+                    self.mm.destroy_all((bottle.rect.top, bottle.rect.left))
 

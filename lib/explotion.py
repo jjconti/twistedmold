@@ -25,7 +25,7 @@ class Explotion(object):
                     self.explotion = True
                     break
 
-    def boom(self, pos):
+    def boom(self, pos_xy):
         self.explotion = True
         for blood_drop in self.blood:
-            blood_drop.set_position(pos[0], pos[1])
+            blood_drop.set_position(pos_xy[0], pos_xy[1])
