@@ -75,7 +75,7 @@ CLOCK_TICS = 80
 #titles of
 COLORPOINTS1 = (143,0,222)
 COLORLEVEL1 = (68,5,23)
-COLORTIME1 = (214,2,84)
+COLORTIME1 = (187,0,0)
 
 
 # imagenes intro

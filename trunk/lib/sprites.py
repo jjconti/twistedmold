@@ -12,7 +12,7 @@ class Points(pygame.sprite.Sprite):
     def __init__(self, points):
         pygame.sprite.Sprite.__init__(self)
         self.points = points
-        self.font = pygame.font.Font(FONT1, 35)
+        self.font = pygame.font.Font(FONT1, 20)
         self.image = self._image()
         self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
@@ -22,14 +22,14 @@ class Points(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
     def _image(self):
-        return self.font.render("Points: " + str(self.points) + " ", True, COLORTIME1)
+        return self.font.render("Points: " + str(self.points) + " ", True, COLORSCORED)
 
 class LevelIndicator(pygame.sprite.Sprite):
     
     def __init__(self, level):
         pygame.sprite.Sprite.__init__(self)
         self.level = level
-        self.font = pygame.font.Font(FONT1, 35)
+        self.font = pygame.font.Font(FONT1, 20)
         self.image = self._image()
         self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 300)
 
@@ -39,7 +39,7 @@ class LevelIndicator(pygame.sprite.Sprite):
 #        self.rect = self.image.get_rect(top=HEIGHT - 50, right=WIDTH - 1)
 
     def _image(self):
-        return self.font.render("Level " + str(self.level), True, COLORTIME1)
+        return self.font.render("Level " + str(self.level), True, COLORSCORED)
 
 
 
@@ -82,7 +82,7 @@ class LevelTime(pygame.sprite.Sprite):
 
     def __init__(self, seconds=270):
         pygame.sprite.Sprite.__init__(self)
-        self.font = pygame.font.Font(FONT1, 35)
+        self.font = pygame.font.Font(FONT1, 20)
         self.seconds = seconds 
         self.image = self._image()
         self.rect = self.image.get_rect(left=3, top = HEIGHT - 50)
@@ -93,7 +93,7 @@ class LevelTime(pygame.sprite.Sprite):
         self.image = self._image()
 
     def _image(self):
-        return self.font.render("TIME: " + str(self.seconds), True, COLORTIME1)
+        return self.font.render("TIME: " + str(self.seconds), True, COLORSCORED)
     
 class Part(pygame.sprite.Sprite):
 
