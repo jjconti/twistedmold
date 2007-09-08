@@ -21,19 +21,19 @@ if not pygame.mixer: print 'Warning, sound disabled'
 
 # bottle_density (azul, verde, naranja, roja_destroy)
 
-levels = {1: dict(energy_leap=0.050, mold_density=70, mold_velocity=19,
+levels = {1: dict(energy_leap=0.057, mold_density=70, mold_velocity=19,
                   max_time=20, img=LEVEL1, bottle_density=(500,300,4000,1),
                   background=BGLEVEL1),
-          2: dict(energy_leap=0.057, mold_density=76, mold_velocity=15,
+          2: dict(energy_leap=0.061, mold_density=76, mold_velocity=15,
                   max_time=25, img=LEVEL2, bottle_density=(500,250,4000,3),
                   background=BGLEVEL2),
-          3: dict(energy_leap=0.065, mold_density=72, mold_velocity=11,
+          3: dict(energy_leap=0.066, mold_density=72, mold_velocity=11,
                   max_time=25, img=LEVEL3, bottle_density=(500,200,4000,4),
                   background=BGLEVEL3),
-          4: dict(energy_leap=0.066, mold_density=67, mold_velocity=9,
+          4: dict(energy_leap=0.068, mold_density=67, mold_velocity=9,
                   max_time=30, img=LEVEL4, bottle_density=(500,150,4000,5),
                   background=BGLEVEL4),
-          5: dict(energy_leap=0.069, mold_density=63, mold_velocity=8,
+          5: dict(energy_leap=0.069, mold_density=63, mold_velocity=6,
                   max_time=35, img=LEVEL5, bottle_density=(500,100,4000,7),
                   background=BGLEVEL1)}
 
