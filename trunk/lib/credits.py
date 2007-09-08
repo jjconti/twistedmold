@@ -73,7 +73,7 @@ class Credits(object):
                     clock.tick(CLOCK_TICS)
                     pygame.display.flip()
                     self.screen.blit(background, (0, 0))
-                    y = hor_step + 380
+                    y = hor_step + 340
 
                     timeloop += 1
                     if timeloop == CLOCK_TICS:
@@ -114,7 +114,7 @@ class Credits(object):
                     clock.tick(CLOCK_TICS)
                     pygame.display.flip()
                     self.screen.blit(background, (0, 0))
-                    y = hor_step + 380
+                    y = hor_step + 340
 
                     timeloop -= 1
                     if timeloop == 0:
