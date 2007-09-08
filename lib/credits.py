@@ -99,9 +99,11 @@ class Credits(object):
                         self.screen.blit(img, (x, y))
                         y += hor_step + 10
 
+                pygame.time.delay(100)
                 if self._verifyKey():
                     music.stop_music()
                     return self.father
+                pygame.time.delay(100)
 
                 done = False
                 timeloop = CLOCK_TICS
@@ -140,6 +142,8 @@ class Credits(object):
                 if self._verifyKey():
                     music.stop_music()
                     return self.father
+
+            pygame.time.delay(200)
 
     def _verifyKey(self):
         for event in pygame.event.get():
