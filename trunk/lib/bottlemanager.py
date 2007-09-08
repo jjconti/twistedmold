@@ -30,6 +30,8 @@ class BottleManager(object):
         self.bottle3_flag = 0
         self.bottle4_flag = 0
 
+        self.bottle_flag = 0
+
         self.bottles.add(Bottle(self.bottle1))
 
     def draw(self, screen):
@@ -40,43 +42,49 @@ class BottleManager(object):
         self.bottles.update()
         self.impact()
 
+        if self.bottle_flag > 0:
+            self.bottle_flag -= 1
 
         if self.bottle1_flag > 0:
             self.bottle1_flag -= 1
         
         if random.randrange(self.bottle1_density) == 0: 
-            if self.bottle1_flag == 0:
+            if self.bottle1_flag == 0 and self.bottle_flag == 0:
                 bot = Bottle(self.bottle1)
                 self.bottles.add(bot)
                 self.bottle1_flag = CLOCK_TICS        
+                self.bottle2_flag = CLOCK_TICS / 2
             
         if self.bottle2_flag > 0:
             self.bottle2_flag -= 1
 
         if random.randrange(self.bottle2_density) == 0: 
-            if self.bottle2_flag == 0:
+            if self.bottle2_flag == 0 and self.bottle_flag == 0:
                 bot = Bottle(self.bottle2)
                 self.bottles.add(bot)
                 self.bottle2_flag = CLOCK_TICS
+                self.bottle2_flag = CLOCK_TICS / 2
 
         if self.bottle3_flag > 0:
             self.bottle3_flag -= 1
 
         if random.randrange(self.bottle3_density) == 0: 
-            if self.bottle3_flag == 0:
+            if self.bottle3_flag == 0 and self.bottle_flag == 0:
                 bot = Bottle(self.bottle3)
                 self.bottles.add(bot)
                 self.bottle3_flag = CLOCK_TICS
+                self.bottle2_flag = CLOCK_TICS / 2
 
         if self.bottle4_flag > 0:
             self.bottle4_flag -= 1
 
         if random.randrange(400) == 0 and self.bottle4_current_mount < self.bottle4_mount:
-            if self.bottle4_flag == 0:
+            if self.bottle4_flag == 0 and self.bottle_flag == 0:
                 bot = Bottle(self.bottle4)
                 self.bottles.add(bot)
                 self.bottle4_current_mount += 1
                 self.bottle4_flag = CLOCK_TICS
+                self.bottle2_flag = CLOCK_TICS / 2
             
     def impact(self):   
         d = pygame.sprite.groupcollide(self.bottles,self.hero.group, True, False)
