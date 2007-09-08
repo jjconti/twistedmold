@@ -40,7 +40,7 @@ You might need to install some of these before running the game:
 
 RUNNING THE GAME:
 
-On Windows or Mac OS X, locate the "run_game.py" file and double-click it.
+On Windows or Mac OS X, locate the "run_gamergy.py" file and double-click it.
 
 Othewise open a terminal / console and "cd" to the game directory and run:
 
@@ -49,7 +49,15 @@ Othewise open a terminal / console and "cd" to the game directory and run:
 
 HOW TO PLAY THE GAME:
 
-Move your zombie with the arrows keys and twist it whit the space bar.
+    Move round the screen with the arrow keys.
+    A key and Space Bar twist you in a way and 
+    S key in the other way.
+
+Bottles:
+    - green: LOST energy
+    - blue: WIN energy
+    - yellow: WIN A LOT of energy
+    - red: destroy ALL spells in the screen
 
 
 LICENSE:
