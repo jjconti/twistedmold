@@ -55,14 +55,17 @@ level 4:
     ganar este nivel)
 '''
 levels = {1: dict(energy_leap=0.075, mold_density=50, mold_velocity=12,
-                  max_time=15, img=LEVEL1, bottle_density=(400,550,7000,0)),
+                  max_time=15, img=LEVEL1, bottle_density=(400,550,7000,1)),
           2: dict(energy_leap=0.105, mold_density=40, mold_velocity=15,
-                  max_time=15, img=LEVEL2, bottle_density=(500,300,400,0)),
+                  max_time=15, img=LEVEL2, bottle_density=(500,300,400,3)),
           3: dict(energy_leap=0.13, mold_density=35, mold_velocity=17,
-                  max_time=20, img=LEVEL3, bottle_density=(200,200,200,1)),
+                  max_time=20, img=LEVEL3, bottle_density=(200,200,200,4)),
           4: dict(energy_leap=0.2, mold_density=27, mold_velocity=25,
-                  max_time=25, img=LEVEL4, bottle_density=(250,100,100,1))}
-LEVELS = 4
+                  max_time=25, img=LEVEL4, bottle_density=(250,100,100,5)),
+          5: dict(energy_leap=0.2, mold_density=27, mold_velocity=25,
+                  max_time=30, img=LEVEL5, bottle_density=(250,100,100,7))}
+
+LEVELS = 5
 
 class Level(object):
     '''TwistedMold level'''
@@ -131,14 +134,22 @@ class Level(object):
         self.control_right = -1
         self.control_tiempo = 3
 
-        #Show level image
+        self.next_scream = random.randrange(400,500)
 
+        #Show level image
         Visual(self.screen, [utils.load_image(levels[self.level]['img'])], [2], None).loop()
 
     def loop(self):  
         music.play_music(PLAYMUSIC)
         while not self.finish():
-            self.tics += 1     
+            self.tics += 1  
+
+            if not self.next_scream:
+                music.play_random_scream()            
+                self.next_scream = random.randrange(400,500)
+            else:
+                self.next_scream -= 1               
+   
             self.screen.blit(self.background, (-(self.tics % 700),0)) 
             self.update()
             self.draw()
@@ -198,8 +209,7 @@ class Level(object):
         elif self.energy_bar.energy_percent <= 0:
             def f(screen):
                 def g(screen):
-                    return HighScores(self.screen, self.father, self.total_points)
-                music.stop_music()
+                    return HighScores(self.screen, self.father, self.total_points) 
                 music.play_gameover()
                 return Visual(screen, [utils.load_image(GAMEOVER)], [3], g)               
 
