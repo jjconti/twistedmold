@@ -205,7 +205,7 @@ class InputPanel(object):
 
     def _draw_text(self):
         y = 300 # Tune this value as you need
-        text_img = self.font1.render(self.text + self.cursor, True, WHITE)
+        text_img = self.font1.render(self.text + self.cursor, True, BLACK)
         x = (self.screen.get_width() - text_img.get_width()) / 2
         self.screen.blit(text_img, (x,y))
 
